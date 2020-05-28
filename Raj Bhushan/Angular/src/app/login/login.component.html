@@ -1,0 +1,49 @@
+<mat-toolbar color="primary">
+    Login
+  <span class="flex-spacer"></span>
+  <button mat-button mat-dialog-close>&times;</button>
+</mat-toolbar>
+
+<!-- <p>{{ user | json }}</p> -->
+<!-- We are using noValidate so that validation could be handle by Angular only -->
+<form novalidate #loginForm="ngForm"  (ngSubmit)="loginCustomer(loginForm.value)">
+
+  <mat-dialog-content>
+    <p>
+      <mat-form-field>
+        <input matInput placeholder="Customer Id" type="number"  name="custId"  #custId="ngModel" ngModel required>
+        <mat-error *ngIf="custId.errors?.required">Customer Id is required</mat-error>
+      </mat-form-field>
+    </p>
+    <!-- <p>
+      <mat-form-field>
+        <input matInput placeholder="Password" type="password"  name="custPassword" #password="ngModel" ngModel required>
+        <mat-error *ngIf="password.errors?.required">Password is required</mat-error>
+      </mat-form-field>
+    </p> -->
+    <p>
+    <mat-form-field>
+      <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" name="custPassword" #password="ngModel" ngModel required>
+      <button mat-icon-button matSuffix (click)="hide = !hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="password.errors?.required">Password is required</mat-error>
+    </mat-form-field>
+  </p>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <span class="flex-spacer"></span>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="loginForm.form.invalid" >Login</button>
+  </mat-dialog-actions>
+
+
+</form>
+<ngx-spinner
+bdColor="rgba(51,51,51,0.8)"
+size="medium"
+color="#fff"
+type="ball-scale-multiple"
+>
+<p style="font-size: 20px; color: white"></p>
+</ngx-spinner>

@@ -1,0 +1,52 @@
+<mat-toolbar color="primary">
+    Register
+  <span class="flex-spacer"></span>
+  <button mat-button mat-dialog-close>&times;</button>
+</mat-toolbar>
+
+
+<!-- We are using noValidate so that validation could be handle by Angular only -->
+<form novalidate #registerForm="ngForm"  (ngSubmit)="registerCustomer(registerForm.value)">
+
+  <mat-dialog-content>
+    <p>
+      <mat-form-field>
+        <input matInput placeholder="Customer Name" type="text"  name="custName" pattern="^[A-Z]+[a-zA-Z]*$" #custName="ngModel" ngModel required>
+        <mat-error *ngIf="custName.errors?.required">Customer Name is required</mat-error>
+        <mat-error *ngIf="custName.errors?.pattern">First letter should be capital</mat-error>
+      </mat-form-field>
+    </p>
+    <p>
+      <!-- <mat-form-field>
+        <input matInput placeholder="Employee Email" type="email"  name="empEmail"  #empEmail="ngModel" ngModel required>
+        <mat-error *ngIf="empEmail.errors?.required">Employee mail is required</mat-error>
+      </mat-form-field> -->
+      <mat-form-field>
+        <input matInput placeholder="Mobile Number" type="tel"  name="custMobile" pattern="[789][0-9]{9}"  #custMobile="ngModel" ngModel required>
+        <mat-error *ngIf="custMobile.errors?.required">Mobile number is required</mat-error>
+        <mat-error *ngIf="custMobile.errors?.pattern">Phone number must be of 10 digit</mat-error>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <input matInput placeholder="Password" type="password"  name="custPassword" #custPassword="ngModel" ngModel required>
+        <mat-error *ngIf="custPassword.errors?.required">Password is required</mat-error>
+      </mat-form-field>
+    </p>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <span class="flex-spacer"></span>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="registerForm.form.invalid" >Register</button>
+  </mat-dialog-actions>
+
+
+</form>
+<ngx-spinner
+bdColor="rgba(51,51,51,0.8)"
+size="medium"
+color="#fff"
+type="ball-scale-multiple"
+>
+<p style="font-size: 20px; color: white"></p>
+</ngx-spinner>
