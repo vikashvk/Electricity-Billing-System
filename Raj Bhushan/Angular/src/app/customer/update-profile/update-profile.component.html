@@ -1,1 +1,57 @@
-<p>update-profile works!</p>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<div class="container">
+    <form name="myForm" #upd="ngForm" (ngSubmit)="editProfile(upd.value)">
+            <br>
+            <h5 style="color:#17A2B8 ">Update Profile</h5>
+            <hr style="background: #17A2B8">
+          
+
+            <div class="form-group">
+                <label for="custName">Full Name :</label>
+                <input type="text" #name="ngModel"   pattern="[a-zA-Z]+[ ][a-zA-Z]+"
+                [class.is-invalid]="name.invalid && name.touched" class="form-control" name="custName" value="{{customer1.custName}}" ngModel required>
+                <div *ngIf="name.errors && (name.invalid && name.touched)">
+                 <small class="text-danger" *ngIf="name.errors.required">Name is required</small>
+                 <small class="text-danger" *ngIf="name.errors.pattern">First and Last Name should be capital.</small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                    <label for="custMobile">Phone Number :</label>
+                    <input type="tel" #phone="ngModel" pattern="[789][0-9]{9}"  
+                    [class.is-invalid]="phone.invalid && phone.touched" class="form-control" name="custMobile" value="{{customer1.custMobile}}" ngModel required>
+                    <div *ngIf="phone.errors && (phone.invalid && phone.touched)">
+                     <small class="text-danger" *ngIf="phone.errors.required">Phone number is required</small>
+                     <small class="text-danger" *ngIf="phone.errors.pattern">Phone number must be of 10 digit</small>
+                </div>
+                </div>
+                  
+                <div class="form-group">
+                    <label for="custName">Address :</label>
+                    <input type="text" #address="ngModel"   
+                    [class.is-invalid]="address.invalid && address.touched" class="form-control" name="custAddress" value="{{customer1.custAddress}}" ngModel required>
+                    <div *ngIf="address.errors && (address.invalid && address.touched)">
+                     <small class="text-danger" *ngIf="address.errors.required">Address is required</small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="custCity">City:</label>
+                    <input type="text" #city="ngModel"   
+                    [class.is-invalid]="city.invalid && city.touched" class="form-control" name="custCity" pattern="^[A-Z]+[a-zA-Z]*$" value="{{customer1.custCity}}" ngModel required>
+                    <div *ngIf="city.errors && (city.invalid && city.touched)">
+                     <small class="text-danger" *ngIf="city.errors.required">City is required</small>
+                     <small class="text-danger" *ngIf="city.errors.pattern">First letter of city should be capital.</small>
+
+                    </div>
+                </div>
+
+                  
+
+            <input type="submit" [disabled]="upd.invalid" id="submitbutton" class="btn" value="Update" />
+    </form>
+</div><br><br> 

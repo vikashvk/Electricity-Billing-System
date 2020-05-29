@@ -1,5 +1,7 @@
 package com.capgemini.ebms.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -48,6 +50,39 @@ public class CustomerServiceImpl implements CustomerService {
 			throw new UserException("Incorrect Customer Id / Password.", HttpStatus.UNAUTHORIZED);
 		}
 		return returnedUserId;
+	}
+
+	
+	public CustomerDetail viewCustomerProfile(long custId) throws UserException {
+		CustomerDetail customer = customerDao.viewCustomerProfile(custId);
+		System.out.println(customer);
+		if(customer==null)
+		{
+			throw new UserException("Customer profile cannot be found ",HttpStatus.NOT_FOUND);
+		}
+		return customer;
+	}
+
+	
+	public CustomerDetail editProfile(long custId, CustomerDetail customer) throws UserException {
+		CustomerDetail customer1 = null;
+		  Optional<CustomerDetail> customer2 =customerDao.findById(custId);
+		  if(customer2.isPresent())
+		  {
+			  customer1 = customer2.get();
+			  customer1.setCustId(custId);
+			  customer1.setCustMobile(customer.getCustMobile());
+			  customer1.setCustName(customer.getCustName());
+			  customer1.setCustAddress(customer.getCustAddress());
+			  customer1.setCustCity(customer.getCustCity());
+			  customerDao.save(customer1);
+		  }
+		  else
+		  {
+			  throw new UserException("Profile cannnot be updated for"+custId, HttpStatus.NOT_FOUND);
+		  }
+		  return customer1;
+		
 	}
 
 }

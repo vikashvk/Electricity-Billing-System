@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     hide = true;
   loginCustomer(check: any) {
 
-    this.customer = new Customer(check.custId, "", "", check.custPassword);
+    this.customer = new Customer(check.custId, "", "", check.custPassword,"","");
     var sameer = this.authenticationService.loginCustomer(this.customer);
     sameer.subscribe((data) => {
        localStorage.setItem('customerId',data);

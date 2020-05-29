@@ -5,11 +5,13 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.capgemini.ebms.beans.CustomerDetail;
 
+
 public interface CustomerDao extends JpaRepository<CustomerDetail,Long>{
 	
 //   	@Query("from CustomerDetail where custId=?1 and custPassword=?2")
 //	 CustomerDetail login(long custId,String custPassword);
 
-	
+ 	@Query("from CustomerDetail where custId=?1")
+   	CustomerDetail viewCustomerProfile(long custId);
    
 }

@@ -17,6 +17,12 @@ public class CustomerDetail {
 
 	@Column(length = 50)
 	private String custMobile;
+    
+	@Column(length=80)
+	private String custAddress;
+	
+	@Column(length=50)
+	private String custCity;
 
 	public long getCustId() {
 		return custId;
@@ -42,20 +48,41 @@ public class CustomerDetail {
 		this.custMobile = custMobile;
 	}
 
-	public CustomerDetail(long custId, String custName, String custMobile, String custPassword) {
+	public String getCustAddress() {
+		return custAddress;
+	}
+
+	public void setCustAddress(String custAddress) {
+		this.custAddress = custAddress;
+	}
+
+	public String getCustCity() {
+		return custCity;
+	}
+
+	public void setCustCity(String custCity) {
+		this.custCity = custCity;
+	}
+
+	public CustomerDetail(long custId, String custName, String custMobile, String custAddress, String custCity) {
 		super();
 		this.custId = custId;
 		this.custName = custName;
 		this.custMobile = custMobile;
+		this.custAddress = custAddress;
+		this.custCity = custCity;
+	}
+
+	@Override
+	public String toString() {
+		return "CustomerDetail [custId=" + custId + ", custName=" + custName + ", custMobile=" + custMobile
+				+ ", custAddress=" + custAddress + ", custCity=" + custCity + "]";
 	}
 
 	public CustomerDetail() {
 		super();
 	}
-
-	@Override
-	public String toString() {
-		return "CustomerDetail [custId=" + custId + ", custName=" + custName + ", custMobile=" + custMobile + "]";
-	}
+	
+	
 
 }

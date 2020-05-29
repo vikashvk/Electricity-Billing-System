@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
   
   registerCustomer(data: Customer) {
     console.log(data);
-    this.customer  = new Customer(data.custId,data.custName ,data.custMobile,data.custPassword);
+    this.customer  = new Customer(data.custId,data.custName ,data.custMobile,data.custPassword,"","");
     var user1 = this.authenticationService.registerCustomer(this.customer);
     user1.subscribe((data) => {
       console.log(data)

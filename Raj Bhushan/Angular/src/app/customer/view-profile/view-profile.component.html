@@ -1,1 +1,47 @@
-<p>view-profile works!</p>
+
+
+  <!-- <div class="container"> 
+    <table class="table">
+      <thead>
+        <tr>
+          <th>custId</th>
+          <th>custName</th>
+          <th>custMobile</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+          <tr>
+              <td>{{customer.custId}}</td>
+              <td>{{customer.custName}}</td>
+              <td>{{customer.custMobile}}</td>
+          </tr>
+      </tbody>
+    </table>
+  </div> -->
+
+  <div>
+    <h3>My Profile</h3>
+    <!-- <mat-spinner></mat-spinner> -->
+  </div>
+  <div>
+    
+    <mat-list>
+      <mat-list-item>
+        <h1 matLine> Id: {{customer.custId}}</h1>
+      </mat-list-item>
+      <mat-list-item>
+        <p matLine> Name: {{customer.custName}}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p matLine>Tel. Number: {{customer.custMobile}}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p matLine> Address: {{customer.custAddress}}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p matLine>City: {{customer.custCity}}</p>
+      </mat-list-item>
+     
+    </mat-list>
+  </div>
