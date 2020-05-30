@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "electricity-billing-syst-cd850": {
+      "hosting": {
+        "electricity-billing-system": [
+          "electricity-billing-syst-cd850"
+        ]
+      }
+    }
+  }
+}
