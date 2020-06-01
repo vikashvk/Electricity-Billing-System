@@ -1,0 +1,40 @@
+<div *ngIf ></div>
+
+<div class="login">
+    <h2 class="login-header">Log in</h2>
+    <form [formGroup]="loginForm" class="login-container" (ngSubmit)="login()">
+
+        <p [ngClass]="{ 'has-error': formErrors.mobile }">
+            <input placeholder="Mobile No." formControlName="mobile">
+        </p>
+
+        <div *ngIf="formErrors.mobile" class="help-block">
+            <div>{{formErrors.mobile}}</div>
+        </div>
+
+        <p [ngClass]="{ 'has-error': formErrors.password }">
+            <input type="password" placeholder="Password" formControlName="password">
+        </p>
+
+        <div *ngIf="formErrors.password" class="help-block">
+            <div>{{formErrors.password}}</div>
+        </div>
+
+        <p>
+            <button type="submit" class="btn btn-primary btn-block" [disabled]="this.loginForm.invalid">
+                Login
+            </button>
+        </p>
+    </form>
+</div>
+<p>Social login</p>
+<button (click)="signInWithSocialSite('google');"><img src="assets/images/signingoogle.png" alt=""></button>
+<button (click)="signInWithSocialSite('facebook');">Sign In with Facebook</button>
+
+<div *ngIf="user">
+  <img src="{{ user.photoUrl }}">
+  <div>
+    <h4>{{ user.name }}</h4>
+    <p>{{ user.email }}</p>
+  </div>
+</div>

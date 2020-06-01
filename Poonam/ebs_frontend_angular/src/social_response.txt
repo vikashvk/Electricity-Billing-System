@@ -1,0 +1,41 @@
+google
+{
+    authToken: "ya29.a0AfH6SMDWCu90PTejgo40ddsLlVW9iDZWqlSAMreReY4Smz8LdBnh75TFuYbs8q3Y11EijtCyTzzieFglTwtYh7gblt4iSH0wpf8nGShTe0WlDEUAveaGQL1A-jjJKFIcOOH8PFeDgjRm32UWxI56LOf8_2EkB1I9HvBH"
+email: "poonamchand97@gmail.com"
+firstName: "Poonam Chand"
+id: "117713128009859112561"
+idToken: "eyJhbGciOiJSUzI1NiIsImtpZCI6ImZiOGNhNWI3ZDhkOWE1YzZjNjc4ODA3MWU4NjZjNmM0MGYzZmMxZjkiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiNTgyODMyMzEwMzItcDdraDlrYzVpODZ0a2xxaWJ0aXRrbjJkZWw4cWFwdGEuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiI1ODI4MzIzMTAzMi1wN2toOWtjNWk4NnRrbHFpYnRpdGtuMmRlbDhxYXB0YS5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsInN1YiI6IjExNzcxMzEyODAwOTg1OTExMjU2MSIsImVtYWlsIjoicG9vbmFtY2hhbmQ5N0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXRfaGFzaCI6IjV3UUxMRFRIclBZYnpZTlNhMzI1aGciLCJuYW1lIjoiUG9vbmFtIENoYW5kIFNhaHUiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EtL0FPaDE0R2pFdG83TEljLWVYYXlPTGJTcHpTR05xeGZneTNBSFRWd0xPZm9PS0E9czk2LWMiLCJnaXZlbl9uYW1lIjoiUG9vbmFtIENoYW5kIiwiZmFtaWx5X25hbWUiOiJTYWh1IiwibG9jYWxlIjoiZW4tR0IiLCJpYXQiOjE1OTA3ODAwMDEsImV4cCI6MTU5MDc4MzYwMSwianRpIjoiOGUwM2NmYzNhYzcyNDk0M2E3ZjJkYTA4NmU4ODFhNWExODNiODBiNiJ9.jqlen-FL2J1OxHOK5oS0T9rjgG9dS8rSfzhvMWsECWrum8dtSv1d2TPLycGH1TbIUf2tC5t8h7gRab2sgvpx-YzAMzZW9t-UuAdGv8oZvQfKeiAvUBeXwZhqtOFcyxMeSWXoe_jdVELkiLJyk-isg5wEgrOWGh6fRcJ-NGpA4Y-fixp2YDpDNAWqojf9eSNIxxWZy8hCb957pKi2Va2x8MfAEhL5B4hWDIeR734L7n8npy0B21r_ZtQ4WFYP6icXpvO09xGPIRvsN21m56_v6pwMRDBtYIVdeDD8RNpOuxAUGz63im83t5Pl39BrcTMTjLZT9owFd9A7DwXPSl8aGw"
+lastName: "Sahu"
+name: "Poonam Chand Sahu"
+photoUrl: "https://lh3.googleusercontent.com/a-/AOh14GjEto7LIc-eXayOLbSpzSGNqxfgy3AHTVwLOfoOKA=s96-c"
+provider: "GOOGLE"
+}
+
+
+
+
+
+
+facebook
+{
+authToken: "EAAPhwdzlpPEBAFUJGSzZCZCgmcdu8LxLvOcMwtMEWN78EvabddXz79A0LeocKcTsTS5T58p17EBjbK2e836BiGmnCtUtRn2ZBkdlsu9JG4auHC3MkTg6ETzNsvkKKO9cuW29N0jxqhnU0KdvYSqHYRnbypIMOXZAUZCrDYctjUhUfoLDSS25VQ6Aby411yB03oFZAZAMSLw9gZDZD"
+email: "poonamchandsahu.ssgi@gmail.com"
+facebook:
+email: "poonamchandsahu.ssgi@gmail.com"
+first_name: "Poonam Chand"
+id: "2892994017474338"
+last_name: "Sahu"
+name: "Poonam Chand Sahu"
+picture: {data: {…}}
+__proto__: Object
+firstName: "Poonam Chand"
+id: "2892994017474338"
+lastName: "Sahu"
+name: "Poonam Chand Sahu"
+photoUrl: "https://graph.facebook.com/2892994017474338/picture?type=normal"
+provider: "FACEBOOK"
+}
+
+GET graph.facebook.com/debug_token?
+    input_token={token-to-inspect}
+    &access_token={app_id}|{app_secret}

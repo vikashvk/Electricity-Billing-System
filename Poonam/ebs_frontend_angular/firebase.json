@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "electricity-billing-system",
+      "public": "dist/electricity-billing-system",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}
