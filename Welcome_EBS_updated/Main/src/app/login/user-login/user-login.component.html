@@ -1,0 +1,61 @@
+
+
+<div class="login">
+           <div class="limiter">
+                <div class="container-login100">
+                    <div class="login100-more" style="background-image: url('assets/images/bg-01.jpg');"></div>
+        
+                    <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
+                        <form [formGroup]="loginForm" class="login100-form validate-form" (ngSubmit)="login()">
+                            <span class="login100-form-title p-b-59">
+                                Hello Customer!
+                            </span>
+        
+                            <div class="wrap-input100 validate-input" data-validate="Username is required" [ngClass]="{ 'has-error': formErrors.mobile }">
+                                <span class="label-input100">Mobile Number</span>
+                                <input class="input100" type="text" name="username" placeholder="Enter the number">
+                                <span class="focus-input100"></span>
+                            </div>
+
+                            <div *ngIf="formErrors.mobile" class="help-block">
+                                    <div>{{formErrors.mobile}}</div>
+                                </div>
+        
+                            <div class="wrap-input100 validate-input" data-validate = "Password is required" [ngClass]="{ 'has-error': formErrors.password }">
+                                <span class="label-input100">Password</span>
+                                <input class="input100" type="text" name="pass" placeholder="*************">
+                                <span class="focus-input100"></span>
+                            </div>
+
+                            <div *ngIf="formErrors.password" class="help-block">
+                                    <div>{{formErrors.password}}</div>
+                                </div>
+        
+        
+                            <div class="container-login100-form-btn">
+                                <div class="wrap-login100-form-btn">
+                                    <div class="button-container">
+                                        <a class="btn-solid-reg-sign page-scroll" href="adminp">Sign In</a>
+                                    </div> 
+                                </div>
+                            </div>
+
+                            <button (click)="signInWithSocialSite('google');"><img src="assets/images/signingoogle.png" alt=""></button>
+                            <button (click)="signInWithSocialSite('facebook');">Sign In with Facebook</button>
+
+
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+
+</div>
+
+<div *ngIf="user">
+        <img src="{{ user.photoUrl }}">
+        <div>
+          <h4>{{ user.name }}</h4>
+          <p>{{ user.email }}</p>
+        </div>
+      </div>

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +12,12 @@ import { AboutComponent } from './about/about.component';
 import { FooterComponent } from './footer/footer.component';
 import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './home/home.component';
+import { AdminpageComponent } from './adminpage/adminpage.component';
+import { apiUrl } from '../api-url';
+import { ErrorHandlerService } from './services/error-handler.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '../../node_modules/@angular/common/http';
+import { TokenInterceptorService } from './services/token-interceptor.service';
+import { LoginModule } from './login/login.module';
 
 @NgModule({
   declarations: [
@@ -24,13 +30,21 @@ import { HomeComponent } from './home/home.component';
     AboutComponent,
     FooterComponent,
     AdminComponent,
-    HomeComponent
+    HomeComponent,
+    AdminpageComponent
   ],
   imports: [
     BrowserModule,
+    LoginModule,
+    HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [{ provide: 'API_URL', useValue: apiUrl }, { provide: ErrorHandler, useClass: ErrorHandlerService }, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

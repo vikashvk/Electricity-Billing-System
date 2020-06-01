@@ -144,12 +144,29 @@ strong {
 	font: 500 0.8125rem/1.125rem "Montserrat", sans-serif;
 }
 
+.section-title-admin {
+	color: #14bf98;
+	font: 700 1.8125rem/3.125rem "Montserrat", sans-serif;
+}
+
 .btn-solid-reg {
 	display: inline-block;
 	padding: 1.1875rem 1.875rem 1.1875rem 1.875rem;
 	border: 0.125rem solid #14bf98;
 	border-radius: 0.25rem;
 	background-color: #14bf98;
+	color: #fff;
+	font: 700 0.75rem/0 "Montserrat", sans-serif;
+	text-decoration: none;
+	transition: all 0.2s;
+}
+
+.btn-solid-reg-sign {
+	display: inline-block;
+	padding: 1.1875rem 1.875rem 1.1875rem 1.875rem;
+	border: 0.125rem solid #bf1494;
+	border-radius: 0.25rem;
+	background-color: #bf1494;
 	color: #fff;
 	font: 700 0.75rem/0 "Montserrat", sans-serif;
 	text-decoration: none;
