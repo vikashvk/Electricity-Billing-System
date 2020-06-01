@@ -8,4 +8,7 @@ import com.capgemini.ebms.beans.CustomerAuthentication;
 public interface CustomerAuthenticationDao extends JpaRepository<CustomerAuthentication, Long> {
 	@Query("select c.custId from CustomerAuthentication c where custId=?1 and custPassword=?2")
 	Long login(long custId, String custPassword);
+	
+	@Query("from CustomerAuthentication where custId=?1")
+	CustomerAuthentication getDetail(long custId);
 }

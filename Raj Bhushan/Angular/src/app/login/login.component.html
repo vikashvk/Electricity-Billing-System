@@ -23,11 +23,15 @@
     </p> -->
     <p>
     <mat-form-field>
-      <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" name="custPassword" #password="ngModel" ngModel required>
+      <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" name="custPassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"  
+      #password="ngModel" ngModel required>
       <button mat-icon-button matSuffix (click)="hide = !hide">
       <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
       <mat-error *ngIf="password.errors?.required">Password is required</mat-error>
+      <mat-error *ngIf="password.errors?.pattern">Must contain at least one number and one uppercase and lowercase
+        letter, and
+        at least 6 or more characters</mat-error>
     </mat-form-field>
   </p>
   </mat-dialog-content>

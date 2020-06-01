@@ -10,7 +10,7 @@ import { Customer } from '../entity/Customer';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-
+hide =true
   constructor(public dialogRef: MatDialogRef<RegisterComponent>,private authenticationService:AuthenticationService,
     private router:Router ,private spinner: NgxSpinnerService) { }
 

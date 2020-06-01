@@ -49,6 +49,12 @@ public class CustomerController {
 	public CustomerDetail editProfile(@PathVariable long custId, @RequestBody CustomerDetail customer) throws UserException{
 		  return customerService.editProfile(custId, customer);
 	}
+	
+	//For changing the password
+	@GetMapping("/changePassword/{custId}/{oldPassword}/{newPassword}")
+	public boolean changePassword(@PathVariable long custId, @PathVariable String oldPassword , @PathVariable String newPassword) throws UserException{
+		return customerService.changePassword(custId, oldPassword , newPassword);
+	}
 }
 
 

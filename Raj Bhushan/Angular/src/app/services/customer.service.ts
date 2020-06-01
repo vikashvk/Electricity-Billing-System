@@ -36,4 +36,10 @@ export class CustomerService {
 {
     return this.http.put(this.url+'/editProfile/'+customerId+"/", customer);
 }
+
+ //Code for changing the password
+ changePassword(customerId:number,oldPassword:string, newPassword:string):Observable<any>
+ {
+   return this.http.get(this.url+'/changePassword/'+customerId+"/"+oldPassword+"/"+newPassword)
+ }
 }

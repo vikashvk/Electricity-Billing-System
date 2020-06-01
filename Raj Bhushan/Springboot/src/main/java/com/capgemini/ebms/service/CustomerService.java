@@ -16,5 +16,8 @@ public interface CustomerService {
     
 	//For editing the profile of customer
 	CustomerDetail editProfile(long custId, CustomerDetail customer) throws UserException;
+    
+	//For changing the password
+	boolean changePassword(long custId, String oldPassword, String newPassword) throws UserException;
 
 }

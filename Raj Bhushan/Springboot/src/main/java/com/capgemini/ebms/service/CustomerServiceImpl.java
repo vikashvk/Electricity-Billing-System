@@ -79,10 +79,31 @@ public class CustomerServiceImpl implements CustomerService {
 		  }
 		  else
 		  {
-			  throw new UserException("Profile cannnot be updated for"+custId, HttpStatus.NOT_FOUND);
+			  throw new UserException("Profile cannnot be updated for"+custId,HttpStatus.NOT_FOUND);
 		  }
 		  return customer1;
 		
+	}
+
+	public boolean changePassword(long custId, String oldPassword, String newPassword) throws UserException {
+		boolean b= false;
+		CustomerAuthentication authentication1=null;
+		  if(authenticationDao.existsById(custId))
+		  {
+			CustomerAuthentication customer = authenticationDao.getDetail(custId);
+			String password = customer.getCustPassword();
+			if(password.equals(oldPassword)) {
+				customer.setCustId(custId);
+				customer.setCustPassword(newPassword);
+				authenticationDao.save(customer);
+				b = true;
+			}
+		  }
+		  else
+		  {
+			  throw new UserException("Change password cannot be done for "+custId ,HttpStatus.NOT_FOUND);
+		  }
+		  return b;
 	}
 
 }
