@@ -1,10 +1,20 @@
 package com.ebs.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.sql.Date;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * @author Poonamchand Sahu
@@ -25,7 +35,7 @@ public class User {
 	private String email;
 
 	private String imageUrl;
-
+	@JsonIgnore
 	@Column(nullable = false)
 	private Boolean emailVerified = false;
 
@@ -34,9 +44,12 @@ public class User {
 
 	@NotNull
 	@Enumerated(EnumType.STRING)
+	@JsonIgnore
 	private AuthProvider provider;
-
+	@JsonIgnore
 	private String providerId;
+	@JsonIgnore
+	private Date updatedAt;
 
 	public Long getId() {
 		return id;
@@ -100,5 +113,13 @@ public class User {
 
 	public void setProviderId(String providerId) {
 		this.providerId = providerId;
+	}
+
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 }
