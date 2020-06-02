@@ -1,15 +1,16 @@
 package com.ebs.controller;
 
-import com.ebs.exception.ResourceNotFoundException;
-import com.ebs.model.User;
-import com.ebs.repository.UserRepository;
-import com.ebs.security.CurrentUser;
-import com.ebs.security.UserPrincipal;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.ebs.exception.ResourceNotFoundException;
+import com.ebs.model.CustomerDetail;
+import com.ebs.repository.CustomerDetailRespository;
+import com.ebs.security.CurrentUser;
+import com.ebs.security.UserPrincipal;
+
 /**
  * @author Poonamchand Sahu
  * 
@@ -17,13 +18,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserController {
 
+//    @Autowired
+//    private UserRepository userRepository;
     @Autowired
-    private UserRepository userRepository;
-
+    private CustomerDetailRespository customerDetailRespository;
     @GetMapping("/user/me")
     @PreAuthorize("hasRole('USER')")
-    public User getCurrentUser(@CurrentUser UserPrincipal userPrincipal) {
-        return userRepository.findById(userPrincipal.getId())
+    public CustomerDetail getCurrentUser(@CurrentUser UserPrincipal userPrincipal) {
+        return customerDetailRespository.findById(userPrincipal.getId())
                 .orElseThrow(() -> new ResourceNotFoundException("User", "id", userPrincipal.getId()));
     }
 }

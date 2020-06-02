@@ -1,12 +1,7 @@
 package com.ebs.security.oauth2;
 
-import com.ebs.exception.OAuth2AuthenticationProcessingException;
-import com.ebs.model.AuthProvider;
-import com.ebs.model.User;
-import com.ebs.repository.UserRepository;
-import com.ebs.security.UserPrincipal;
-import com.ebs.security.oauth2.user.OAuth2UserInfo;
-import com.ebs.security.oauth2.user.OAuth2UserInfoFactory;
+import java.util.Date;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
@@ -18,7 +13,15 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import java.util.Optional;
+import com.ebs.exception.OAuth2AuthenticationProcessingException;
+import com.ebs.model.AuthProvider;
+import com.ebs.model.CustomerDetail;
+import com.ebs.model.User;
+import com.ebs.repository.CustomerDetailRespository;
+import com.ebs.repository.UserRepository;
+import com.ebs.security.UserPrincipal;
+import com.ebs.security.oauth2.user.OAuth2UserInfo;
+import com.ebs.security.oauth2.user.OAuth2UserInfoFactory;
 
 /**
  * @author Poonamchand Sahu
@@ -29,6 +32,9 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private CustomerDetailRespository customerDetailRespository;
 
 	@Override
 	public OAuth2User loadUser(OAuth2UserRequest oAuth2UserRequest) throws OAuth2AuthenticationException {
@@ -71,20 +77,29 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 	}
 
 	private User registerNewUser(OAuth2UserRequest oAuth2UserRequest, OAuth2UserInfo oAuth2UserInfo) {
+		Date now = new Date();
 		User user = new User();
-
+		CustomerDetail customer = new CustomerDetail();
 		user.setProvider(AuthProvider.valueOf(oAuth2UserRequest.getClientRegistration().getRegistrationId()));
 		user.setProviderId(oAuth2UserInfo.getId());
-		user.setName(oAuth2UserInfo.getName());
 		user.setEmail(oAuth2UserInfo.getEmail());
-		user.setImageUrl(oAuth2UserInfo.getImageUrl());
-		return userRepository.save(user);
+		user.setUpdatedAt(now);
+		customer.setFirstName(oAuth2UserInfo.getFirstName());
+		customer.setLastName(oAuth2UserInfo.getLastName());
+		customer.setImageUrl(oAuth2UserInfo.getImageUrl());
+		customer.setUser(user);
+		customer.setUpdatedAt(now);
+		return customerDetailRespository.save(customer).getUser();
 	}
 
 	private User updateExistingUser(User existingUser, OAuth2UserInfo oAuth2UserInfo) {
-		existingUser.setName(oAuth2UserInfo.getName());
-		existingUser.setImageUrl(oAuth2UserInfo.getImageUrl());
-		return userRepository.save(existingUser);
+		Date now = new Date();
+		CustomerDetail existingCustomerDetail = customerDetailRespository.findByUser(existingUser).get();
+		existingCustomerDetail.setFirstName(oAuth2UserInfo.getFirstName());
+		existingCustomerDetail.setLastName(oAuth2UserInfo.getLastName());
+		existingCustomerDetail.setImageUrl(oAuth2UserInfo.getImageUrl());
+		existingCustomerDetail.setUpdatedAt(now);
+		return customerDetailRespository.save(existingCustomerDetail).getUser();
 	}
 
 }

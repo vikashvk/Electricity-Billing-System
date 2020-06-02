@@ -1,12 +1,16 @@
 package com.ebs.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
+@Entity
 public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,6 +23,7 @@ public class Address {
 //	@Pattern(regexp = "^[1-9]\\d{5}$")
 	private String pincode;
 	@Column(nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date updatedAt;
 
 	public Long getId() {

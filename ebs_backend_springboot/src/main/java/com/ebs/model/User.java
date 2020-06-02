@@ -1,6 +1,6 @@
 package com.ebs.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -26,15 +28,9 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-
-	@Column(nullable = false)
-	private String name;
-
 	@Email
 	@Column(nullable = false)
 	private String email;
-
-	private String imageUrl;
 	@JsonIgnore
 	@Column(nullable = false)
 	private Boolean emailVerified = false;
@@ -49,6 +45,8 @@ public class User {
 	@JsonIgnore
 	private String providerId;
 	@JsonIgnore
+	@Column(nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date updatedAt;
 
 	public Long getId() {
@@ -59,28 +57,12 @@ public class User {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public String getEmail() {
 		return email;
 	}
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getImageUrl() {
-		return imageUrl;
-	}
-
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
 	}
 
 	public Boolean getEmailVerified() {

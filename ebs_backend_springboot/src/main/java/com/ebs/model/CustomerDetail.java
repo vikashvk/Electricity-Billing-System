@@ -1,19 +1,28 @@
 package com.ebs.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @Entity
-@Table(name = "customers")
-public class Customer {
+@Table(name = "customer_details")
+@JsonInclude(Include.NON_NULL)
+public class CustomerDetail {
 	@Id
+	private Long id;
 	@OneToOne
+	@MapsId
 	private User user;
 	@Column(nullable = false)
 	private String firstName;
@@ -25,7 +34,15 @@ public class Customer {
 	@OneToOne(fetch = FetchType.LAZY)
 	private Address address;
 	@Column(nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date updatedAt;
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public User getUser() {
 		return user;

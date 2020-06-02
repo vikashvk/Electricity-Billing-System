@@ -1,18 +1,16 @@
 spring:
     datasource:
-        url: jdbc:oracle:thin:@localhost:1521:xe
-        username: test
-        password: test
-        driverClassName: oracle.jdbc.driver.OracleDriver
-
+        url: jdbc:mysql://sql12.freesqldatabase.com:3306/sql12344985
+        username: sql12344985
+        password: 7iUHCivv3a
+        driverClassName: com.mysql.cj.jdbc.Driver
     jpa:
         show-sql: true
         hibernate:
             ddl-auto: create
-            naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
         properties:
             hibernate:
-                dialect: org.hibernate.dialect.Oracle10gDialect
+                dialect: org.hibernate.dialect.MySQL55Dialect
     security:
       oauth2:
         client:
@@ -45,9 +43,6 @@ app:
     # we'll be generating an auth token for the user and sending the token to the
     # redirectUri mentioned by the client in the /oauth2/authorize request.
     # We're not using cookies because they won't work well in mobile clients.
-    authorizedRedirectUris:
-      - http://localhost:4200/oauth2-redirect
-      - myandroidapp://oauth2/redirect
-      - myiosapp://oauth2/redirect
+    authorizedRedirectUris: http://localhost:4200/oauth2-redirect
 server:
   port: 9090

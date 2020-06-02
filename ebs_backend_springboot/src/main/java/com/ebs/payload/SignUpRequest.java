@@ -8,22 +8,31 @@ import javax.validation.constraints.NotBlank;
  * 
  */
 public class SignUpRequest {
-	@NotBlank
-	private String name;
-
-	@NotBlank
+	@NotBlank(message = "First name cannot be blank")
+	private String firstName;
+	@NotBlank(message = "Last name cannot be blank")
+	private String lastName;
+	@NotBlank(message = "Email cannot be blank")
 	@Email
 	private String email;
 
-	@NotBlank
+	@NotBlank(message = "Password cannot be blank")
 	private String password;
 
-	public String getName() {
-		return name;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getEmail() {

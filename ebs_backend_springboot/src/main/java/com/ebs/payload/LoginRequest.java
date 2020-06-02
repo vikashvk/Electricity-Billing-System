@@ -8,11 +8,11 @@ import javax.validation.constraints.NotBlank;
  * 
  */
 public class LoginRequest {
-	@NotBlank
+	@NotBlank(message = "Email cannot be blank")
 	@Email
 	private String email;
 
-	@NotBlank
+	@NotBlank(message = "Password cannot be blank")
 	private String password;
 
 	public String getEmail() {

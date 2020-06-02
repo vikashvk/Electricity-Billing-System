@@ -55,6 +55,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	 */
 	@ExceptionHandler(Exception.class)
 	public final ResponseEntity<?> handleAllExceptions(Exception ex, WebRequest request) {
+		ex.printStackTrace();
 		String message = "Could not process your request at this time.";
 		MessageResponse response = new MessageResponse(message);
 		return new ResponseEntity<MessageResponse>(response, HttpStatus.INTERNAL_SERVER_ERROR);
