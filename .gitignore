@@ -10,9 +10,10 @@ ebs_frontend_angular/bazel-out
 # dependencies
 ebs_frontend_angular/node_modules
 
+ebs_frontend_angular/package-lock.json
 # profiling files
 ebs_frontend_angular/chrome-profiler-events*.json
-ebs_frontend_angularspeed-measure-plugin*.json
+ebs_frontend_angular/speed-measure-plugin*.json
 
 # IDEs and editors
 ebs_backend_springboot/.idea
