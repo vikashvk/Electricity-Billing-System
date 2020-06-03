@@ -3,6 +3,7 @@ package com.ebs.exception;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -27,29 +28,35 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 		for (ObjectError error : ex.getBindingResult().getAllErrors()) {
 			errors += error.getDefaultMessage() + ". ";
 		}
-		MessageResponse response = new MessageResponse(errors);
+		MessageResponse response = new MessageResponse(errors,false);
 		return new ResponseEntity<Object>(response, HttpStatus.EXPECTATION_FAILED);
 	}
 
 	@ExceptionHandler(BadRequestException.class)
 	public final ResponseEntity<?> handleBadRequestException(BadRequestException ex, WebRequest request) {
-		MessageResponse response = new MessageResponse(ex.getLocalizedMessage());
+		MessageResponse response = new MessageResponse(ex.getLocalizedMessage(),false);
 		return new ResponseEntity<MessageResponse>(response, HttpStatus.BAD_REQUEST);
 	}
 
 	@ExceptionHandler(ResourceNotFoundException.class)
 	public final ResponseEntity<?> handleResourceNotFoundException(ResourceNotFoundException ex, WebRequest request) {
-		MessageResponse response = new MessageResponse(ex.getLocalizedMessage());
+		MessageResponse response = new MessageResponse(ex.getLocalizedMessage(),false);
 		return new ResponseEntity<MessageResponse>(response, HttpStatus.NOT_FOUND);
 	}
 
 	@ExceptionHandler(OAuth2AuthenticationProcessingException.class)
 	public final ResponseEntity<?> handleOAuth2AuthenticationProcessingException(
 			OAuth2AuthenticationProcessingException ex, WebRequest request) {
-		MessageResponse response = new MessageResponse(ex.getLocalizedMessage());
+		MessageResponse response = new MessageResponse(ex.getLocalizedMessage(),false);
 		return new ResponseEntity<MessageResponse>(response, HttpStatus.UNAUTHORIZED);
 	}
-
+	
+	@ExceptionHandler(BadCredentialsException.class)
+	public final ResponseEntity<?> handleBadCredentialsException(
+			BadCredentialsException ex, WebRequest request) {
+		MessageResponse response = new MessageResponse("Invalid email or password.",false);
+		return new ResponseEntity<MessageResponse>(response, HttpStatus.UNAUTHORIZED);
+	}
 	/*
 	 * Handles when any other exception is occured
 	 */
@@ -57,7 +64,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	public final ResponseEntity<?> handleAllExceptions(Exception ex, WebRequest request) {
 		ex.printStackTrace();
 		String message = "Could not process your request at this time.";
-		MessageResponse response = new MessageResponse(message);
+		MessageResponse response = new MessageResponse(message,false);
 		return new ResponseEntity<MessageResponse>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 }

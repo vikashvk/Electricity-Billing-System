@@ -1,6 +1,5 @@
 package com.ebs.service;
 
-import java.net.URI;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.ebs.exception.BadRequestException;
 import com.ebs.model.AuthProvider;
@@ -46,7 +44,7 @@ public class AuthService {
 		return token;
 	}
 
-	public URI registerUser(SignUpRequest signUpRequest) {
+	public void registerUser(SignUpRequest signUpRequest) {
 		if (userRepository.existsByEmail(signUpRequest.getEmail())) {
 			throw new BadRequestException("Email address already in use.");
 		}
@@ -64,11 +62,6 @@ public class AuthService {
 		customerDetail.setLastName(signUpRequest.getLastName());
 		customerDetail.setUpdatedAt(now);
 		customerDetail.setUser(user);
-		CustomerDetail result = customerDetailRespository.save(customerDetail);
-
-		URI location = ServletUriComponentsBuilder.fromCurrentContextPath().path("/user/me")
-				.buildAndExpand(result.getId()).toUri();
-
-		return location;
+		customerDetailRespository.save(customerDetail);
 	}
 }

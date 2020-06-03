@@ -8,7 +8,7 @@ export class CustomerService {
 
   constructor(@Inject('API_URL') private apiUrl: string, private http: HttpClient) { }
   public getCustomerProfile() {
-    let path: string = 'user/me';
+    let path: string = 'api/v1/users/me';
     return this.http.get<any>(this.apiUrl + path);
   }
 }

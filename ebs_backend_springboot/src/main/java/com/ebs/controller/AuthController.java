@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.ebs.payload.AuthResponse;
 import com.ebs.payload.LoginRequest;
-import com.ebs.payload.MessageResponse;
 import com.ebs.payload.SignUpRequest;
 import com.ebs.service.AuthService;
 
@@ -36,8 +36,10 @@ public class AuthController {
 
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
-		URI location = authService.registerUser(signUpRequest);
-		return ResponseEntity.created(location).body(new MessageResponse("User registered successfully@"));
+		authService.registerUser(signUpRequest);
+//		MessageResponse response = new MessageResponse("User registered successfully. Please login to continue.");
+		URI location = ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/v1/users/me").build().toUri();
+		return ResponseEntity.created(location).build();
 	}
 
 }
