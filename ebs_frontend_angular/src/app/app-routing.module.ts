@@ -6,6 +6,7 @@ import { AdminpageComponent } from './adminpage/adminpage.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { RedirectHandlerComponent } from './redirect-handler/redirect-handler.component';
 import { CustomerModule } from './customer/customer.module';
+import { UserRegistrationComponent } from './user-registration/user-registration.component';
 
 
 const routes: Routes = [
@@ -25,12 +26,14 @@ const routes: Routes = [
     path: 'login', component: UserLoginComponent
   },
   {
+    path: 'register', component: UserRegistrationComponent
+  },
+  {
     path: 'oauth2-redirect', component: RedirectHandlerComponent
   },
   {
     path: 'user'
-    // , loadChildren: './customer/customer.module#CustomerModule'
-    , loadChildren: () => CustomerModule
+    , loadChildren: () => import('./customer/customer.module').then(m => m.CustomerModule)
     // , canActivateChild:[AuthGuard]
   },
 ];

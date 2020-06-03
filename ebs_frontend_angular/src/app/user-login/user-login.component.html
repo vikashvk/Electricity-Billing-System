@@ -16,8 +16,7 @@
                         <span class="focus-input100"></span>
                     </div>
 
-                    <div *ngIf="formErrors.email" class="help-block">
-                        <div>{{formErrors.email}}</div>
+                    <div *ngIf="formErrors.email" class="help-block">{{formErrors.email}}
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Password is required"
@@ -27,26 +26,27 @@
                         <span class="focus-input100"></span>
                     </div>
 
-                    <div *ngIf="formErrors.password" class="help-block">
-                        <div>{{formErrors.password}}</div>
+                    <div *ngIf="formErrors.password" class="help-block">{{formErrors.password}}
                     </div>
 
 
                     <div class="container-login100-form-btn">
                         <div class="wrap-login100-form-btn">
                             <div class="button-container">
-                                <button type="submit" class="btn-solid-reg-sign page-scroll">
+                                <button type="submit" [disabled]="this.loginForm.invalid" class="btn-solid-reg-sign page-scroll">
                                     Login
-                                </button>
+                                </button><span class="registerlink"><a routerLink="/register">Register</a></span>
+                                
                             </div>
+                           
                             
                         </div>
                     </div>
-
-
                 </form>
-                <a href="{{googleAuthUrl}}">Sign In with Google</a>
-                <a href="{{facebookAuthUrl}}">Sign In with Google</a>
+                <div>
+                    <a href="{{googleAuthUrl}}">Sign In with Google</a>&nbsp;|&nbsp;
+                <a href="{{facebookAuthUrl}}">Sign In with Facebook</a>
+                </div>
             </div>
         </div>
     </div>

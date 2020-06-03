@@ -20,6 +20,7 @@ import { UserLoginComponent } from './user-login/user-login.component';
 import {API_BASE_URL, GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL } from '../constants';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RedirectHandlerComponent } from './redirect-handler/redirect-handler.component';
+import { UserRegistrationComponent } from './user-registration/user-registration.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,7 @@ import { RedirectHandlerComponent } from './redirect-handler/redirect-handler.co
     FooterComponent,
     AdminComponent,
     HomeComponent,
-    AdminpageComponent,UserLoginComponent, RedirectHandlerComponent,
+    AdminpageComponent,UserLoginComponent, RedirectHandlerComponent, UserRegistrationComponent,
 
   ],
   imports: [

@@ -1,13 +1,19 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { LoginModel } from '../shared/login-model';
+import { LoginModel } from '../models/login-model';
 import { ACCESS_TOKEN } from 'src/constants';
+import { RegistrationModel } from '../models/registration-model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserAuthService {
+  registerCustomer(regDetails: RegistrationModel): Observable<any> {
+    let path: string = "auth/signup";
+    return this.http.post<any>(this.apiUrl + path, regDetails);
+  }
 
   constructor(@Inject('API_URL') private apiUrl: string, private router: Router, private http: HttpClient) { }
   public login(loginDetails: LoginModel) {
