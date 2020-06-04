@@ -4,7 +4,7 @@ The aim of our project is to develop a system that is meant to partially compute
 
 Modules and Description of Electricity Billing System Project:
 
-1)	Customer Module: 
+# 1)	Customer Module: 
 
 The main aim of this module is provide all the functionality related to customer. It tracks all the information of the customer. You should develop all type of CRUD (Create, Read, Update and Delete) operations of the customer. This is a role based module where admin can perform each and every operations on data but the customer will be able to view only his/her data, so access level restrictions should be  implemented in the project.
 
@@ -16,7 +16,7 @@ Features of Customer Module:
 •	Admin will be able to delete the records of the customer
 •	All customer forms are validated on client side 
 
-2)	Bill Module:
+# 2)	Bill Module:
 
 The main aim for developing this module is to manage the bill. This bill module is the main module in this project Electricity Billing System. So all bill will be managed by admin. It tracks all the information of the bill. You have to develop all type of CRUD (Create, Read, Update and Delete) operations of the bill. Customer will be able to see his bill details.
 
@@ -27,7 +27,7 @@ Features of Bill Module:
 •	Admin can see the list of all bill
 •	Customer can see his bill
 
-3)	Payment Module:
+# 3)	Payment Module:
 
 The main aim of this module is provide all the functionality related to payment. It tracks all the information and details of the payment. Admin will manage all payment and customer will be able to see their connection.
 
