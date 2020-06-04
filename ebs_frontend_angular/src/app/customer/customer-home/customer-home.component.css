@@ -1,0 +1,40 @@
+.course{
+    text-align:center;
+    color:maroon;
+   }
+   .course1{
+    text-align:center;
+    font-family:Bradley Hand ITC;
+   }
+   .cours2{
+    margin-top:30px;
+    margin-left: 0px;
+   }
+    
+   .cours2{
+    position:relative;
+    margin-bottom:50px;
+    
+   }
+    
+   .cours4{
+    position:absolute;
+    -border:1px solid red;
+    -margin-top:-80px;
+    padding-top:20px;
+    width:100%;
+    height:80px;
+    opacity:0;
+    bottom:-50px;
+    -background-color:rgba(142,198,63,.8);
+    background-color:rgba(0,0,0,0.3);
+   }
+   .cours2:hover .cours4{
+    opacity:1;
+    bottom:0;
+    transition:1s;
+   }
+   .cours2:hover .hover{
+    transform:scale(1.3);
+    transition:1s;
+   }

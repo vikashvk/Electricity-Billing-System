@@ -21,6 +21,7 @@ import {API_BASE_URL, GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL } from '../constants';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RedirectHandlerComponent } from './redirect-handler/redirect-handler.component';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,7 @@ import { UserRegistrationComponent } from './user-registration/user-registration
     FooterComponent,
     AdminComponent,
     HomeComponent,
-    AdminpageComponent,UserLoginComponent, RedirectHandlerComponent, UserRegistrationComponent,
+    AdminpageComponent,UserLoginComponent, RedirectHandlerComponent, UserRegistrationComponent, PageNotFoundComponent,
 
   ],
   imports: [

@@ -22,6 +22,7 @@ export class UserAuthService {
     this.http.post<any>(this.apiUrl + path, loginDetails).subscribe(data => {
       console.log(data);
       localStorage.setItem(ACCESS_TOKEN, data.accessToken);
+      console.log('Logged In');
       this.router.navigateByUrl('/user');
     },
       error => { alert(error.error?.message); });

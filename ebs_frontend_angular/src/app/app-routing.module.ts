@@ -7,6 +7,8 @@ import { UserLoginComponent } from './user-login/user-login.component';
 import { RedirectHandlerComponent } from './redirect-handler/redirect-handler.component';
 import { CustomerModule } from './customer/customer.module';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
+import { AuthGuardService } from './services/auth-guard.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 const routes: Routes = [
@@ -34,8 +36,11 @@ const routes: Routes = [
   {
     path: 'user'
     , loadChildren: () => import('./customer/customer.module').then(m => m.CustomerModule)
-    // , canActivateChild:[AuthGuard]
+    // , canActivateChild:[AuthGuardService]
   },
+  {
+    path: '**', component: PageNotFoundComponent
+  }
 ];
 
 @NgModule({
