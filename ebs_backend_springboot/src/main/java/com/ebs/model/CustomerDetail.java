@@ -12,6 +12,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
@@ -35,7 +36,9 @@ public class CustomerDetail {
 	private Address address;
 	@Column(nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
+	@JsonIgnore
 	private Date updatedAt;
+
 	public Long getId() {
 		return id;
 	}

@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * 
  */
 @Entity
-@Table(name = "users", uniqueConstraints = { @UniqueConstraint(columnNames = "email") })
+@Table(name = "ebs_users", uniqueConstraints = { @UniqueConstraint(columnNames = "email") })
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

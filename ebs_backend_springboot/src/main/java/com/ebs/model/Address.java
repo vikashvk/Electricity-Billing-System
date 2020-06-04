@@ -10,20 +10,24 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JacksonStdImpl;
+
 @Entity
 public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private String line1;
-	private String line2;
+	private String line1 = "";
+	private String line2 = "";
 	private String city;
 	private String state;
-	private String country;
+	private String country ="India";
 //	@Pattern(regexp = "^[1-9]\\d{5}$")
 	private String pincode;
 	@Column(nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
+	@JsonIgnore
 	private Date updatedAt;
 
 	public Long getId() {
@@ -88,5 +92,10 @@ public class Address {
 
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	@Override
+	public String toString() {
+		return line1 + line2 + ", " + city + ", " + state + ", " + pincode;
 	}
 }

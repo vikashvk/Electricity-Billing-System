@@ -14,9 +14,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.ebs.exception.OAuth2AuthenticationProcessingException;
+import com.ebs.model.Address;
 import com.ebs.model.AuthProvider;
 import com.ebs.model.CustomerDetail;
 import com.ebs.model.User;
+import com.ebs.repository.AddressRepository;
 import com.ebs.repository.CustomerDetailRespository;
 import com.ebs.repository.UserRepository;
 import com.ebs.security.UserPrincipal;
@@ -32,9 +34,11 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	@Autowired
 	private CustomerDetailRespository customerDetailRespository;
+	@Autowired
+	private AddressRepository addressRepository;
 
 	@Override
 	public OAuth2User loadUser(OAuth2UserRequest oAuth2UserRequest) throws OAuth2AuthenticationException {
@@ -79,6 +83,9 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 	private User registerNewUser(OAuth2UserRequest oAuth2UserRequest, OAuth2UserInfo oAuth2UserInfo) {
 		Date now = new Date();
 		User user = new User();
+		Address address = new Address();
+		address.setUpdatedAt(now);
+		Address returnedAddress = addressRepository.save(address);
 		CustomerDetail customer = new CustomerDetail();
 		user.setProvider(AuthProvider.valueOf(oAuth2UserRequest.getClientRegistration().getRegistrationId()));
 		user.setProviderId(oAuth2UserInfo.getId());
@@ -88,6 +95,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 		customer.setLastName(oAuth2UserInfo.getLastName());
 		customer.setImageUrl(oAuth2UserInfo.getImageUrl());
 		customer.setUser(user);
+		customer.setAddress(returnedAddress);
 		customer.setUpdatedAt(now);
 		return customerDetailRespository.save(customer).getUser();
 	}

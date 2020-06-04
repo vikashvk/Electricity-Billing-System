@@ -24,7 +24,7 @@ export class UserAuthService {
       localStorage.setItem(ACCESS_TOKEN, data.accessToken);
       this.router.navigateByUrl('/user');
     },
-      error => { throw error; });
+      error => { alert(error.error?.message); });
   }
 
   public isLoggedIn() {
@@ -34,6 +34,7 @@ export class UserAuthService {
 
   public logout() {
     localStorage.removeItem(ACCESS_TOKEN);
+    this.router.navigateByUrl('/login');
   }
 
   public getToken() {

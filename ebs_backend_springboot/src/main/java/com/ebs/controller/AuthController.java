@@ -16,6 +16,7 @@ import com.ebs.payload.AuthResponse;
 import com.ebs.payload.LoginRequest;
 import com.ebs.payload.SignUpRequest;
 import com.ebs.service.AuthService;
+import com.ebs.service.CustomerService;
 
 /**
  * @author Poonamchand Sahu
@@ -27,6 +28,8 @@ import com.ebs.service.AuthService;
 public class AuthController {
 	@Autowired
 	private AuthService authService;
+	@Autowired
+	private CustomerService customerService;
 
 	@PostMapping("/login")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -36,7 +39,7 @@ public class AuthController {
 
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
-		authService.registerUser(signUpRequest);
+		customerService.registerUser(signUpRequest);
 //		MessageResponse response = new MessageResponse("User registered successfully. Please login to continue.");
 		URI location = ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/v1/users/me").build().toUri();
 		return ResponseEntity.created(location).build();

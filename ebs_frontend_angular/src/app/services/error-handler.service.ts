@@ -5,9 +5,9 @@ import { Router } from "@angular/router";
 @Injectable({
   providedIn: 'root'
 })
-export class ErrorHandlerService implements ErrorHandler{
+export class ErrorHandlerService implements ErrorHandler {
   static readonly DEFAULT_ERROR_TITLE: string = "Something went wrong";
-
+  static readonly UNAUTHORIZED_ERROR: string = "Please login to access.";
   constructor(private router: Router) { }
 
 
@@ -16,11 +16,8 @@ export class ErrorHandlerService implements ErrorHandler{
     let httpErrorCode = error.status;
     switch (httpErrorCode) {
       case UNAUTHORIZED:
-        this.showError(error.error.message);
-        // this.router.navigateByUrl("/hello");
-        break;
-      case FORBIDDEN:
-        this.router.navigateByUrl("/unauthorized");
+        this.showError(ErrorHandlerService.UNAUTHORIZED_ERROR);
+        this.router.navigateByUrl("/login");
         break;
       case BAD_REQUEST:
         this.showError(error.message);
@@ -31,6 +28,6 @@ export class ErrorHandlerService implements ErrorHandler{
   }
 
   private showError(message: string) {
-    console.log("Inside showError:", message);
+    alert(message);
   }
 }
