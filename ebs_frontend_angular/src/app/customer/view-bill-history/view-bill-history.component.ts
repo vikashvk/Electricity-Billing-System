@@ -24,7 +24,8 @@ export class ViewBillHistoryComponent implements OnInit {
   downloadBillPdf(billId: number) {
     this.customerService.downloadBillPdf(billId).subscribe(
       data => {
-        importedSaveAs(data, "test.pdf");
+
+        importedSaveAs(data, billId+".pdf");
       }, error => {
         console.log(error);
         alert('Bill with id ' + billId + ' could not be downloaded.');
