@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Bill {
 	@Id
@@ -23,6 +25,7 @@ public class Bill {
 	private int unitconsumption;
 	private int unitrate;
 	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnore
 	private CustomerDetail customer;
 
 	public Long getId() {

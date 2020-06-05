@@ -1,0 +1,17 @@
+.table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th{
+      font-size: 35;
+      color: blueviolet;
+      background-color: rgb(12, 210, 236);
+  }
+  
+  tr:hover{background-color:#f3970d;}
+  button:disabled {
+    background-color: red;
+    opacity: 0.6;
+    cursor: not-allowed;
+    
+  }

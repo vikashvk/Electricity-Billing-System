@@ -17,6 +17,7 @@ import com.ebs.model.AuthProvider;
 import com.ebs.model.Bill;
 import com.ebs.model.CustomerDetail;
 import com.ebs.model.User;
+import com.ebs.payload.ChangeCustomerDetailRequest;
 import com.ebs.payload.ChangePasswordRequest;
 import com.ebs.payload.SignUpRequest;
 import com.ebs.repository.AddressRepository;
@@ -71,21 +72,21 @@ public class CustomerService {
 		customerDetailRespository.save(customerDetail);
 	}
 
-	public CustomerDetail updateCustomerDetails(Long userId, CustomerDetail updatedCustomerDetail) {
+	public CustomerDetail updateCustomerDetails(Long userId, ChangeCustomerDetailRequest changeCustomerDetailRequest) {
 		CustomerDetail customerDetail = customerDetailRespository.findById(userId)
 				.orElseThrow(() -> new ResourceNotFoundException("User", "id", userId));
 		Date now = new Date();
 		Address address = customerDetail.getAddress();
-		Address updatedAddress = updatedCustomerDetail.getAddress();
-		address.setCity(updatedAddress.getCity());
-		address.setCountry(updatedAddress.getCountry());
-		address.setLine1(updatedAddress.getLine1());
-		address.setLine2(updatedAddress.getLine2());
-		address.setPincode(updatedAddress.getPincode());
+		address.setCity(changeCustomerDetailRequest.getCity());
+		address.setCountry(changeCustomerDetailRequest.getCountry());
+		address.setLine1(changeCustomerDetailRequest.getLine1());
+		address.setLine2(changeCustomerDetailRequest.getLine2());
+		address.setState(changeCustomerDetailRequest.getState());
+		address.setPincode(changeCustomerDetailRequest.getPincode());
 		address.setUpdatedAt(now);
-		customerDetail.setFirstName(updatedCustomerDetail.getFirstName());
-		customerDetail.setLastName(updatedCustomerDetail.getLastName());
-		customerDetail.setMobile(updatedCustomerDetail.getMobile());
+		customerDetail.setFirstName(changeCustomerDetailRequest.getFirstName());
+		customerDetail.setLastName(changeCustomerDetailRequest.getLastName());
+		customerDetail.setMobile(changeCustomerDetailRequest.getMobile());
 		customerDetail.setAddress(address);
 		customerDetail.setUpdatedAt(now);
 		return customerDetailRespository.save(customerDetail);

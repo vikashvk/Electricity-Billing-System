@@ -36,6 +36,9 @@ export class UserLoginComponent implements OnInit {
   constructor(@Inject('API_URL') public apiUrl, @Inject('GOOGLE_AUTH_URL') public googleAuthUrl, @Inject('FACEBOOK_AUTH_URL') public facebookAuthUrl, private userAuthService: UserAuthService, private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
+    if (this.userAuthService.isLoggedIn()) {
+      this.router.navigateByUrl('/user');
+    }
     this.createLoginForm();
     this.loginForm.valueChanges
       .subscribe(data => this.onValueChanged(data));

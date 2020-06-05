@@ -6,7 +6,7 @@ import { Router } from "@angular/router";
   providedIn: 'root'
 })
 export class ErrorHandlerService implements ErrorHandler {
-  static readonly DEFAULT_ERROR_TITLE: string = "Something went wrong";
+  static readonly DEFAULT_ERROR_TITLE: string = "Please try again.";
   static readonly UNAUTHORIZED_ERROR: string = "Please login to access.";
   constructor(private router: Router) { }
 
@@ -20,7 +20,13 @@ export class ErrorHandlerService implements ErrorHandler {
         this.router.navigateByUrl("/login");
         break;
       case BAD_REQUEST:
-        this.showError(error.message);
+        let message: string = '';
+        if (error.error) {
+          message = error.error.message;
+          this.showError(message);
+        }
+        break;
+      case 0:
         break;
       default:
         this.showError(ErrorHandlerService.DEFAULT_ERROR_TITLE);

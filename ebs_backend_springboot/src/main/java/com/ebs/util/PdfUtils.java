@@ -139,7 +139,7 @@ public class PdfUtils {
 		cell.setFontSize(15);
 
 		// Total amount to be paid
-		double totalAmount = bill.getBillfine() + bill.getBillfine();
+		double totalAmount = bill.getBillamount() + bill.getBillfine();
 		row = table.createRow(20);
 		cell = row.createCell(50, "Total amount to be paid");
 		cell.setFontSize(15);

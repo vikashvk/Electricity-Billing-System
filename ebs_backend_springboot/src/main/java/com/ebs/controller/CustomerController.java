@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ebs.model.Bill;
 import com.ebs.model.CustomerDetail;
+import com.ebs.payload.ChangeCustomerDetailRequest;
 import com.ebs.payload.ChangePasswordRequest;
 import com.ebs.payload.MessageResponse;
 import com.ebs.security.CurrentUser;
@@ -46,8 +47,8 @@ public class CustomerController {
 	@PutMapping("/users/me")
 	@PreAuthorize("hasRole('USER')")
 	public CustomerDetail updateCustomerDetails(@CurrentUser UserPrincipal currentUser,
-			@Valid @RequestBody CustomerDetail customerDetail) {
-		return customerService.updateCustomerDetails(currentUser.getId(), customerDetail);
+			@Valid @RequestBody ChangeCustomerDetailRequest changeCustomerDetailRequest) {
+		return customerService.updateCustomerDetails(currentUser.getId(), changeCustomerDetailRequest);
 	}
 
 	@PutMapping("/users/change-password")
