@@ -23,6 +23,7 @@ import { RedirectHandlerComponent } from './redirect-handler/redirect-handler.co
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LogoutComponent } from './logout/logout.component';
+import { CreditCardFormComponent } from './credit-card-form/credit-card-form.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +36,7 @@ import { LogoutComponent } from './logout/logout.component';
     FooterComponent,
     AdminComponent,
     HomeComponent,
-    AdminpageComponent,UserLoginComponent, RedirectHandlerComponent, UserRegistrationComponent, PageNotFoundComponent, LogoutComponent,
+    AdminpageComponent,UserLoginComponent, RedirectHandlerComponent, UserRegistrationComponent, PageNotFoundComponent, LogoutComponent, CreditCardFormComponent,
 
   ],
   imports: [
