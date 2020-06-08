@@ -22,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RedirectHandlerComponent } from './redirect-handler/redirect-handler.component';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { LogoutComponent } from './logout/logout.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     FooterComponent,
     AdminComponent,
     HomeComponent,
-    AdminpageComponent,UserLoginComponent, RedirectHandlerComponent, UserRegistrationComponent, PageNotFoundComponent,
+    AdminpageComponent,UserLoginComponent, RedirectHandlerComponent, UserRegistrationComponent, PageNotFoundComponent, LogoutComponent,
 
   ],
   imports: [

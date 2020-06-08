@@ -22,6 +22,7 @@
     "@types/file-saver": "^2.0.1",
     "file-saver": "^2.0.2",
     "http-status-codes": "^1.4.0",
+    "ngx-filesaver": "^9.0.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
