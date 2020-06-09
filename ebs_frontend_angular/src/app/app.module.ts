@@ -17,12 +17,14 @@ import { ErrorHandlerService } from './services/error-handler.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { UserLoginComponent } from './user-login/user-login.component';
-import {API_BASE_URL, GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL } from '../constants';
+import { API_BASE_URL, GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL } from '../constants';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RedirectHandlerComponent } from './redirect-handler/redirect-handler.component';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import {IonicModule} from '@ionic/angular';
+import { IonicModule } from '@ionic/angular';
+import { LogoutComponent } from './logout/logout.component';
+import { CreditCardFormComponent } from './credit-card-form/credit-card-form.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +37,7 @@ import {IonicModule} from '@ionic/angular';
     FooterComponent,
     AdminComponent,
     HomeComponent,
-    AdminpageComponent,UserLoginComponent, RedirectHandlerComponent, UserRegistrationComponent, PageNotFoundComponent,
+    AdminpageComponent, UserLoginComponent, RedirectHandlerComponent, UserRegistrationComponent, PageNotFoundComponent, LogoutComponent, CreditCardFormComponent,
 
   ],
   imports: [
@@ -46,7 +48,7 @@ import {IonicModule} from '@ionic/angular';
     AppRoutingModule,
     IonicModule
   ],
-  providers: [{ provide: 'API_URL', useValue: API_BASE_URL },{ provide: 'GOOGLE_AUTH_URL', useValue: GOOGLE_AUTH_URL },{ provide: 'FACEBOOK_AUTH_URL', useValue: FACEBOOK_AUTH_URL }, { provide: ErrorHandler, useClass: ErrorHandlerService }, {
+  providers: [{ provide: 'API_URL', useValue: API_BASE_URL }, { provide: 'GOOGLE_AUTH_URL', useValue: GOOGLE_AUTH_URL }, { provide: 'FACEBOOK_AUTH_URL', useValue: FACEBOOK_AUTH_URL }, { provide: ErrorHandler, useClass: ErrorHandlerService }, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true

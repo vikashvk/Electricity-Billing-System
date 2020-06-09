@@ -22,13 +22,13 @@
 
 					<div class="wrap-input100 validate-input" data-validate="Username is required">
 						<span class="label-input100">username</span>
-						<input class="input100" type="text" name="username" placeholder="Username...">
+						<input class="input100" type="text" name="username"[(ngModel)]="username" placeholder="Username...">
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
 						<span class="label-input100">Password</span>
-						<input class="input100" type="text" name="pass" placeholder="*************">
+						<input class="input100" type="password" name="pass" [(ngModel)]="password" placeholder="*************">
 						<span class="focus-input100"></span>
 					</div>
 
@@ -36,11 +36,43 @@
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="button-container">
-                                <a class="btn-solid-reg-sign page-scroll" href="adminp">Sign In</a>
+								<button (click)=checkLogin() class="btn btn-success">
+									Login
+								</button>
+                                <!-- <a class="btn-solid-reg-sign page-scroll" href="adminp">Sign In</a> -->
                             </div> 
 						</div>
 					</div>
 				</form>
+				<!-- <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+					<span class="login100-form-title p-b-59">
+						Hello Admin!
+					</span>
+					<div class="form-group">
+                        <input type="text" class="form-control" formControlName="adminName" id="adminName"
+                            placeholder=" Enter Admin Name" />
+                        <div
+                            *ngIf="loginForm.controls.adminName.invalid && (loginForm.controls.adminName.dirty || loginForm.controls.adminName.touched )">
+                            <div *ngIf="loginForm.get('adminName').hasError('required')">
+                                <small>AdminName is required.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" formControlName="password" id="password"
+                            placeholder=" Enter Password" />
+                        <div
+                            *ngIf="loginForm.controls.password.invalid && (loginForm.controls.password.dirty || loginForm.controls.password.touched )">
+                            <div *ngIf="loginForm.get('password').hasError('required')" class="a">
+                                <small>Password is required.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="login" type="submit" class="btn btn-primary"
+                        [disabled]="!loginForm.valid">Login</button><br>
+                    <small>Forgot Password <a routerLink="forgotPassword" routerLinkActive="active">Click Here</a></small><br> -->
+                <!-- </form> -->
+
 			</div>
 		</div>
 	</div>

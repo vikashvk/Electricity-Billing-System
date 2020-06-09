@@ -23,7 +23,11 @@
     "@types/file-saver": "^2.0.1",
     "file-saver": "^2.0.2",
     "http-status-codes": "^1.4.0",
+<<<<<<< HEAD
     "ionicons": "^5.0.1",
+=======
+    "ngx-filesaver": "^9.0.0",
+>>>>>>> 5c819f27b04d9dd6cce36c80a2aebe6859d3e5c8
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

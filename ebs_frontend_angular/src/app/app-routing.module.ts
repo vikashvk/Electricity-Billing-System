@@ -9,6 +9,7 @@ import { CustomerModule } from './customer/customer.module';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 const routes: Routes = [
@@ -32,6 +33,9 @@ const routes: Routes = [
   },
   {
     path: 'oauth2-redirect', component: RedirectHandlerComponent
+  },
+  {
+     path: 'logout', component: LogoutComponent
   },
   {
     path: 'user'

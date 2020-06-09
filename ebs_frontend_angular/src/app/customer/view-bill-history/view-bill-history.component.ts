@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { CustomerService } from 'src/app/services/customer.service';
-import { saveAs as importedSaveAs } from "file-saver"; import { Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { saveAs as importedSaveAs } from "file-saver"; 
 ;
 @Component({
   selector: 'app-view-bill-history',
