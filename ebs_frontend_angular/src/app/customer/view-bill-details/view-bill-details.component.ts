@@ -23,4 +23,9 @@ export class ViewBillDetailsComponent implements OnInit {
       });
 
   }
+  makePayment(billId: number) {
+    console.log("make payment",billId);
+    // this.router.navigate(['/payment']);
+  }
+  
 }

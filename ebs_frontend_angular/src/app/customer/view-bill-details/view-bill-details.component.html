@@ -22,7 +22,8 @@
         <tr><td>Total Payble: </td><td>{{bill.billfine + bill.billamount +" Rs."}}</td>
         </tr>
         <tr><td>Status: </td><td>{{bill.flagpaid==0?"Not Paid":"Paid"}}</td>
-            <td *ngIf="bill.flagpaid==0">Pay</td>
+            <td *ngIf="bill.flagpaid==0"><button
+                *ngIf="bill.flagpaid==0" (click)="makePayment(bill.billId)">Pay</button></td>
         </tr>
 
     </table>

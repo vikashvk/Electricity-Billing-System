@@ -10,6 +10,7 @@ import { UserRegistrationComponent } from './user-registration/user-registration
 import { AuthGuardService } from './services/auth-guard.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LogoutComponent } from './logout/logout.component';
+import { CreditCardFormComponent } from './credit-card-form/credit-card-form.component';
 
 
 const routes: Routes = [
@@ -41,7 +42,8 @@ const routes: Routes = [
     path: 'user'
     , loadChildren: () => import('./customer/customer.module').then(m => m.CustomerModule)
     // , canActivateChild:[AuthGuardService]
-  },
+  }
+  ,
   {
     path: '**', component: PageNotFoundComponent
   }

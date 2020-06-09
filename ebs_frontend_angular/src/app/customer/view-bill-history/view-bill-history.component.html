@@ -18,7 +18,7 @@
         <td>{{bill.flagpaid==0?"Not Paid":"Paid"}}</td>
         <td><button (click)="viewBillDetails(bill.billId)">View</button>&nbsp;|&nbsp;<button
             (click)="downloadBillPdf(bill.billId)">Download</button>&nbsp;|&nbsp;<button
-            *ngIf="bill.flagpaid==0">Pay</button></td>
+            *ngIf="bill.flagpaid==0" (click)="makePayment(bill.billId)">Pay</button></td>
 
       </tr>
     </tbody>
