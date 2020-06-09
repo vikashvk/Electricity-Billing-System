@@ -41,6 +41,6 @@ export class ViewBillHistoryComponent implements OnInit {
   }
   makePayment(billId: number) {
     console.log("make payment ",billId);
-    // this.router.navigate(['/payment']);
+    this.router.navigate(['/payment']);
   }
 }
