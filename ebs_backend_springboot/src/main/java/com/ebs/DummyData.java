@@ -10,10 +10,12 @@ import com.ebs.model.Address;
 import com.ebs.model.AuthProvider;
 import com.ebs.model.Bill;
 import com.ebs.model.CustomerDetail;
+import com.ebs.model.Payment;
 import com.ebs.model.User;
 import com.ebs.repository.AddressRepository;
 import com.ebs.repository.BillDAO;
 import com.ebs.repository.CustomerDetailRespository;
+import com.ebs.repository.PaymentRepository;
 import com.ebs.repository.UserRepository;
 
 @Component
@@ -23,18 +25,22 @@ public class DummyData {
 	private CustomerDetailRespository customerDetailRespository;
 	private BillDAO billDao;
 	private AddressRepository addressRepository;
+	private PaymentRepository paymentRepository;
 
 	@Autowired
 	public DummyData(PasswordEncoder passwordEncoder, UserRepository userRepository,
-			CustomerDetailRespository customerDetailRespository, BillDAO billDao, AddressRepository addressRepository) {
+			CustomerDetailRespository customerDetailRespository, BillDAO billDao, AddressRepository addressRepository,
+			PaymentRepository paymentRepository) {
 		super();
 		this.passwordEncoder = passwordEncoder;
 		this.userRepository = userRepository;
 		this.customerDetailRespository = customerDetailRespository;
 		this.billDao = billDao;
 		this.addressRepository = addressRepository;
+		this.paymentRepository = paymentRepository;
 		addDummyData();
 	}
+
 	public void addDummyData() {
 		Date now = new Date();
 		User user = new User();
@@ -61,19 +67,40 @@ public class DummyData {
 		customer = customerDetailRespository.save(customer);
 		Bill bill = new Bill();
 		bill.setBillamount(1000);
-		bill.setBilldate("25-07-2019");
+		bill.setBilldate("08-05-2019");
 		bill.setBillfine(520);
 		bill.setCity("Balod");
-		bill.setDuedate("25-07-2019");
-		bill.setFlagpaid(0);
+		bill.setDuedate("12-05-2019");
+		bill.setFlagpaid(1);
 		bill.setMobilenumber("7878787878");
 		bill.setState("Chhattisgarh");
-		bill.setUnitconsumption(50);
+		bill.setUnitconsumption(100);
 		bill.setUnitrate(8);
 		bill.setCustomer(customer);
 		bill = billDao.save(bill);
-		System.out.println(bill);
+		Payment payment = new Payment();
+		payment.setAmount(bill.getBillamount() + bill.getBillfine());
+		payment.setBillId(bill.getBillId());
+		payment.setCustId(customer.getCustId());
+		payment.setStatus(true);
+		payment.setDate("11-05-2019");
+		payment = paymentRepository.save(payment);
+		System.out.println(payment);
+		Bill bill1 = new Bill();
+		bill1.setBillamount(4000);
+		bill1.setBilldate("09-06-2019");
+		bill1.setBillfine(520);
+		bill1.setCity("Balod");
+		bill1.setDuedate("15-06-2019");
+		bill1.setFlagpaid(0);
+		bill1.setMobilenumber("7878787878");
+		bill1.setState("Chhattisgarh");
+		bill1.setUnitconsumption(500);
+		bill1.setUnitrate(8);
+		bill1.setCustomer(customer);
+		bill1 = billDao.save(bill1);
+		System.out.println(bill1);
 
 	}
-}
 
+}

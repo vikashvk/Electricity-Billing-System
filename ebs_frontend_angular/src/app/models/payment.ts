@@ -3,6 +3,7 @@ export interface Payment {
     transactionId: string;
     custId: number;
     amount: number;
-    status: string
+    status: boolean;
+    date:string;
 
 }

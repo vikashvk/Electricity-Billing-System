@@ -17,6 +17,7 @@ import com.ebs.model.AuthProvider;
 import com.ebs.model.Bill;
 import com.ebs.model.CustomerDetail;
 import com.ebs.model.Feedback;
+import com.ebs.model.Payment;
 import com.ebs.model.User;
 import com.ebs.payload.ChangeCustomerDetailRequest;
 import com.ebs.payload.ChangePasswordRequest;
@@ -25,6 +26,7 @@ import com.ebs.repository.AddressRepository;
 import com.ebs.repository.BillDAO;
 import com.ebs.repository.CustomerDetailRespository;
 import com.ebs.repository.FeedbackDao;
+import com.ebs.repository.PaymentRepository;
 import com.ebs.repository.UserRepository;
 import com.ebs.security.UserPrincipal;
 import com.ebs.util.PdfUtils;
@@ -43,6 +45,8 @@ public class CustomerService {
 	private BillDAO billDao;
     @Autowired
     private FeedbackDao feedbackDao;
+    @Autowired
+    private PaymentRepository paymentRepository;
 
 	// takes user id and return Customer Detail
 	public CustomerDetail getCurrentUserDetails(Long userId) {
@@ -137,6 +141,9 @@ public class CustomerService {
 		return billDao.findAllByCustomer(customer);
 	}
 
+	public List<Payment> getAllPayments(Long custId) {
+		return paymentRepository.findAllByCustId(custId);
+	}
 	public Feedback giveFeedback(UserPrincipal currentUser,Feedback feed) {
 		feed.setCustId(currentUser.getId());
 		return feedbackDao.save(feed);
