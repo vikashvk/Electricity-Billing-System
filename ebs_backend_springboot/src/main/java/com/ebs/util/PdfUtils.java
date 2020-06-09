@@ -11,7 +11,6 @@ import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
-import com.ebs.model.Address;
 import com.ebs.model.Bill;
 import com.ebs.model.CustomerDetail;
 
@@ -23,8 +22,7 @@ import be.quodlibet.boxable.VerticalAlignment;
 
 public class PdfUtils {
 	public final static String PROJECT_NAME = "Electricity Billing Sytem";
-	public static byte[] generateBillPdf(Bill bill) throws IOException {
-		CustomerDetail customer = bill.getCustomer();
+	public static byte[] generateBillPdf(Bill bill,CustomerDetail customer) throws IOException {
 		PDDocument document = new PDDocument();
 		PDPage page = new PDPage(PDRectangle.A4);
 		PDFont fontBold = PDType1Font.HELVETICA_BOLD;
@@ -84,13 +82,13 @@ public class PdfUtils {
 		cell = row.createCell(50, "Mobile No.");
 		cell.setFontSize(15);
 		cell.setFont(fontBold);
-		cell = row.createCell(50, bill.getMobilenumber());
+		cell = row.createCell(50, customer.getMobile());
 		cell.setFontSize(15);
 		row = table.createRow(20);
 		cell = row.createCell(50, "Bill No.");
 		cell.setFontSize(15);
 		cell.setFont(fontBold);
-		cell = row.createCell(50, String.valueOf(bill.getBillId()));
+		cell = row.createCell(50, String.valueOf(bill.getId()));
 		cell.setFontSize(15);
 
 		// Billing Date

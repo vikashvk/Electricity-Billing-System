@@ -72,15 +72,15 @@ public class DummyData {
 		bill.setCity("Balod");
 		bill.setDuedate("12-05-2019");
 		bill.setFlagpaid(1);
-		bill.setMobilenumber("7878787878");
+		bill.setMobilenumber(7878787878L);
 		bill.setState("Chhattisgarh");
 		bill.setUnitconsumption(100);
 		bill.setUnitrate(8);
-		bill.setCustomer(customer);
+		bill.setCustomerid(customer.getCustId());
 		bill = billDao.save(bill);
 		Payment payment = new Payment();
 		payment.setAmount(bill.getBillamount() + bill.getBillfine());
-		payment.setBillId(bill.getBillId());
+		payment.setBillId(bill.getId());
 		payment.setCustId(customer.getCustId());
 		payment.setStatus(true);
 		payment.setDate("11-05-2019");
@@ -93,11 +93,11 @@ public class DummyData {
 		bill1.setCity("Balod");
 		bill1.setDuedate("15-06-2019");
 		bill1.setFlagpaid(0);
-		bill1.setMobilenumber("7878787878");
+		bill1.setMobilenumber(7878787878L);
 		bill1.setState("Chhattisgarh");
 		bill1.setUnitconsumption(500);
 		bill1.setUnitrate(8);
-		bill1.setCustomer(customer);
+		bill1.setCustomerid(customer.getCustId());
 		bill1 = billDao.save(bill1);
 		System.out.println(bill1);
 

@@ -116,9 +116,10 @@ public class CustomerService {
 
 	public byte[] generateBillPdf(Long billId, Long custId) {
 		Bill bill = getBillDetails(billId, custId);
+		CustomerDetail customer = getCurrentUserDetails(custId);
 		byte[] contents;
 		try {
-			contents = PdfUtils.generateBillPdf(bill);
+			contents = PdfUtils.generateBillPdf(bill,customer);
 		} catch (IOException e) {
 			throw new BadRequestException("Unable to process your request.");
 		}
@@ -127,18 +128,16 @@ public class CustomerService {
 
 	public Bill getBillDetails(Long billId, Long custId) {
 		Bill bill = billDao.findById(billId).orElseThrow(() -> new ResourceNotFoundException("Bill", "id", billId));
-		System.out.println(bill.getCustomer().getCustId());
+		System.out.println(bill.getCustomerid());
 		System.out.println(custId);
-		if (!bill.getCustomer().getCustId().equals(custId)) {
+		if (!bill.getCustomerid().equals(custId)) {
 			throw new BadRequestException("You not are authorized to access this resource");
 		}
 		return bill;
 	}
 
 	public List<Bill> getAllBills(Long custId) {
-		CustomerDetail customer  =new CustomerDetail();
-		customer.setCustId(custId);
-		return billDao.findAllByCustomer(customer);
+		return billDao.findAllByCustomerid(custId);
 	}
 
 	public List<Payment> getAllPayments(Long custId) {

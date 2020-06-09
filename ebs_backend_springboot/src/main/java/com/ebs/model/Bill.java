@@ -1,27 +1,27 @@
 package com.ebs.model;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-
-@Table(name="EBS_BILL")
+@Table(name = "Bill_Details")
 public class Bill {
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ebs_bill_seq_gen")
-	@SequenceGenerator(name = "ebs_bill_seq_gen", initialValue = 98700, sequenceName = "ebs_bill_seq")
-	private Long billId;
+	@GeneratedValue
+	private Long id;
 	private String city;
 	private String state;
-	private String mobilenumber;
+	private Long mobilenumber;
 	private int flagpaid;
 	private int billamount;
 	private int billfine;
@@ -29,14 +29,13 @@ public class Bill {
 	private String duedate;
 	private int unitconsumption;
 	private int unitrate;
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JsonIgnore
-	private CustomerDetail customer;
-	public Long getBillId() {
-		return billId;
+	private Long customerid;
+	
+	public Long getId() {
+		return id;
 	}
-	public void setBillId(Long billId) {
-		this.billId = billId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public String getCity() {
 		return city;
@@ -50,10 +49,10 @@ public class Bill {
 	public void setState(String state) {
 		this.state = state;
 	}
-	public String getMobilenumber() {
+	public Long getMobilenumber() {
 		return mobilenumber;
 	}
-	public void setMobilenumber(String mobilenumber) {
+	public void setMobilenumber(Long mobilenumber) {
 		this.mobilenumber = mobilenumber;
 	}
 	public int getFlagpaid() {
@@ -98,19 +97,21 @@ public class Bill {
 	public void setUnitrate(int unitrate) {
 		this.unitrate = unitrate;
 	}
-	public CustomerDetail getCustomer() {
-		return customer;
+	public Long getCustomerid() {
+		return customerid;
 	}
-	public void setCustomer(CustomerDetail customer) {
-		this.customer = customer;
+	public void setCustomerid(Long customerid) {
+		this.customerid = customerid;
 	}
 	@Override
 	public String toString() {
-		return "Bill [billId=" + billId + ", city=" + city + ", state=" + state + ", mobilenumber=" + mobilenumber
+		return "Bill [id=" + id + ", city=" + city + ", state=" + state + ", mobilenumber=" + mobilenumber
 				+ ", flagpaid=" + flagpaid + ", billamount=" + billamount + ", billfine=" + billfine + ", billdate="
 				+ billdate + ", duedate=" + duedate + ", unitconsumption=" + unitconsumption + ", unitrate=" + unitrate
-				+ ", customer=" + customer + "]";
+				+ "]";
 	}
-
 	
+	
+	
+
 }

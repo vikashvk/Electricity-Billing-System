@@ -5,7 +5,7 @@
 
 <div class="container" *ngIf="bill">
     <table class="table">
-        <tr><td>Bill Id :</td><td>{{bill.billId}}</td>
+        <tr><td>Bill Id :</td><td>{{bill.id}}</td>
         </tr>
         <tr><td>Billing Date :</td><td>{{bill.billdate}}</td>
         </tr>
@@ -23,7 +23,7 @@
         </tr>
         <tr><td>Status: </td><td>{{bill.flagpaid==0?"Not Paid":"Paid"}}</td>
             <td *ngIf="bill.flagpaid==0"><button
-                *ngIf="bill.flagpaid==0" (click)="makePayment(bill.billId)">Pay</button></td>
+                *ngIf="bill.flagpaid==0" (click)="makePayment(bill.id)">Pay</button></td>
         </tr>
 
     </table>

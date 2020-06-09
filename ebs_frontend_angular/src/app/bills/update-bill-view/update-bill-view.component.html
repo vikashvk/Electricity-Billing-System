@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Bill</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- <div class="container"> -->
+
+        <div class="container" [hidden]="submitted" style="width: 500px">
+            <h3>Update Bill Details</h3>
+            <form (ngSubmit)="onSubmit()" #f="ngForm" novalidate>
+                <div class="form-group row">
+                    <label for="name" class="col-sm-3">City:   </label>
+                    <input type="text" class="form-control" id="city" name="city" [(ngModel)]="billr.city" value="{{billr.city}}"required
+                    [(ngModel)]="billr.city">
+                </div>
+
+                <div class="form-group row">
+                    <label for="name" class="col-sm-3">State:</label>
+                    <input type="text" class="form-control" id="state" name="state" [(ngModel)]="billr.state" value="{{billr.state}}" required
+                    [(ngModel)]="billr.state">
+                </div>
+
+                <div class="form-group row">
+                    <label for="name" class="col-sm-3">Phone Num:</label>
+                    <input type="number" class="form-control" id="mobilenumber" name="mobilenumber" [(ngModel)]="billr.mobilenumber" value="{{billr.mobilenumber}}" required
+                    [(ngModel)]="billr.mobilenumber">
+                </div>
+
+                <div class="form-group row" >
+                    <label for="name" class="col-sm-3">Payment status</label>
+                    <select class="form-control" id="flagpaid" name="flagpaid" [(ngModel)]="billr.flagpaid" value="{{billr.flagpaid}}" required
+                    [(ngModel)]="billr.flagpaid">
+                        <option disabled selected value>Select payment status</option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                    </select>          
+                </div>
+
+                <div class="form-group row">
+                    <label for="name" class="col-sm-3">Unit Consumed</label>
+                    <input type="number" class="form-control" id="unitconsumption" name="unitconsumption" [(ngModel)]="billr.unitconsumption" value="{{billr.unitconsumption}}" required
+                    [(ngModel)]="billr.unitconsumption">
+                </div>
+
+                <div class="form-group row">
+                    <label for="name" class="col-sm-3">Unit Rate</label>
+                    <input type="number" class="form-control" id="unitrate" name="unitrate" [(ngModel)]="billr.unitrate" value="{{billr.unitrate}}" required
+                    [(ngModel)]="billr.unitrate">
+                </div>
+
+                <div class="form-group row">
+                        <label for="name" class="col-sm-3">Total Amount</label>
+                        <input type="number" class="form-control" id="billamount" name="billamount" [(ngModel)]="billr.billamount" value="{{billr.billamount}}" required
+                        [(ngModel)]="billr.billamount">
+                </div>
+
+                <div class="form-group row">
+                    <label for="name" class="col-sm-3">CustomerID</label>
+                    <input type="number" class="form-control" id="customerid" name="customerid" [(ngModel)]="billr.customerid" value="{{billr.customerid}}" required
+                    [(ngModel)]="billr.customerid">
+                </div>
+                   
+                <button type="submit" class="btn btn-success" >Submit</button>
+            </form>
+        </div>
+        
+        <div class="container" [hidden]="!submitted">
+                <h4>Bill Update Status</h4>
+                <h4>You Updated the bill successfully!</h4>
+                <a href="customerView">Go to List</a>
+        </div>
+        <ul class="bg-bubbles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</body>
+
+</html>

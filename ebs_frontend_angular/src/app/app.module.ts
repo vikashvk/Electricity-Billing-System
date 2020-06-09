@@ -25,6 +25,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { IonicModule } from '@ionic/angular';
 import { LogoutComponent } from './logout/logout.component';
 import { CreditCardFormComponent } from './credit-card-form/credit-card-form.component';
+import { AddBillViewComponent } from './bills/add-bill-view/add-bill-view.component';
+import { BillviewComponent } from './bills/billview/billview.component';
+import { CustomerviewComponent } from './bills/customerview/customerview.component';
+import { UpdateBillViewComponent } from './bills/update-bill-view/update-bill-view.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +41,10 @@ import { CreditCardFormComponent } from './credit-card-form/credit-card-form.com
     FooterComponent,
     AdminComponent,
     HomeComponent,
+    AddBillViewComponent,
+    BillviewComponent,
+    CustomerviewComponent,
+    UpdateBillViewComponent,
     AdminpageComponent, UserLoginComponent, RedirectHandlerComponent, UserRegistrationComponent, PageNotFoundComponent, LogoutComponent, CreditCardFormComponent,
 
   ],

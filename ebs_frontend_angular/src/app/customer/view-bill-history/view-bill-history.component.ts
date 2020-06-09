@@ -40,7 +40,7 @@ export class ViewBillHistoryComponent implements OnInit {
     this.router.navigate(['/user/bills', billId]);
   }
   makePayment(billId: number) {
-    console.log("make payment",billId);
+    console.log("make payment ",billId);
     // this.router.navigate(['/payment']);
   }
 }
