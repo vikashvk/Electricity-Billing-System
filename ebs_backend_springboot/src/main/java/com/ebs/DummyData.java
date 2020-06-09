@@ -70,7 +70,7 @@ public class DummyData {
 		bill.setBilldate("08-05-2019");
 		bill.setBillfine(520);
 		bill.setCity("Balod");
-		bill.setDuedate("12-05-2019");
+		bill.setDuedate("18-05-2019");
 		bill.setFlagpaid(1);
 		bill.setMobilenumber(7878787878L);
 		bill.setState("Chhattisgarh");
@@ -91,7 +91,7 @@ public class DummyData {
 		bill1.setBilldate("09-06-2019");
 		bill1.setBillfine(520);
 		bill1.setCity("Balod");
-		bill1.setDuedate("15-06-2019");
+		bill1.setDuedate("19-06-2019");
 		bill1.setFlagpaid(0);
 		bill1.setMobilenumber(7878787878L);
 		bill1.setState("Chhattisgarh");

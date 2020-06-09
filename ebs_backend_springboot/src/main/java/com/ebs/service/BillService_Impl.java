@@ -1,5 +1,7 @@
 package com.ebs.service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +23,12 @@ public class BillService_Impl {
 	Bill bill;
 
 	public Bill saveBill(Bill bill) {
-		bill.setBilldate("09-06-2019");
-		bill.setDuedate("12-06-2019");
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-uuuu");
+		LocalDateTime now = LocalDateTime.now();
+		String nowString = dtf.format(now);
+		String laterDateString = dtf.format(now.plusDays(10));
+		bill.setBilldate(nowString);
+		bill.setDuedate(laterDateString);
 		return billdao.save(bill);
 	}
 
