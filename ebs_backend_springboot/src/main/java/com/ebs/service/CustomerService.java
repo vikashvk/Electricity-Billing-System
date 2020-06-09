@@ -16,6 +16,7 @@ import com.ebs.model.Address;
 import com.ebs.model.AuthProvider;
 import com.ebs.model.Bill;
 import com.ebs.model.CustomerDetail;
+import com.ebs.model.Feedback;
 import com.ebs.model.User;
 import com.ebs.payload.ChangeCustomerDetailRequest;
 import com.ebs.payload.ChangePasswordRequest;
@@ -23,6 +24,7 @@ import com.ebs.payload.SignUpRequest;
 import com.ebs.repository.AddressRepository;
 import com.ebs.repository.BillDAO;
 import com.ebs.repository.CustomerDetailRespository;
+import com.ebs.repository.FeedbackDao;
 import com.ebs.repository.UserRepository;
 import com.ebs.security.UserPrincipal;
 import com.ebs.util.PdfUtils;
@@ -39,6 +41,8 @@ public class CustomerService {
 	private AddressRepository addressRepository;
 	@Autowired
 	private BillDAO billDao;
+    @Autowired
+    private FeedbackDao feedbackDao;
 
 	// takes user id and return Customer Detail
 	public CustomerDetail getCurrentUserDetails(Long userId) {
@@ -119,15 +123,22 @@ public class CustomerService {
 
 	public Bill getBillDetails(Long billId, Long custId) {
 		Bill bill = billDao.findById(billId).orElseThrow(() -> new ResourceNotFoundException("Bill", "id", billId));
-		if (bill.getCustomer().getId() != custId) {
-			throw new BadRequestException("You are authorized to access this resource");
+		System.out.println(bill.getCustomer().getCustId());
+		System.out.println(custId);
+		if (!bill.getCustomer().getCustId().equals(custId)) {
+			throw new BadRequestException("You not are authorized to access this resource");
 		}
 		return bill;
 	}
 
 	public List<Bill> getAllBills(Long custId) {
 		CustomerDetail customer  =new CustomerDetail();
-		customer.setId(custId);
+		customer.setCustId(custId);
 		return billDao.findAllByCustomer(customer);
+	}
+
+	public Feedback giveFeedback(UserPrincipal currentUser,Feedback feed) {
+		feed.setCustId(currentUser.getId());
+		return feedbackDao.save(feed);
 	}
 }

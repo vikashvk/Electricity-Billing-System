@@ -6,7 +6,7 @@
         <div class="form-group">
             <label for="firstName">First Name :</label>
             <input type="text" #firstName="ngModel" ngModel [class.is-invalid]="firstName.invalid && firstName.touched"
-                disabled class="form-control" name="firstName" [(ngModel)]="customerDetails.firstName" required>
+                 class="form-control" name="firstName" [(ngModel)]="customerDetails.firstName" required>
             <div *ngIf="firstName.errors && (firstName.invalid && firstName.touched)">
                 <small class="text-danger" *ngIf="firstName.errors.required">First Name is required</small>
             </div>
@@ -14,7 +14,7 @@
         <div class="form-group">
             <label for="lastName">Last Name :</label>
             <input type="text" #lastName="ngModel" ngModel [class.is-invalid]="lastName.invalid && lastName.touched"
-                disabled class="form-control" name="lastName" [(ngModel)]="customerDetails.lastName" required>
+             class="form-control" name="lastName" [(ngModel)]="customerDetails.lastName" required>
             <div *ngIf="lastName.errors && (lastName.invalid && lastName.touched)">
                 <small class="text-danger" *ngIf="lastName.errors.required">Last Name is required</small>
             </div>
@@ -77,5 +77,7 @@
         </div>
 
         <input type="submit" [disabled]="updateProfileForm.invalid" id="submitbutton" class="btn" value="Update" />
+        <input type="submit"  id="submitbutton" class="btn" (click)="cancel()" value="cancel" />
+
     </form>
 </div><br><br>

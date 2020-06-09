@@ -22,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RedirectHandlerComponent } from './redirect-handler/redirect-handler.component';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import {IonicModule} from '@ionic/angular';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +43,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    IonicModule
   ],
   providers: [{ provide: 'API_URL', useValue: API_BASE_URL },{ provide: 'GOOGLE_AUTH_URL', useValue: GOOGLE_AUTH_URL },{ provide: 'FACEBOOK_AUTH_URL', useValue: FACEBOOK_AUTH_URL }, { provide: ErrorHandler, useClass: ErrorHandlerService }, {
     provide: HTTP_INTERCEPTORS,

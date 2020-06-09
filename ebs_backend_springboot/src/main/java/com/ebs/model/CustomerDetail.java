@@ -17,11 +17,11 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @Entity
-@Table(name = "customer_details")
+@Table(name = "ebs_customer_details")
 @JsonInclude(Include.NON_NULL)
 public class CustomerDetail {
 	@Id
-	private Long id;
+	private Long custId;
 	@OneToOne
 	@MapsId
 	private User user;
@@ -39,12 +39,14 @@ public class CustomerDetail {
 	@JsonIgnore
 	private Date updatedAt;
 
-	public Long getId() {
-		return id;
+	
+
+	public Long getCustId() {
+		return custId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setCustId(Long custId) {
+		this.custId = custId;
 	}
 
 	public User getUser() {
@@ -101,6 +103,12 @@ public class CustomerDetail {
 
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	@Override
+	public String toString() {
+		return "CustomerDetail [custId=" + custId + ", firstName=" + firstName + ", lastName=" + lastName + ", mobile="
+				+ mobile + ", imageUrl=" + imageUrl + ", address=" + address + "]";
 	}
 
 }

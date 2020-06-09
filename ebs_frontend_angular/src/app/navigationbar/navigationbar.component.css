@@ -19,3 +19,9 @@
     text-align: left !important;
     cursor: pointer;
   }
+  .btn-back {
+    width: 100%;
+    padding: 3px 20px !important;
+    text-align: left !important;
+    cursor: pointer;
+  }

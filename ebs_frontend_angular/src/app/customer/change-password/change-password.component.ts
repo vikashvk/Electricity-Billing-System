@@ -10,7 +10,7 @@ import {ChangePasswordModel } from 'src/app/models/change-password-model';
 })
 export class ChangePasswordComponent implements OnInit {
   customerId:any
-  constructor(private customerService:CustomerService) { }
+  constructor(private customerService:CustomerService, private router:Router) { }
   customer1:any={}
   ngOnInit(): void {
   }
@@ -24,5 +24,9 @@ export class ChangePasswordComponent implements OnInit {
     },
      error => {throw error;
     });
+  }
+  cancel()
+  {
+    this.router.navigate(['/user'])
   }
 }

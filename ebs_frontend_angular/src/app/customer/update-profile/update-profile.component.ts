@@ -46,4 +46,8 @@ export class UpdateProfileComponent implements OnInit {
         throw error;
       })
   }
+  cancel()
+  {
+    this.router.navigate(['/user'])
+  }
 }

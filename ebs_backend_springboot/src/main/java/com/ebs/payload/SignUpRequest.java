@@ -18,6 +18,9 @@ public class SignUpRequest {
 
 	@NotBlank(message = "Password cannot be blank")
 	private String password;
+	
+	@NotBlank(message = "Password cannot be blank")
+	private String confirmPassword;
 
 	public String getFirstName() {
 		return firstName;
@@ -50,4 +53,17 @@ public class SignUpRequest {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
+	
+	
+	
+
+	
 }

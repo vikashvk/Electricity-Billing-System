@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ebs.model.Bill;
 import com.ebs.model.CustomerDetail;
+import com.ebs.model.Feedback;
 import com.ebs.payload.ChangeCustomerDetailRequest;
 import com.ebs.payload.ChangePasswordRequest;
 import com.ebs.payload.MessageResponse;
@@ -87,5 +89,13 @@ public class CustomerController {
 	public ResponseEntity<?> getAllBills(@CurrentUser UserPrincipal currentUser) {
 		List<Bill> bills = customerService.getAllBills(currentUser.getId());
 		return ResponseEntity.ok(bills);
+	}
+	
+	@PostMapping("/users/give-feedback")
+	@PreAuthorize("hasRole('USER')")
+	public ResponseEntity<?> giveFeedback(@CurrentUser UserPrincipal currentUser, @RequestBody Feedback feed)
+	{
+		Feedback feed1 = customerService.giveFeedback(currentUser, feed);
+		return ResponseEntity.ok(feed1);
 	}
 }

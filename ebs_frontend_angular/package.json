@@ -19,9 +19,11 @@
     "@angular/platform-browser": "~9.1.9",
     "@angular/platform-browser-dynamic": "~9.1.9",
     "@angular/router": "~9.1.9",
+    "@ionic/angular": "^5.1.1",
     "@types/file-saver": "^2.0.1",
     "file-saver": "^2.0.2",
     "http-status-codes": "^1.4.0",
+    "ionicons": "^5.0.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

@@ -5,6 +5,9 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { ViewBillHistoryComponent } from './view-bill-history/view-bill-history.component';
 import { ViewPaymentHistoryComponent } from './view-payment-history/view-payment-history.component';
+import { ViewProfileComponent } from './view-profile/view-profile.component';
+import { GiveFeedbackComponent } from './give-feedback/give-feedback.component';
+import { ViewBillDetailsComponent } from './view-bill-details/view-bill-details.component';
 
 
 const routes: Routes = [
@@ -12,7 +15,10 @@ const routes: Routes = [
   { path: 'change-password', component: ChangePasswordComponent },
   { path: 'update-profile', component: UpdateProfileComponent },
   { path: 'bills', component: ViewBillHistoryComponent },
+  { path: 'bills/:id', component: ViewBillDetailsComponent },
   { path: 'payments', component: ViewPaymentHistoryComponent },
+  { path: 'view-profile', component: ViewProfileComponent },
+  { path: 'give-feedback', component: GiveFeedbackComponent }
 ];
 
 @NgModule({

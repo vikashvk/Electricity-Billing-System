@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { CustomerService } from 'src/app/services/customer.service';
-import {saveAs as importedSaveAs} from "file-saver";;
+import { saveAs as importedSaveAs } from "file-saver"; import { Router } from '@angular/router';
+;
 @Component({
   selector: 'app-view-bill-history',
   templateUrl: './view-bill-history.component.html',
@@ -8,7 +9,7 @@ import {saveAs as importedSaveAs} from "file-saver";;
 })
 export class ViewBillHistoryComponent implements OnInit {
   bills: any[] = [];
-  constructor(private customerService: CustomerService) { }
+  constructor(private router: Router, private customerService: CustomerService) { }
   ngOnInit(): void {
     this.getAllBills();
   }
@@ -25,7 +26,7 @@ export class ViewBillHistoryComponent implements OnInit {
     this.customerService.downloadBillPdf(billId).subscribe(
       data => {
 
-        importedSaveAs(data, billId+".pdf");
+        importedSaveAs(data, "bill_" + billId + ".pdf");
       }, error => {
         console.log(error);
         alert('Bill with id ' + billId + ' could not be downloaded.');
@@ -33,5 +34,8 @@ export class ViewBillHistoryComponent implements OnInit {
 
     );
 
+  }
+  viewBillDetails(billId: number) {
+    this.router.navigate(['/user/bills', billId]);
   }
 }

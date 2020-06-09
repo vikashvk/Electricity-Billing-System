@@ -90,7 +90,7 @@ public class PdfUtils {
 		cell = row.createCell(50, "Bill No.");
 		cell.setFontSize(15);
 		cell.setFont(fontBold);
-		cell = row.createCell(50, String.valueOf(bill.getId()));
+		cell = row.createCell(50, String.valueOf(bill.getBillId()));
 		cell.setFontSize(15);
 
 		// Billing Date

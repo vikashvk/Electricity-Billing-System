@@ -6,20 +6,24 @@
         <th>Due Date</th>
         <th>Total Payble</th>
         <th>Status</th>
-        <th>View Details</th>
-        <th>Download Bill</th>
+        <th>Actions</th>
       </tr>
     </thead>
 
     <tbody>
       <tr *ngFor="let bill of bills">
-        <td>{{bill.id}}</td>
+        <td>{{bill.billId}}</td>
         <td>{{bill.duedate}}</td>
         <td>{{bill.billamount + bill.billfine}}</td>
         <td>{{bill.flagpaid==0?"Not Paid":"Paid"}}</td>
-        <td><button>View</button></td>
-        <td><button (click)="downloadBillPdf(bill.id)">Download</button></td>
+        <td><button (click)="viewBillDetails(bill.billId)">View</button>&nbsp;|&nbsp;<button
+            (click)="downloadBillPdf(bill.billId)">Download</button>&nbsp;|&nbsp;<button
+            *ngIf="bill.flagpaid==0">Pay</button></td>
+
       </tr>
     </tbody>
   </table>
+  <div *ngIf="bills.length == 0">
+    No Bills found!
+  </div>
 </div>

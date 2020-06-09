@@ -2865,7 +2865,7 @@ a:hover.back-to-top {
     background: -webkit-linear-gradient(top, #e8519e, #c77ff2, #e8519e, #c77ff2);
     background: -o-linear-gradient(top, #e8519e, #c77ff2, #e8519e, #c77ff2);
     background: -moz-linear-gradient(top, #e8519e, #c77ff2, #e8519e, #c77ff2);
-    background: linear-gradient(top, #e8519e, #c77ff2, #e8519e, #c77ff2);
+    background: linear-gradient(to right, #e8519e, #c77ff2, #e8519e, #c77ff2);
     bottom: -100%;
     left: 0;
   

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ChangePasswordModel } from '../models/change-password-model';
 import { CustomerDetail } from '../models/customer-detail';
+import { feedback } from '../models/feedback';
 
 @Injectable({
   providedIn: 'root'
@@ -51,5 +52,13 @@ downloadBillPdf(billId: number): Observable<any> {
   changePassword(credentials: ChangePasswordModel): Observable<any> {
     let path: string = 'api/v1/users/change-password';
     return this.http.put(this.apiUrl + path, credentials);
+  }
+
+  //Code for sending the feedback or any suggestion
+  giveFeedback(feed :feedback): Observable<any>
+  {
+    console.log(feed);
+    let path: string= 'api/v1/users/give-feedback';
+    return this.http.post(this.apiUrl +path , feed);
   }
 }

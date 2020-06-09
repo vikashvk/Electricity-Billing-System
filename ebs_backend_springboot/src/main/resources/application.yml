@@ -1,6 +1,6 @@
 spring:
     datasource:
-        url: jdbc:mysql://localhost:3306/electricity_billing_system
+        url: jdbc:mysql://localhost:3306/electricity_billling_system
         username: test
         password: test
         driverClassName: com.mysql.cj.jdbc.Driver

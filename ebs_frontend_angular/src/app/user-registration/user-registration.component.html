@@ -44,6 +44,7 @@
             <span class="label-input100">Password</span>
             <input class="input100" placeholder="Choose a password" type="password" name="password"
               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" #password="ngModel" ngModel required>
+              <ion-icon name="eye" color="red" item-end></ion-icon>
             <span class="focus-input100"></span>
           </div>
           <div class="help-block" *ngIf="password.errors?.required">Email is required</div>
