@@ -21,6 +21,8 @@ public class BillService_Impl {
 	Bill bill;
 
 	public Bill saveBill(Bill bill) {
+		bill.setBilldate("09-06-2019");
+		bill.setDuedate("12-06-2019");
 		return billdao.save(bill);
 	}
 
