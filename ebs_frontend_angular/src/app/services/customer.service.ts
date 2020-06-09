@@ -30,6 +30,8 @@ downloadBillPdf(billId: number): Observable<any> {
   let path:string = 'api/v1/bills/pdf/';
   return this.http.get(this.apiUrl + path + billId,{responseType: 'blob'});
 }
+
+
   //Code for viewing the payment status of customer
   getAllPayments(): Observable<any> {
     let path: string = 'api/v1/payments';

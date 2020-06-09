@@ -32,7 +32,7 @@ export class CreditCardFormComponent implements OnInit {
   }
   chargeCard(token: string) {
     const headers = new HttpHeaders({'token': token
-    // , 'amount': 100
+    , 'amount': '100'
   });
     this.http.post('http://localhost:8080/payment/charge', {}, {headers: headers})
       .subscribe(resp => {

@@ -34,6 +34,10 @@ const routes: Routes = [
     path: 'login', component: UserLoginComponent
   },
   {
+    path: 'payment', component: CreditCardFormComponent
+  },
+  
+  {
     path: 'register', component: UserRegistrationComponent
   },
   {
