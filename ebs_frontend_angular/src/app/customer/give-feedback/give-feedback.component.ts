@@ -16,14 +16,18 @@ export class GiveFeedbackComponent implements OnInit {
   ngOnInit(): void {
     this.getProfileDetails();
   }
-  feedbackForm(feed:feedback)
+  submitFeedbackForm(feed:feedback)
   {
+   
+    feed.firstName = this.customerDetails.firstName;
+    feed.lastName = this.customerDetails.lastName;
     console.log(feed);
     this.customerService.giveFeedback(feed)
     .subscribe((data)=>
      {
        console.log(data);
        alert("Feedback has been send successfully.")
+       this.router.navigate(['/user']);
      },
       error => {throw error;
      });
