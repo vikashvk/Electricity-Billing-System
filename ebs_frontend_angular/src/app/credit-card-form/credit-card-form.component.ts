@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CustomerService } from '../services/customer.service';
 
 
@@ -9,13 +9,13 @@ import { CustomerService } from '../services/customer.service';
   styleUrls: ['./credit-card-form.component.css']
 })
 export class CreditCardFormComponent implements OnInit {
-amount:number = 0;
-  constructor(@Inject('API_URL') private apiUrl: string,private http: HttpClient,private customerService:CustomerService) { }
+  amount: number = 0;
+  constructor(@Inject('API_URL') private apiUrl: string, private http: HttpClient, private customerService: CustomerService) { }
 
   ngOnInit(): void {
-    this.customerService.currentAmount.subscribe(amount=> {this.amount = amount;console.log(amount);});
+    this.customerService.currentAmount.subscribe(amount => { this.amount = amount; console.log(amount); });
   }
-  
+
   chargeCreditCard() {
     let form = document.getElementsByTagName("form")[0];
     (<any>window).Stripe.card.createToken({
@@ -34,10 +34,11 @@ amount:number = 0;
   }
   chargeCard(token: string) {
     console.log(this.amount);
-    const headers = new HttpHeaders({'token': token
-    , 'amount': this.amount.toString()
-  });
-    this.http.post(this.apiUrl + 'payment/charge', {}, {headers: headers})
+    const headers = new HttpHeaders({
+      'token': token
+      , 'amount': this.amount.toString()
+    });
+    this.http.post(this.apiUrl + 'payment/charge', {}, { headers: headers })
       .subscribe(resp => {
         console.log(resp);
       })
