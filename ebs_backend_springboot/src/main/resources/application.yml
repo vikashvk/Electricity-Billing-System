@@ -10,7 +10,7 @@ spring:
             ddl-auto: update
         properties:
             hibernate:
-                dialect: org.hibernate.dialect.MySQL57Dialect
+                dialect: org.hibernate.dialect.MySQL55Dialect
     security:
       oauth2:
         client:

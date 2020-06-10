@@ -3,7 +3,8 @@
  */
 package com.ebs.controller;
 
-import org.apache.catalina.servlet4preview.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,7 +29,7 @@ public class PaymentController {
  }
 
  @PostMapping("/charge")
- public Charge chargeCard(javax.servlet.http.HttpServletRequest request) throws Exception {
+ public Charge chargeCard(HttpServletRequest request) throws Exception {
      String token = request.getHeader("token");
      Double amount = Double.parseDouble(request.getHeader("amount"));
      return this.stripeClient.chargeNewCard(token, amount);
