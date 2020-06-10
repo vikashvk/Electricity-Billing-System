@@ -1,19 +1,21 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { CustomerService } from '../services/customer.service';
-
-
+import { PaymentRequestModel } from '../models/payment-request-model';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-credit-card-form',
   templateUrl: './credit-card-form.component.html',
   styleUrls: ['./credit-card-form.component.css']
 })
 export class CreditCardFormComponent implements OnInit {
+  billId: number = 0;
   amount: number = 0;
-  constructor(@Inject('API_URL') private apiUrl: string, private http: HttpClient, private customerService: CustomerService) { }
+  constructor(private location:Location,@Inject('API_URL') private apiUrl: string, private http: HttpClient, private customerService: CustomerService) { }
 
   ngOnInit(): void {
-    this.customerService.currentAmount.subscribe(amount => { this.amount = amount; console.log(amount); });
+    this.customerService.currentbillId.subscribe(billId => { this.billId = billId; });
+    this.customerService.currentamount.subscribe(amount => this.amount = amount);
   }
 
   chargeCreditCard() {
@@ -33,15 +35,11 @@ export class CreditCardFormComponent implements OnInit {
     });
   }
   chargeCard(token: string) {
-    console.log(this.amount);
-    const headers = new HttpHeaders({
-      'token': token
-      , 'amount': this.amount.toString()
-    });
-    this.http.post(this.apiUrl + 'payment/charge', {}, { headers: headers })
+    let paymentRequestBody: PaymentRequestModel = { token: token, billId: this.billId }
+    this.http.post(this.apiUrl + 'payment/charge', paymentRequestBody)
       .subscribe(resp => {
-        console.log(resp);
-        alert("Payment successful for Rs. 8");
+        alert("Payment successful");
+        this.location.back();
       })
   }
 }

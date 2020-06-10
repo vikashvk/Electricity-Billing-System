@@ -2,7 +2,9 @@ package com.ebs.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -17,7 +19,8 @@ import lombok.NoArgsConstructor;
 public class Bill {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ebs_bill_seq_gen")
+	@SequenceGenerator(name = "ebs_bill_seq_gen", initialValue = 12500, sequenceName = "ebs_bill_seq")
 	private Long id;
 	private String city;
 	private String state;

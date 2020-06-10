@@ -1,8 +1,8 @@
 spring:
     datasource:
-        url: jdbc:mysql://sql12.freesqldatabase.com:3306/sql12344985
-        username: sql12344985
-        password: 7iUHCivv3a
+        url: jdbc:mysql://localhost:3306/electricity_billing_system
+        username: test
+        password: test
         driverClassName: com.mysql.cj.jdbc.Driver
     jpa:
         show-sql: true
@@ -10,7 +10,7 @@ spring:
             ddl-auto: update
         properties:
             hibernate:
-                dialect: org.hibernate.dialect.MySQL55Dialect
+                dialect: org.hibernate.dialect.MySQL57Dialect
     security:
       oauth2:
         client:

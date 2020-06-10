@@ -10,7 +10,7 @@ import { Location } from '@angular/common';
 })
 export class ViewBillDetailsComponent implements OnInit {
   bill: any;
-  constructor(private router:Router,private location: Location, private route: ActivatedRoute, private customerService: CustomerService) { }
+  constructor(private router: Router, private location: Location, private route: ActivatedRoute, private customerService: CustomerService) { }
   ngOnInit(): void {
     this.route.params
       .pipe(switchMap((params: Params) => { return this.customerService.getBillDetails(params['id']); }))
@@ -23,9 +23,9 @@ export class ViewBillDetailsComponent implements OnInit {
       });
 
   }
-  makePayment(billId: number,amount:number) {
-    this.customerService.changeAmount(amount);
+  makePayment(billId: number, amount: number) {
+    this.customerService.changeBillDetails(billId, amount);
     this.router.navigate(['/payment']);
   }
-  
+
 }

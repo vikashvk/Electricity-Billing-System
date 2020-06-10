@@ -19,6 +19,18 @@ public class Payment {
 	private boolean status;
 	private String date;
 	private Long billId;
+	
+	public Payment() {
+		super();
+	}
+	public Payment(double amount, boolean status, String date, Long custId, Long billId) {
+		super();
+		this.amount = amount;
+		this.status = status;
+		this.date = date;
+		this.custId = custId;
+		this.billId = billId;
+	}
 	public Long getBillId() {
 		return billId;
 	}

@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable,BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { ChangePasswordModel } from '../models/change-password-model';
 import { CustomerDetail } from '../models/customer-detail';
 import { feedback } from '../models/feedback';
@@ -9,11 +9,14 @@ import { feedback } from '../models/feedback';
   providedIn: 'root'
 })
 export class CustomerService {
+  private billIdSource = new BehaviorSubject<number>(0);
+  currentbillId = this.billIdSource.asObservable();
   private amountSource = new BehaviorSubject<number>(0);
-  currentAmount = this.amountSource.asObservable();
+  currentamount = this.amountSource.asObservable();
   constructor(@Inject('API_URL') private apiUrl: string, private http: HttpClient) { }
-  changeAmount(amount: number) {
-    this.amountSource.next(amount)
+  changeBillDetails(billId: number,amount:number) {
+    this.billIdSource.next(billId);
+    this.amountSource.next(amount);
   }
   public getCustomerProfile() {
     let path: string = 'api/v1/users/me';
@@ -29,11 +32,11 @@ export class CustomerService {
     let path: string = 'api/v1/bills/';
     return this.http.get(this.apiUrl + path + billId);
   }
-//downloads bill in pdf
-downloadBillPdf(billId: number): Observable<any> {
-  let path:string = 'api/v1/bills/pdf/';
-  return this.http.get(this.apiUrl + path + billId,{responseType: 'blob'});
-}
+  //downloads bill in pdf
+  downloadBillPdf(billId: number): Observable<any> {
+    let path: string = 'api/v1/bills/pdf/';
+    return this.http.get(this.apiUrl + path + billId, { responseType: 'blob' });
+  }
 
 
   //Code for viewing the payment status of customer
@@ -61,11 +64,10 @@ downloadBillPdf(billId: number): Observable<any> {
   }
 
   //Code for sending the feedback or any suggestion
-  giveFeedback(feed :feedback): Observable<any>
-  {
+  giveFeedback(feed: feedback): Observable<any> {
     console.log(feed);
-    let path: string= 'api/v1/users/give-feedback';
-    return this.http.post(this.apiUrl +path , feed);
+    let path: string = 'api/v1/users/give-feedback';
+    return this.http.post(this.apiUrl + path, feed);
   }
 
 }

@@ -3,14 +3,15 @@
  */
 package com.ebs.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ebs.service.StripeClient;
+import com.ebs.payload.PaymentRequest;
+import com.ebs.service.PaymentService;
+import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;
 
 /**
@@ -21,17 +22,13 @@ import com.stripe.model.Charge;
 @RequestMapping("/payment")
 @RestController
 public class PaymentController {
- private StripeClient stripeClient;
- 
- @Autowired
- PaymentController(StripeClient stripeClient) {
-     this.stripeClient = stripeClient;
- }
+	@Autowired
+	private PaymentService paymentService;
 
- @PostMapping("/charge")
- public Charge chargeCard(HttpServletRequest request) throws Exception {
-     String token = request.getHeader("token");
-     Double amount = Double.parseDouble(request.getHeader("amount"));
-     return this.stripeClient.chargeNewCard(token, amount);
- }
+	@PostMapping("/charge")
+	public Charge chargeCard(@RequestBody PaymentRequest paymentRequest) throws StripeException {
+		String token = paymentRequest.getToken();
+		Long billId = paymentRequest.getBillId();
+		return paymentService.chargeCard(token, billId);
+	}
 }

@@ -14,7 +14,7 @@ import javax.persistence.TemporalType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="Ebs_Address")
+@Table(name = "Ebs_Address")
 public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,7 +23,7 @@ public class Address {
 	private String line2 = "";
 	private String city;
 	private String state;
-	private String country ="India";
+	private String country = "India";
 //	@Pattern(regexp = "^[1-9]\\d{5}$")
 	private String pincode;
 	@Column(nullable = false)
@@ -97,6 +97,6 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return line1 + line2 + ", " + city + ", " + state + ", " + pincode;
+		return line1 + " " + line2 + ", " + city + ", " + state + ", " + pincode;
 	}
 }

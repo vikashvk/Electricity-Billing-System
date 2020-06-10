@@ -22,7 +22,8 @@ import be.quodlibet.boxable.VerticalAlignment;
 
 public class PdfUtils {
 	public final static String PROJECT_NAME = "Electricity Billing Sytem";
-	public static byte[] generateBillPdf(Bill bill,CustomerDetail customer) throws IOException {
+
+	public static byte[] generateBillPdf(Bill bill, CustomerDetail customer) throws IOException {
 		PDDocument document = new PDDocument();
 		PDPage page = new PDPage(PDRectangle.A4);
 		PDFont fontBold = PDType1Font.HELVETICA_BOLD;
@@ -150,10 +151,15 @@ public class PdfUtils {
 		cell = row.createCell(50, "Bill Status");
 		cell.setFontSize(15);
 		cell.setFont(fontBold);
-		String billStatus = bill.getFlagpaid() == 0 ? "Not Paid" : "Paid";
+		String billStatus = "Not Paid";
+		Color cellColor = Color.RED;
+		if (bill.getFlagpaid() == 1) {
+			billStatus = "Paid";
+			cellColor = Color.GREEN;
+		}
 		cell = row.createCell(50, billStatus);
 		cell.setFontSize(15);
-		cell.setFillColor(Color.RED);
+		cell.setFillColor(cellColor);
 
 		table.draw();
 

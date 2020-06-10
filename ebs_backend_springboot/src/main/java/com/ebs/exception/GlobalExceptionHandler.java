@@ -3,6 +3,7 @@ package com.ebs.exception;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -34,7 +35,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	}
 
 	@ExceptionHandler({BadRequestException.class, CardException.class})
-	public final ResponseEntity<?> handleBadRequestException(BadRequestException ex, WebRequest request) {
+	public final ResponseEntity<?> handleBadRequestExceptionAndCardException(Exception ex, WebRequest request) {
 		MessageResponse response = new MessageResponse(ex.getLocalizedMessage(),false);
 		return new ResponseEntity<MessageResponse>(response, HttpStatus.BAD_REQUEST);
 	}
@@ -56,6 +57,12 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	public final ResponseEntity<?> handleBadCredentialsException(
 			BadCredentialsException ex, WebRequest request) {
 		MessageResponse response = new MessageResponse("Invalid email or password.",false);
+		return new ResponseEntity<MessageResponse>(response, HttpStatus.UNAUTHORIZED);
+	}
+	@ExceptionHandler(AccessDeniedException.class)
+	public final ResponseEntity<?> handleAccessDeniedException(
+			BadCredentialsException ex, WebRequest request) {
+		MessageResponse response = new MessageResponse("Please login first.",false);
 		return new ResponseEntity<MessageResponse>(response, HttpStatus.UNAUTHORIZED);
 	}
 	/*
