@@ -13,7 +13,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import com.ebs.payload.MessageResponse;
-import com.stripe.exception.CardException;
+import com.stripe.exception.StripeException;
 
 /*
  * Exception Handler class
@@ -30,40 +30,40 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 		for (ObjectError error : ex.getBindingResult().getAllErrors()) {
 			errors += error.getDefaultMessage() + ". ";
 		}
-		MessageResponse response = new MessageResponse(errors,false);
+		MessageResponse response = new MessageResponse(errors, false);
 		return new ResponseEntity<Object>(response, HttpStatus.EXPECTATION_FAILED);
 	}
 
-	@ExceptionHandler({BadRequestException.class, CardException.class})
-	public final ResponseEntity<?> handleBadRequestExceptionAndCardException(Exception ex, WebRequest request) {
-		MessageResponse response = new MessageResponse(ex.getLocalizedMessage(),false);
-		return new ResponseEntity<MessageResponse>(response, HttpStatus.BAD_REQUEST);
-	}
+	
 
 	@ExceptionHandler(ResourceNotFoundException.class)
 	public final ResponseEntity<?> handleResourceNotFoundException(ResourceNotFoundException ex, WebRequest request) {
-		MessageResponse response = new MessageResponse(ex.getLocalizedMessage(),false);
+		MessageResponse response = new MessageResponse(ex.getLocalizedMessage(), false);
 		return new ResponseEntity<MessageResponse>(response, HttpStatus.NOT_FOUND);
 	}
 
 	@ExceptionHandler(OAuth2AuthenticationProcessingException.class)
 	public final ResponseEntity<?> handleOAuth2AuthenticationProcessingException(
 			OAuth2AuthenticationProcessingException ex, WebRequest request) {
-		MessageResponse response = new MessageResponse(ex.getLocalizedMessage(),false);
+		MessageResponse response = new MessageResponse(ex.getLocalizedMessage(), false);
 		return new ResponseEntity<MessageResponse>(response, HttpStatus.UNAUTHORIZED);
 	}
-	
+
 	@ExceptionHandler(BadCredentialsException.class)
-	public final ResponseEntity<?> handleBadCredentialsException(
-			BadCredentialsException ex, WebRequest request) {
-		MessageResponse response = new MessageResponse("Invalid email or password.",false);
+	public final ResponseEntity<?> handleBadCredentialsException(BadCredentialsException ex, WebRequest request) {
+		MessageResponse response = new MessageResponse("Invalid email or password.", false);
 		return new ResponseEntity<MessageResponse>(response, HttpStatus.UNAUTHORIZED);
 	}
+
 	@ExceptionHandler(AccessDeniedException.class)
-	public final ResponseEntity<?> handleAccessDeniedException(
-			AccessDeniedException ex, WebRequest request) {
-		MessageResponse response = new MessageResponse("Please login first.",false);
+	public final ResponseEntity<?> handleAccessDeniedException(AccessDeniedException ex, WebRequest request) {
+		MessageResponse response = new MessageResponse("Please login first.", false);
 		return new ResponseEntity<MessageResponse>(response, HttpStatus.UNAUTHORIZED);
+	}
+	@ExceptionHandler({ BadRequestException.class, StripeException.class })
+	public final ResponseEntity<?> handleBadRequestExceptionAndStripeException(Exception ex, WebRequest request) {
+		MessageResponse response = new MessageResponse(ex.getLocalizedMessage(), false);
+		return new ResponseEntity<MessageResponse>(response, HttpStatus.BAD_REQUEST);
 	}
 	/*
 	 * Handles when any other exception is occured
@@ -72,7 +72,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	public final ResponseEntity<?> handleAllExceptions(Exception ex, WebRequest request) {
 		ex.printStackTrace();
 		String message = "Could not process your request at this time.";
-		MessageResponse response = new MessageResponse(message,false);
+		MessageResponse response = new MessageResponse(message, false);
 		return new ResponseEntity<MessageResponse>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 }

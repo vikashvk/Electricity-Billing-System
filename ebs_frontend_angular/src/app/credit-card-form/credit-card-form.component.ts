@@ -36,11 +36,14 @@ export class CreditCardFormComponent implements OnInit {
     });
   }
   chargeCard(token: string) {
-    let paymentRequestBody: PaymentRequestModel = { token: token, billId: this.billId }
+    let paymentRequestBody: PaymentRequestModel = { token: token, billId: this.billId };
     this.http.post(this.apiUrl + 'payment/charge', paymentRequestBody)
-      .subscribe(resp => {
+      .subscribe(data => {
         this.toastr.success("Payment successful");
         this.location.back();
-      })
+      },
+      error => {
+        this.toastr.error(error);
+      });
   }
 }
