@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { CustomerService } from 'src/app/services/customer.service';
 import { Router } from '@angular/router';
-import { saveAs as importedSaveAs } from "file-saver"; 
+import { saveAs as importedSaveAs } from "file-saver";
 ;
 @Component({
   selector: 'app-view-bill-history',
@@ -39,8 +39,8 @@ export class ViewBillHistoryComponent implements OnInit {
   viewBillDetails(billId: number) {
     this.router.navigate(['/user/bills', billId]);
   }
-  makePayment(billId: number) {
-    console.log("make payment ",billId);
+  makePayment(billId: number, amount: number) {
+    this.customerService.changeAmount(amount);
     this.router.navigate(['/payment']);
   }
 }

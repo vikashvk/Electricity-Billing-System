@@ -26,7 +26,8 @@ export class UserLoginComponent implements OnInit {
       'email': 'Not a valid email. '
     },
     'password': {
-      'required': 'Password is required. '
+      'required': 'Password is required. ',
+      'pattern':'Must contain at least one number and one uppercase and lowercase'
     }
   };
 

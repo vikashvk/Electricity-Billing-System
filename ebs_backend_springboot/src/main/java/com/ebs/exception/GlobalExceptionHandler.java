@@ -12,6 +12,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import com.ebs.payload.MessageResponse;
+import com.stripe.exception.CardException;
 
 /*
  * Exception Handler class
@@ -32,7 +33,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 		return new ResponseEntity<Object>(response, HttpStatus.EXPECTATION_FAILED);
 	}
 
-	@ExceptionHandler(BadRequestException.class)
+	@ExceptionHandler({BadRequestException.class, CardException.class})
 	public final ResponseEntity<?> handleBadRequestException(BadRequestException ex, WebRequest request) {
 		MessageResponse response = new MessageResponse(ex.getLocalizedMessage(),false);
 		return new ResponseEntity<MessageResponse>(response, HttpStatus.BAD_REQUEST);

@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable,BehaviorSubject } from 'rxjs';
 import { ChangePasswordModel } from '../models/change-password-model';
 import { CustomerDetail } from '../models/customer-detail';
 import { feedback } from '../models/feedback';
@@ -9,8 +9,12 @@ import { feedback } from '../models/feedback';
   providedIn: 'root'
 })
 export class CustomerService {
-
+  private amountSource = new BehaviorSubject<number>(0);
+  currentAmount = this.amountSource.asObservable();
   constructor(@Inject('API_URL') private apiUrl: string, private http: HttpClient) { }
+  changeAmount(amount: number) {
+    this.amountSource.next(amount)
+  }
   public getCustomerProfile() {
     let path: string = 'api/v1/users/me';
     return this.http.get<any>(this.apiUrl + path);
@@ -63,4 +67,5 @@ downloadBillPdf(billId: number): Observable<any> {
     let path: string= 'api/v1/users/give-feedback';
     return this.http.post(this.apiUrl +path , feed);
   }
+
 }

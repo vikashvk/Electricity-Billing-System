@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from 'src/app/services/customer.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { Location } from '@angular/common';
 @Component({
@@ -10,7 +10,7 @@ import { Location } from '@angular/common';
 })
 export class ViewBillDetailsComponent implements OnInit {
   bill: any;
-  constructor(private location: Location, private route: ActivatedRoute, private customerService: CustomerService) { }
+  constructor(private router:Router,private location: Location, private route: ActivatedRoute, private customerService: CustomerService) { }
   ngOnInit(): void {
     this.route.params
       .pipe(switchMap((params: Params) => { return this.customerService.getBillDetails(params['id']); }))
@@ -23,9 +23,9 @@ export class ViewBillDetailsComponent implements OnInit {
       });
 
   }
-  makePayment(billId: number) {
-    console.log("make payment",billId);
-    // this.router.navigate(['/payment']);
+  makePayment(billId: number,amount:number) {
+    this.customerService.changeAmount(amount);
+    this.router.navigate(['/payment']);
   }
   
 }

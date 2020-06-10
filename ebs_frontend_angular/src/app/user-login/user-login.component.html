@@ -22,7 +22,8 @@
                     <div class="wrap-input100 validate-input" data-validate="Password is required"
                         [ngClass]="{ 'has-error': formErrors.password }">
                         <span class="label-input100">Password</span>
-                        <input class="input100" type="text" name="password" placeholder="*************" formControlName="password">
+                        <input class="input100" type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                        placeholder="*************" formControlName="password">
                         <span class="focus-input100"></span>
                     </div>
 
