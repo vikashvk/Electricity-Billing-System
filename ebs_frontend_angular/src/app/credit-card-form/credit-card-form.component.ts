@@ -34,7 +34,7 @@ export class CreditCardFormComponent implements OnInit {
     const headers = new HttpHeaders({'token': token
     , 'amount': '100'
   });
-    this.http.post('http://localhost:8080/payment/charge', {}, {headers: headers})
+    this.http.post('http://localhost:9090/payment/charge', {}, {headers: headers})
       .subscribe(resp => {
         console.log(resp);
       })
