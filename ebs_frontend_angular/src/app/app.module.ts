@@ -29,6 +29,8 @@ import { AddBillViewComponent } from './bills/add-bill-view/add-bill-view.compon
 import { BillviewComponent } from './bills/billview/billview.component';
 import { CustomerviewComponent } from './bills/customerview/customerview.component';
 import { UpdateBillViewComponent } from './bills/update-bill-view/update-bill-view.component';
+import { ViewallCustomersComponent } from './bills/viewall-customers/viewall-customers.component';
+import { ViewallbillsComponent } from './bills/viewallbills/viewallbills.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +47,8 @@ import { UpdateBillViewComponent } from './bills/update-bill-view/update-bill-vi
     BillviewComponent,
     CustomerviewComponent,
     UpdateBillViewComponent,
+    ViewallCustomersComponent,
+    ViewallbillsComponent,
     AdminpageComponent, UserLoginComponent, RedirectHandlerComponent, UserRegistrationComponent, PageNotFoundComponent, LogoutComponent, CreditCardFormComponent,
 
   ],

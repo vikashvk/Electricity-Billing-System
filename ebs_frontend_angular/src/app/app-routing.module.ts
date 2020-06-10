@@ -15,6 +15,8 @@ import { UpdateBillViewComponent } from './bills/update-bill-view/update-bill-vi
 import { BillviewComponent } from './bills/billview/billview.component';
 import { AddBillViewComponent } from './bills/add-bill-view/add-bill-view.component';
 import { CustomerviewComponent } from './bills/customerview/customerview.component';
+import { ViewallbillsComponent } from './bills/viewallbills/viewallbills.component';
+import { ViewallCustomersComponent } from './bills/viewall-customers/viewall-customers.component';
 
 
 const routes: Routes = [
@@ -36,7 +38,7 @@ const routes: Routes = [
   {
     path: 'payment', component: CreditCardFormComponent
   },
-  
+
   {
     path: 'register', component: UserRegistrationComponent
   },
@@ -62,6 +64,13 @@ const routes: Routes = [
   },
   {
     path: 'updateBill/:id', component: UpdateBillViewComponent
+  }
+  ,
+  {
+    path: 'viewallbill', component: ViewallbillsComponent
+  },
+  {
+    path: 'ViewallCustomer', component: ViewallCustomersComponent
   },
   {
     path: '**', component: PageNotFoundComponent

@@ -1,0 +1,31 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Bill List</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th><h6>Bill ID</h6></th>
+            <th><h6>City</h6></th>
+            <th><h6>State</h6></th>
+            <th><h6>Bill Amount</h6></th>
+            <th><h6>mobilenumber</h6></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let bil of bill | async">
+            <td>{{bil.id}}</td>
+            <td>{{bil.city}}</td>
+            <td>{{bil.state}}</td>
+            <td>{{bil.billamount}}</td>
+            <td>{{bil.mobilenumber}}</td> 
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <app-footer class="footer"></app-footer>
+
+  
+  
