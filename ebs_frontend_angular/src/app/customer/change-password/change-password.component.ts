@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from 'src/app/services/customer.service';
 import { Router } from '@angular/router';
-import {ChangePasswordModel } from 'src/app/models/change-password-model';
+import { ChangePasswordModel } from 'src/app/models/change-password-model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-change-password',
@@ -9,24 +10,22 @@ import {ChangePasswordModel } from 'src/app/models/change-password-model';
   styleUrls: ['./change-password.component.scss']
 })
 export class ChangePasswordComponent implements OnInit {
-  customerId:any
-  constructor(private customerService:CustomerService, private router:Router) { }
-  customer1:any={}
+  customerId: any;
+  constructor(private toastr: ToastrService, private customerService: CustomerService, private router: Router) { }
+  customer1: any = {}
   ngOnInit(): void {
   }
-  changePassword(credentials:ChangePasswordModel)
-  {
+  changePassword(credentials: ChangePasswordModel) {
     this.customerService.changePassword(credentials)
-   .subscribe((data)=>
-    {
-      console.log(data);
-      alert("Password has been changed successfully.")
-    },
-     error => {throw error;
-    });
+      .subscribe((data) => {
+        console.log(data);
+        this.toastr.success("Password has been changed successfully.");
+      },
+        error => {
+          throw error;
+        });
   }
-  cancel()
-  {
+  cancel() {
     this.router.navigate(['/user'])
   }
 }

@@ -1,6 +1,8 @@
-import { Injectable, ErrorHandler } from '@angular/core';
+import { Injectable, ErrorHandler, Inject, Injector } from '@angular/core';
 import { UNAUTHORIZED, BAD_REQUEST, FORBIDDEN } from "http-status-codes";
 import { Router } from "@angular/router";
+import { NotificationService } from './notification.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +10,7 @@ import { Router } from "@angular/router";
 export class ErrorHandlerService implements ErrorHandler {
   static readonly DEFAULT_ERROR_TITLE: string = "Please try again.";
   static readonly UNAUTHORIZED_ERROR: string = "Please login to access.";
-  constructor(private router: Router) { }
+  constructor(@Inject(Injector) private injector: Injector,private router: Router) { }
 
 
   public handleError(error: any) {
@@ -32,8 +34,19 @@ export class ErrorHandlerService implements ErrorHandler {
         this.showError(ErrorHandlerService.DEFAULT_ERROR_TITLE);
     }
   }
-
+ // Need to get ToastrService from injector rather than constructor injection to avoid cyclic dependency error
+ private get toastrService(): ToastrService {
+  return this.injector.get(ToastrService);
+}
   private showError(message: string) {
-    alert(message);
+    this.toastrService.error(
+      message,
+      null,
+      {
+          closeButton: true,
+          timeOut: 5000,
+          onActivateTick: true
+      }
+  );
   }
 }

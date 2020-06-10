@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CustomerDetail } from 'src/app/models/customer-detail';
 import { CustomerService } from 'src/app/services/customer.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-update-profile',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 export class UpdateProfileComponent implements OnInit {
 
 
-  constructor(private customerService: CustomerService, private router: Router) { }
+  constructor(private toastr: ToastrService,private customerService: CustomerService, private router: Router) { }
   customerDetails: CustomerDetail = <CustomerDetail>{};
   
   ngOnInit(): void {
@@ -22,7 +23,7 @@ export class UpdateProfileComponent implements OnInit {
     this.customerService.updateProfileDetails(newCustomerDetails)
       .subscribe((data) => {
         console.log(data);
-        alert("Profile has been updated successfully");
+        this.toastr.success("Profile has been updated successfully");
       }, error => {
         throw error;
       })

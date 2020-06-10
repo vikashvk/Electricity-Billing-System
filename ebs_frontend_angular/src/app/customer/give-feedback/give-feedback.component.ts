@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { feedback } from 'src/app/models/feedback';
 import { CustomerService } from 'src/app/services/customer.service';
 import { CustomerDetail } from 'src/app/models/customer-detail';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-give-feedback',
@@ -11,7 +12,7 @@ import { CustomerDetail } from 'src/app/models/customer-detail';
 })
 export class GiveFeedbackComponent implements OnInit {
 
-  constructor(private router:Router, private customerService:CustomerService) { }
+  constructor(private toastr: ToastrService,private router:Router, private customerService:CustomerService) { }
   customerDetails: CustomerDetail = <CustomerDetail>{};
   ngOnInit(): void {
     this.getProfileDetails();
@@ -26,7 +27,7 @@ export class GiveFeedbackComponent implements OnInit {
     .subscribe((data)=>
      {
        console.log(data);
-       alert("Feedback has been send successfully.")
+       this.toastr.success("Feedback has been send successfully.");
        this.router.navigate(['/user']);
      },
       error => {throw error;

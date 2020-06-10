@@ -61,7 +61,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	}
 	@ExceptionHandler(AccessDeniedException.class)
 	public final ResponseEntity<?> handleAccessDeniedException(
-			BadCredentialsException ex, WebRequest request) {
+			AccessDeniedException ex, WebRequest request) {
 		MessageResponse response = new MessageResponse("Please login first.",false);
 		return new ResponseEntity<MessageResponse>(response, HttpStatus.UNAUTHORIZED);
 	}

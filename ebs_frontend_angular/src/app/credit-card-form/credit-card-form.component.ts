@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { CustomerService } from '../services/customer.service';
 import { PaymentRequestModel } from '../models/payment-request-model';
 import { Location } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-credit-card-form',
   templateUrl: './credit-card-form.component.html',
@@ -11,7 +12,7 @@ import { Location } from '@angular/common';
 export class CreditCardFormComponent implements OnInit {
   billId: number = 0;
   amount: number = 0;
-  constructor(private location:Location,@Inject('API_URL') private apiUrl: string, private http: HttpClient, private customerService: CustomerService) { }
+  constructor(private toastr: ToastrService,private location:Location,@Inject('API_URL') private apiUrl: string, private http: HttpClient, private customerService: CustomerService) { }
 
   ngOnInit(): void {
     this.customerService.currentbillId.subscribe(billId => { this.billId = billId; });
@@ -38,7 +39,7 @@ export class CreditCardFormComponent implements OnInit {
     let paymentRequestBody: PaymentRequestModel = { token: token, billId: this.billId }
     this.http.post(this.apiUrl + 'payment/charge', paymentRequestBody)
       .subscribe(resp => {
-        alert("Payment successful");
+        this.toastr.success("Payment successful");
         this.location.back();
       })
   }

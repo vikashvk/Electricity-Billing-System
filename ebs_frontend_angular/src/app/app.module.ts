@@ -19,6 +19,8 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { API_BASE_URL, GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL } from '../constants';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { RedirectHandlerComponent } from './redirect-handler/redirect-handler.component';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -54,6 +56,8 @@ import { ViewallbillsComponent } from './bills/viewallbills/viewallbills.compone
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -64,7 +68,7 @@ import { ViewallbillsComponent } from './bills/viewallbills/viewallbills.compone
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true
-  }
+  }, ToastrService
   ],
   bootstrap: [AppComponent]
 })
