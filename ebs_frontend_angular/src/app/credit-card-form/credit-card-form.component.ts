@@ -41,6 +41,7 @@ export class CreditCardFormComponent implements OnInit {
     this.http.post(this.apiUrl + 'payment/charge', {}, { headers: headers })
       .subscribe(resp => {
         console.log(resp);
+        alert("Payment successful for Rs. 8");
       })
   }
 }
