@@ -34,7 +34,7 @@
             [ngClass]="{ 'has-error': email.errors?.required || email.errors?.email }">
             <span class="label-input100">Email</span>
             <input class="input100" placeholder="Enter your Email" type="email" name="email" #email="ngModel" ngModel
-              required>
+              required email>
             <span class="focus-input100"></span>
           </div>
           <div class="help-block" *ngIf="email.errors?.required">Email is required</div>
@@ -49,7 +49,7 @@
               <ion-icon name="eye" color="red" item-end></ion-icon>
             <span class="focus-input100"></span>
           </div>
-          <div class="help-block" *ngIf="password.errors?.required">Email is required</div>
+          <div class="help-block" *ngIf="password.errors?.required">Password is required</div>
           <div class="help-block" *ngIf="password.errors?.pattern">Must contain at least one number and one uppercase
             and lowercase</div>
           <!-- Confirm Password -->
