@@ -1,6 +1,6 @@
 <!-- Navbar -->
 
-<nav class="navbar navbar-expand-md navbar-dark navbar-custom fixed-top">
+<nav class="navbar navbar-expand-sm py-3 navbar-dark navbar-custom fixed-top">
     <!-- Text Logo - Use this if you don't have a graphic logo -->
     <a class="navbar-brand logo-text page-scroll" href="/">EBS</a>
 
@@ -21,16 +21,16 @@
                 <a class="nav-link page-scroll" href="#header">HOME <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link page-scroll" href="#intro">INTRO</a>
+                <a class="nav-link page-scroll" routerLink="ourIntro">INTRO</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link page-scroll" href="#services">SERVICES</a>
+                <a class="nav-link page-scroll" routerLink="ourServices">SERVICES</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link page-scroll" href="#teams">TEAMS</a>
+                <a class="nav-link page-scroll" routerLink="ourTeam">TEAMS</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link page-scroll" href="#about">ABOUT</a>
+                <a class="nav-link page-scroll" routerLink="ourAbout">ABOUT</a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn()">

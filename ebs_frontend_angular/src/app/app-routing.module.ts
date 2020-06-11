@@ -17,6 +17,10 @@ import { AddBillViewComponent } from './bills/add-bill-view/add-bill-view.compon
 import { CustomerviewComponent } from './bills/customerview/customerview.component';
 import { ViewallbillsComponent } from './bills/viewallbills/viewallbills.component';
 import { ViewallCustomersComponent } from './bills/viewall-customers/viewall-customers.component';
+import { IntroComponent } from './intro/intro.component';
+import { ServiceebsComponent } from './serviceebs/serviceebs.component';
+import { TeamsComponent } from './teams/teams.component';
+import { AboutComponent } from './about/about.component';
 
 
 const routes: Routes = [
@@ -25,6 +29,18 @@ const routes: Routes = [
   },
   {
     path: 'home', component: HomeComponent
+  },
+  {
+    path: 'ourIntro', component: IntroComponent
+  },
+   {
+    path: 'ourServices', component: ServiceebsComponent
+  },
+   {
+    path: 'ourTeam', component: TeamsComponent
+  },
+   {
+    path: 'ourAbout', component: AboutComponent
   },
   {
     path: 'admin', component: AdminComponent
