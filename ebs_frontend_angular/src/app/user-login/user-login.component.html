@@ -7,7 +7,7 @@
 
             <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
                 <form [formGroup]="loginForm" class="login100-form validate-form" (ngSubmit)="login()">
-                    <span class="login100-form-title p-b-59">
+                    <span class="login100-form-title p-b-50">
                         Hello Customer!
                     </span>
 
@@ -21,7 +21,10 @@
 
                     <div *ngIf="formErrors.email" class="help-block">{{formErrors.email}}
                     </div>
-
+                <br>
+                <br>
+                
+                <br>
                     <div class="wrap-input100 validate-input" data-validate="Password is required"
                         [ngClass]="{ 'has-error': formErrors.password }">
                         <span class="label-input100">Password</span>
@@ -34,7 +37,10 @@
                     <div *ngIf="formErrors.password" class="help-block">{{formErrors.password}}
                     </div>
 
-
+                    <br>
+                    <br>
+                    
+                    <br>
                     <div class="container-login100-form-btn">
                         <div class="wrap-login100-form-btn">
                             <div class="button-container">
@@ -52,7 +58,7 @@
                 </form>
                 <div>
                     <a href="{{googleAuthUrl}}">
-                        <img src="assets/images/GButton.jpg" alt="alternative" width="150" height="70"></a>&nbsp;|&nbsp;
+                        <img src="assets/images/GButton.png" alt="alternative" width="150" height="70"></a>&nbsp;|&nbsp;
                         
                     <a href="{{facebookAuthUrl}}">
                         <img src="assets/images/FButton.png" alt="alternative" width="150" height="70">

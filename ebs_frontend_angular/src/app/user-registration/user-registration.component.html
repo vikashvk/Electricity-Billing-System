@@ -6,9 +6,11 @@
       <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
         <form novalidate #registerForm="ngForm" class="login100-form validate-form"
           (ngSubmit)="registerCustomer(registerForm.value)">
-          <span class="login100-form-title p-b-59">
+          <span class="login100-form-title p-b-5">
             Register Yourself!
           </span>
+          
+          
           <div class="wrap-input100 validate-input" data-validate="First Name is required"
             [ngClass]="{ 'has-error': firstName.errors?.required || firstName.errors?.pattern }">
             <span class="label-input100">First Name</span>
@@ -18,7 +20,7 @@
           </div>
           <div class="help-block" *ngIf="firstName.errors?.required">First Name is required</div>
           <div class="help-block" *ngIf="firstName.errors?.pattern">First letter should be capital</div>
-
+          
           <div class="wrap-input100 validate-input" data-validate="Last Name is required"
             [ngClass]="{ 'has-error': lastName.errors?.required }">
             <span class="label-input100">Last Name</span>
@@ -68,7 +70,7 @@
               <div class="button-container">
                 <button type="submit" class="btn-solid-reg-sign page-scroll" [disabled]="registerForm.form.invalid">
                   Register
-                </button><span class="loginlink"><a routerLink="/login">Login</a></span>
+                </button>&nbsp;<span class="loginlink"><a class="btn btn-info "routerLink="/login">Login</a></span>
               </div>
 
             </div>
