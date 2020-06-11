@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html lang="en">
 <head>
 	<title>Login V13</title>
@@ -8,7 +8,7 @@
 	<link rel="icon" type="image/png" href="assets/images/icons/favicon.ico"/>
 <!--===============================================================================================-->
 </head>
-<body style="background-color: #999999;">
+<body style="background-color: #777777;">
 	
 	<div class="limiter">
 		<div class="container-login100">
@@ -19,10 +19,9 @@
 					<span class="login100-form-title p-b-59">
 						Hello Admin!
 					</span>
-
 					<div class="wrap-input100 validate-input" data-validate="Username is required">
-						<span class="label-input100">username</span>
-						<input class="input100" type="text" name="username"[(ngModel)]="username" placeholder="Username...">
+						<span class="label-input100">Admin ID</span>
+						<input class="input100" type="text" name="username"[(ngModel)]="username" placeholder="Please enter admin ID here...">
 						<span class="focus-input100"></span>
 					</div>
 
@@ -39,7 +38,6 @@
 								<button (click)=checkLogin() class="btn btn-success">
 									Login
 								</button>
-                                <!-- <a class="btn-solid-reg-sign page-scroll" href="adminp">Sign In</a> -->
                             </div> 
 						</div>
 					</div>

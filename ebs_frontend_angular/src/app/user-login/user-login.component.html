@@ -1,3 +1,5 @@
+<style>A {text-decoration: none;} </style>
+
 <div class="login">
     <div class="limiter">
         <div class="container-login100">
@@ -12,7 +14,8 @@
                     <div class="wrap-input100 validate-input" data-validate="Email is required"
                         [ngClass]="{ 'has-error': formErrors.email }">
                         <span class="label-input100">Email</span>
-                        <input class="input100" type="text" name="email" placeholder="Enter the email" formControlName="email">
+                        <input class="input100" type="text" name="email" placeholder="Enter the email"
+                            formControlName="email">
                         <span class="focus-input100"></span>
                     </div>
 
@@ -22,8 +25,9 @@
                     <div class="wrap-input100 validate-input" data-validate="Password is required"
                         [ngClass]="{ 'has-error': formErrors.password }">
                         <span class="label-input100">Password</span>
-                        <input class="input100" type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
-                        placeholder="*************" formControlName="password">
+                        <input class="input100" type="password" name="password"
+                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" placeholder="*************"
+                            formControlName="password">
                         <span class="focus-input100"></span>
                     </div>
 
@@ -34,19 +38,26 @@
                     <div class="container-login100-form-btn">
                         <div class="wrap-login100-form-btn">
                             <div class="button-container">
-                                <button type="submit" [disabled]="this.loginForm.invalid" class="btn-solid-reg-sign page-scroll">
+                                <button type="submit" [disabled]="this.loginForm.invalid"
+                                    class="btn-solid-reg-sign page-scroll">
                                     Login
-                                </button><span class="registerlink"><a routerLink="/register">Register</a></span>
-                                
+                                </button>
+                                <span class="registerlink"><a class="btn btn-info "routerLink="/register">Register</a></span>
+
                             </div>
-                           
-                            
+
+
                         </div>
                     </div>
                 </form>
                 <div>
-                    <a href="{{googleAuthUrl}}">Sign In with Google</a>&nbsp;|&nbsp;
-                <a href="{{facebookAuthUrl}}">Sign In with Facebook</a>
+                    <a href="{{googleAuthUrl}}">
+                        <img src="assets/images/GButton.jpg" alt="alternative" width="150" height="70"></a>&nbsp;|&nbsp;
+                        
+                    <a href="{{facebookAuthUrl}}">
+                        <img src="assets/images/FButton.png" alt="alternative" width="150" height="70">
+                  
+                    </a>
                 </div>
             </div>
         </div>
