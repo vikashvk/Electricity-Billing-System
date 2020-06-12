@@ -69,7 +69,7 @@
                 disabled name="country" [(ngModel)]="customerDetails.country" required>
         </div>
         <div class="form-group">
-            <label for="pincode">State :</label>
+            <label for="pincode">Pin Code :</label>
             <input type="text" #pincode="ngModel" ngModel [class.is-invalid]="pincode.invalid && pincode.touched" class="form-control"
                 name="pincode" pattern="^[0-9]{6}|[0-9]{3}\\s[0-9]{3}"  [(ngModel)]="customerDetails.pincode" required>
             <div *ngIf="pincode.errors && (pincode.invalid && pincode.touched)">

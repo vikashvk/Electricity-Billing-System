@@ -32,8 +32,9 @@ const routes: Routes = [
   },
   {
     path: 'ourIntro', component: IntroComponent
-  },
-   {
+    
+    },
+    {
     path: 'ourServices', component: ServiceebsComponent
   },
    {
