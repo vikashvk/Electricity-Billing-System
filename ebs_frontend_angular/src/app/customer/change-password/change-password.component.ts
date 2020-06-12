@@ -20,12 +20,13 @@ export class ChangePasswordComponent implements OnInit {
       .subscribe((data) => {
         console.log(data);
         this.toastr.success("Password has been changed successfully.");
+        this.router.navigate(['/user']);
       },
         error => {
           throw error;
         });
   }
   cancel() {
-    this.router.navigate(['/user'])
+    this.router.navigate(['/user']);
   }
 }
