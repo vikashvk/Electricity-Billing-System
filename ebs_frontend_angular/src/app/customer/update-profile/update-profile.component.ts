@@ -24,6 +24,7 @@ export class UpdateProfileComponent implements OnInit {
       .subscribe((data) => {
         console.log(data);
         this.toastr.success("Profile has been updated successfully");
+        this.router.navigate(['/user']);
       }, error => {
         throw error;
       })
@@ -49,6 +50,6 @@ export class UpdateProfileComponent implements OnInit {
   }
   cancel()
   {
-    this.router.navigate(['/user'])
+    this.router.navigate(['/user']);
   }
 }

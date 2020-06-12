@@ -60,8 +60,13 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 		MessageResponse response = new MessageResponse("Please login first.", false);
 		return new ResponseEntity<MessageResponse>(response, HttpStatus.UNAUTHORIZED);
 	}
-	@ExceptionHandler({ BadRequestException.class, StripeException.class })
-	public final ResponseEntity<?> handleBadRequestExceptionAndStripeException(Exception ex, WebRequest request) {
+	@ExceptionHandler(BadRequestException.class)
+	public final ResponseEntity<?> handleBadRequestException(BadRequestException ex, WebRequest request) {
+		MessageResponse response = new MessageResponse(ex.getLocalizedMessage(), false);
+		return new ResponseEntity<MessageResponse>(response, HttpStatus.BAD_REQUEST);
+	}
+	@ExceptionHandler(StripeException.class)
+	public final ResponseEntity<?> handleStripeException(StripeException ex, WebRequest request) {
 		MessageResponse response = new MessageResponse(ex.getLocalizedMessage(), false);
 		return new ResponseEntity<MessageResponse>(response, HttpStatus.BAD_REQUEST);
 	}
