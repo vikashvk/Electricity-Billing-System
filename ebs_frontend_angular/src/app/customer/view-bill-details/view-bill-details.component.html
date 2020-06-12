@@ -1,11 +1,7 @@
-<<<<<<< HEAD
 <br>
 <br>
 <br>
 <br>
-=======
-<br><br><br><br>
->>>>>>> 56da2a93ddbedf20ca0da04040ed47b5577d856d
 <div>
     <h3>Bill Details</h3>
     <!-- <mat-spinner></mat-spinner> -->
@@ -48,7 +44,7 @@
         <tr>
             <td>Status: </td>
             <td>{{bill.flagpaid==0?"Not Paid":"Paid"}}</td>
-            <td *ngIf="bill.flagpaid==0"><button *ngIf="bill.flagpaid==0"
+            <td *ngIf="bill.flagpaid==0"><button  class="btn btn-success"*ngIf="bill.flagpaid==0"
                     (click)="makePayment(bill.id,bill.billfine + bill.billamount)">Pay</button></td>
         </tr>
 

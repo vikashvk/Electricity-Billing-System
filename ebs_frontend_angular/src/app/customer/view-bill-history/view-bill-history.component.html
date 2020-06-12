@@ -1,11 +1,7 @@
-<<<<<<< HEAD
+<body><br>
 <br>
 <br>
 <br>
-<br>
-=======
-<br><br><br><br>
->>>>>>> 56da2a93ddbedf20ca0da04040ed47b5577d856d
 <div class="container">
   <table class="table">
     <thead>
@@ -25,8 +21,8 @@
         <td>{{bill.billamount + bill.billfine}}</td>
         <td>{{bill.flagpaid==0?"Not Paid":"Paid"}}</td>
         <td><button (click)="viewBillDetails(bill.id)">View</button>&nbsp;|&nbsp;<button
-            (click)="downloadBillPdf(bill.id)">Download</button>&nbsp;|&nbsp;<button
-            *ngIf="bill.flagpaid==0" (click)="makePayment(bill.id,bill.billfine + bill.billamount)">Pay</button></td>
+            (click)="downloadBillPdf(bill.id)">Download</button>&nbsp;<button
+            *ngIf="bill.flagpaid==0" (click)="makePayment(bill.id,bill.billfine + bill.billamount)">|&nbsp;Pay</button></td>
 
       </tr>
     </tbody>
@@ -35,3 +31,4 @@
     No Bills found!
   </div>
 </div>
+</body>

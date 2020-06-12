@@ -70,11 +70,8 @@
                 disabled name="country" [(ngModel)]="customerDetails.country" required>
         </div>
         <div class="form-group">
-<<<<<<< HEAD
+
             <label for="pincode">Pin Code :</label>
-=======
-            <label for="pincode">Pincode :</label>
->>>>>>> 56da2a93ddbedf20ca0da04040ed47b5577d856d
             <input type="text" #pincode="ngModel" ngModel [class.is-invalid]="pincode.invalid && pincode.touched" class="form-control"
                 name="pincode" pattern="^[0-9]{6}|[0-9]{3}\\s[0-9]{3}"  [(ngModel)]="customerDetails.pincode" required>
             <div *ngIf="pincode.errors && (pincode.invalid && pincode.touched)">
@@ -84,7 +81,7 @@
         </div>
 
         <input type="submit" [disabled]="updateProfileForm.invalid" id="submitbutton" class="btn" value="Update" />
-        <input type="submit"  id="submitbutton" class="btn" (click)="cancel()" value="cancel" />
+&nbsp;&nbsp;        <input type="submit"  id="submitbutton" class="btn" (click)="cancel()" value="cancel" />
 
     </form>
 </div><br><br>
