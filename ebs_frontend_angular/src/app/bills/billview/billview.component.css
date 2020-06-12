@@ -1,17 +1,4 @@
-table{
-    display:block;  
-    border:1px solid red;  
-    margin-top:50px;    
-    }
-    h2{
-        margin: 1.414%;
-    }
-    tbody{
-     display:block;
-     overflow-y:scroll; 
-    height:350px;    
-    }th{
-    width:350px;     
-    }td{
-    width:350px;    
-    }
+
+    th{
+        background-color: #1fb0bb;
+        color: white;}    

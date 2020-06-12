@@ -50,7 +50,7 @@
   }
   .wrapper {
     background: #50a3a2;
-    background: linear-gradient(to bottom right, #edb0ad 0%, #e35a53 100%);
+    background: linear-gradient(to bottom right, #72a9dd 0%, #1f74ad 100%);
     position: absolute;
     left: 0;
     width: 100%;
@@ -104,7 +104,7 @@
   form input:focus {
     background-color: white;
     width: 300px;
-    color: #ad1c1c;
+    color: #1487d3;
   }
   
   form select {
@@ -132,19 +132,19 @@
   form select:focus {
     background-color: white;
     width: 300px;
-    color: #ad1c1c;
+    color: #1c56ad;
   }
   form button {
     -webkit-appearance: none;
        -moz-appearance: none;
             appearance: none;
-    outline: 0;
-    background-color: #e8ff80;
-    border: 0;
+    outline: 1;
+    background-color: #12248f;
+    border: 0.5;
     padding: 10px 15px;
-    color: #ad1c1c;
+    color: #1c56ad;
     border-radius: 3px;
-    width: 250px;
+    width: 450px;
     cursor: pointer;
     font-size: 18px;
     transition-duration: 0.25s;

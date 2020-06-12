@@ -1,9 +1,10 @@
+<br><br><br><br>
 <div class="panel panel-primary">
         <div class="panel-heading">
           <h2>Bill List</h2>
         </div>
         <div class="panel-body">
-          <table class="table table-striped">
+          <table class="table table-dark table-hover">
             <thead>
               <tr>
                 <th><h6>Bill ID</h6></th>
@@ -21,14 +22,10 @@
                 <td>{{bil.billamount}}</td>
                 <td>
                     <button (click)="updateBill(bil.id)" class="btn btn-info">Edit</button>
-                    <button (click)="deleteBill(bil.id)" class="btn btn-danger">Delete</button>
+                    &nbsp;&nbsp;         <button (click)="deleteBill(bil.id)" class="btn btn-danger">Delete</button>
                </td> 
               </tr>
             </tbody>
           </table>
         </div>
       </div>
-      <app-footer class="footer"></app-footer>
-    
-      
-      
