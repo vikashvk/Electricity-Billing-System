@@ -20,7 +20,7 @@ ebs_backend_springboot/.idea
 ebs_backend_springboot/.project
 ebs_backend_springboot/.classpath
 ebs_backend_springboot/.c9/
-ebs_backend_springboot/src/main/resources/application.yml
+#ebs_backend_springboot/src/main/resources/application.yml
 *.launch
 ebs_backend_springboot/.settings/
 *.sublime-workspace
