@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./user-registration.component.css']
 })
 export class UserRegistrationComponent {
-  successMessage: string = "Registered successfully, Login to continue.";
+  successMessage: string = "Registered successfully, Verify your mail before login.";
   hide: boolean = true;
   constructor(private toastr: ToastrService, private userAuthService: UserAuthService, private router: Router) { }
   registerCustomer(regDetails: RegistrationModel) {

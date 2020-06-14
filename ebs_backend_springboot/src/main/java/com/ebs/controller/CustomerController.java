@@ -40,6 +40,7 @@ import com.ebs.service.CustomerService;
 public class CustomerController {
 	@Autowired
 	private CustomerService customerService;
+	
 
 	@GetMapping("/users/me")
 	@PreAuthorize("hasRole('USER')")
@@ -91,17 +92,17 @@ public class CustomerController {
 		List<Bill> bills = customerService.getAllBills(currentUser.getId());
 		return ResponseEntity.ok(bills);
 	}
+
 	@GetMapping("/payments")
 	@PreAuthorize("hasRole('USER')")
 	public ResponseEntity<?> getAllPayments(@CurrentUser UserPrincipal currentUser) {
 		List<Payment> payments = customerService.getAllPayments(currentUser.getId());
 		return ResponseEntity.ok(payments);
 	}
-	
+
 	@PostMapping("/users/give-feedback")
 	@PreAuthorize("hasRole('USER')")
-	public ResponseEntity<?> giveFeedback(@CurrentUser UserPrincipal currentUser, @RequestBody Feedback feed)
-	{
+	public ResponseEntity<?> giveFeedback(@CurrentUser UserPrincipal currentUser, @RequestBody Feedback feed) {
 		Feedback feed1 = customerService.giveFeedback(currentUser, feed);
 		return ResponseEntity.ok(feed1);
 	}

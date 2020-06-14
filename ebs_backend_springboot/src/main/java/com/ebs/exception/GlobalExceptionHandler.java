@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -68,6 +69,11 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	@ExceptionHandler(StripeException.class)
 	public final ResponseEntity<?> handleStripeException(StripeException ex, WebRequest request) {
 		MessageResponse response = new MessageResponse(ex.getLocalizedMessage(), false);
+		return new ResponseEntity<MessageResponse>(response, HttpStatus.BAD_REQUEST);
+	}
+	@ExceptionHandler(DisabledException.class)
+	public final ResponseEntity<?> handleDisabledException(DisabledException ex, WebRequest request) {
+		MessageResponse response = new MessageResponse("Please verify your email first", false);
 		return new ResponseEntity<MessageResponse>(response, HttpStatus.BAD_REQUEST);
 	}
 	/*

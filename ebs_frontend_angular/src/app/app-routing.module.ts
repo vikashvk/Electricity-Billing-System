@@ -21,6 +21,7 @@ import { IntroComponent } from './intro/intro.component';
 import { ServiceebsComponent } from './serviceebs/serviceebs.component';
 import { TeamsComponent } from './teams/teams.component';
 import { AboutComponent } from './about/about.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 const routes: Routes = [
@@ -51,6 +52,10 @@ const routes: Routes = [
   },
   {
     path: 'login', component: UserLoginComponent
+  },
+  
+  {
+    path: 'reset-password', component: ResetPasswordComponent
   },
   {
     path: 'payment', component: CreditCardFormComponent

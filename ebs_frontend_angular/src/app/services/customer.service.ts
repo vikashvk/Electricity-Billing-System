@@ -4,6 +4,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { ChangePasswordModel } from '../models/change-password-model';
 import { CustomerDetail } from '../models/customer-detail';
 import { feedback } from '../models/feedback';
+import { ResetPasswordModel } from '../models/reset-password';
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +15,24 @@ export class CustomerService {
   private amountSource = new BehaviorSubject<number>(0);
   currentamount = this.amountSource.asObservable();
   constructor(@Inject('API_URL') private apiUrl: string, private http: HttpClient) { }
-  changeBillDetails(billId: number,amount:number) {
+  changeBillDetails(billId: number, amount: number) {
     this.billIdSource.next(billId);
     this.amountSource.next(amount);
   }
+  //get current logged in customer profile
   public getCustomerProfile() {
     let path: string = 'api/v1/users/me';
     return this.http.get<any>(this.apiUrl + path);
+  }
+  //sends a password reset link to the email
+  getPasswordResetToken(email: string) {
+    let path: string = 'auth/get-password-reset-token';
+    return this.http.get(this.apiUrl + path + '?email=' + email);
+  }
+  //resets current password
+  resetPassword(resetPasswordBody: ResetPasswordModel) {
+    let path: string = 'auth/reset-password';
+    return this.http.put(this.apiUrl + path, resetPasswordBody);
   }
   //returns all the bills
   getAllBills(): Observable<any> {

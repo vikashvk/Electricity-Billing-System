@@ -33,6 +33,7 @@ import { CustomerviewComponent } from './bills/customerview/customerview.compone
 import { UpdateBillViewComponent } from './bills/update-bill-view/update-bill-view.component';
 import { ViewallCustomersComponent } from './bills/viewall-customers/viewall-customers.component';
 import { ViewallbillsComponent } from './bills/viewallbills/viewallbills.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +52,7 @@ import { ViewallbillsComponent } from './bills/viewallbills/viewallbills.compone
     UpdateBillViewComponent,
     ViewallCustomersComponent,
     ViewallbillsComponent,
-    AdminpageComponent, UserLoginComponent, RedirectHandlerComponent, UserRegistrationComponent, PageNotFoundComponent, LogoutComponent, CreditCardFormComponent,
+    AdminpageComponent, UserLoginComponent, RedirectHandlerComponent, UserRegistrationComponent, PageNotFoundComponent, LogoutComponent, CreditCardFormComponent, ResetPasswordComponent,
 
   ],
   imports: [

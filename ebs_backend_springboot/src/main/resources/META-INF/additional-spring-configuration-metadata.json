@@ -13,5 +13,10 @@
     "name": "app.oauth2.authorized-redirect-uris",
     "type": "java.lang.String",
     "description": "A description for 'app.oauth2.authorized-redirect-uris'"
+  },
+  {
+    "name": "app.application-url",
+    "type": "java.lang.String",
+    "description": "A description for 'app.application-url'"
   }
 ]}

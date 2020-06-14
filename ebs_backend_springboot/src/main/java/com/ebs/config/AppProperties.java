@@ -11,6 +11,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  */
 @ConfigurationProperties(prefix = "app")
 public class AppProperties {
+	private String applicationUrl;
+private String frontEndUrl;
 	private final Auth auth = new Auth();
 	private final OAuth2 oauth2 = new OAuth2();
 
@@ -55,4 +57,21 @@ public class AppProperties {
 	public OAuth2 getOauth2() {
 		return oauth2;
 	}
+
+	public String getApplicationUrl() {
+		return applicationUrl;
+	}
+
+	public void setApplicationUrl(String applicationUrl) {
+		this.applicationUrl = applicationUrl;
+	}
+
+	public String getFrontEndUrl() {
+		return frontEndUrl;
+	}
+
+	public void setFrontEndUrl(String frontEndUrl) {
+		this.frontEndUrl = frontEndUrl;
+	}
+	
 }
