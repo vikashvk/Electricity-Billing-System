@@ -73,7 +73,7 @@ const routes: Routes = [
   {
     path: 'user'
     , loadChildren: () => import('./customer/customer.module').then(m => m.CustomerModule)
-    // , canActivateChild:[AuthGuardService]
+    , canActivateChild:[AuthGuardService]
   },
   {
     path: 'customerView', component: CustomerviewComponent
