@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ResetPasswordModel } from '../models/reset-password';
+
 import { ToastrService } from 'ngx-toastr';
-import { CustomerService } from '../services/customer.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
+import { CustomerService } from '../services/customer.service';
+import { ResetPasswordModel } from '../models/reset-password';
 @Component({
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
@@ -31,7 +32,7 @@ export class ResetPasswordComponent implements OnInit {
         error => {
           this.token = null;
           throw error;
-          
+
         });
   }
   getPasswordResetToken(data: any) {
