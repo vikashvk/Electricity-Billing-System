@@ -18,7 +18,7 @@ export class ViewProfileComponent implements OnInit {
     this.viewCustomerProfile();
   }
  
-  viewCustomerProfile()
+  viewCustomerProfile()//fetches customer detail from customer service
   {
     var profile = this.service.getProfileDetails();
     profile.subscribe((data)=>

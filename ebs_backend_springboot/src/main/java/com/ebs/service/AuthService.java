@@ -10,6 +10,12 @@ import org.springframework.stereotype.Service;
 import com.ebs.payload.LoginRequest;
 import com.ebs.security.TokenProvider;
 
+/**
+ * Provides Authentication related features
+ * 
+ * @author Poonamchand Sahu
+ *
+ */
 @Service
 public class AuthService {
 	@Autowired
@@ -18,6 +24,12 @@ public class AuthService {
 	@Autowired
 	private TokenProvider tokenProvider;
 
+	/**
+	 * Gets the credentials form loginRequest and logs in the user
+	 * 
+	 * @param loginRequest
+	 * @return String JWT
+	 */
 	public String authenticateUser(LoginRequest loginRequest) {
 		Authentication authentication = authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
@@ -25,6 +37,4 @@ public class AuthService {
 		String token = tokenProvider.createToken(authentication);
 		return token;
 	}
-
-
 }

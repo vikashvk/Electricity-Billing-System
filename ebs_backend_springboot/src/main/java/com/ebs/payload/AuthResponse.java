@@ -1,6 +1,8 @@
 package com.ebs.payload;
 
 /**
+ * Used for sending response tokens
+ * 
  * @author Poonamchand Sahu
  * 
  */

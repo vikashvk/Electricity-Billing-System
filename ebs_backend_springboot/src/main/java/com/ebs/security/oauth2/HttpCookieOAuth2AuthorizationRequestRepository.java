@@ -11,6 +11,8 @@ import com.ebs.util.CookieUtils;
 import com.nimbusds.oauth2.sdk.util.StringUtils;
 
 /**
+ * Repository of HttpCookie for OAuth2 Authorization
+ * 
  * @author Poonamchand Sahu
  * 
  */

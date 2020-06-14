@@ -20,6 +20,12 @@ import be.quodlibet.boxable.HorizontalAlignment;
 import be.quodlibet.boxable.Row;
 import be.quodlibet.boxable.VerticalAlignment;
 
+/**
+ * PDF related features
+ * 
+ * @author Poonamchand Sahu
+ *
+ */
 public class PdfUtils {
 	public final static String PROJECT_NAME = "Electricity Billing Sytem";
 
@@ -48,19 +54,14 @@ public class PdfUtils {
 
 		boolean drawContent = true;
 		float bottomMargin = 30;
-		// y position is your coordinate of top left corner of the table
 		float yPosition = yStartNewPage;
 
 		BaseTable table = new BaseTable(yPosition, yStartNewPage, bottomMargin, tableWidth, margin, document, page,
 				true, drawContent);
-
-		// the parameter is the row height
 		Row<PDPage> headerRow = table.createRow(50);
-		// the first parameter is the cell width
 		Cell<PDPage> cell = headerRow.createCell(100, PROJECT_NAME);
 		cell.setFont(fontBold);
 		cell.setFontSize(20);
-		// vertical alignment
 		cell.setValign(VerticalAlignment.MIDDLE);
 		cell.setAlign(HorizontalAlignment.CENTER);
 		table.addHeaderRow(headerRow);
@@ -166,9 +167,7 @@ public class PdfUtils {
 		float tableHeight = table.getHeaderAndDataHeight();
 		System.out.println("tableHeight = " + tableHeight);
 
-		// close the content stream
 		cos.close();
-		// Finally Let's save the PDF
 		document.save(outputStream);
 		document.close();
 

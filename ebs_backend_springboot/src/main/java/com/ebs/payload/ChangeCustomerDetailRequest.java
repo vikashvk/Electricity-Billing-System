@@ -2,6 +2,12 @@ package com.ebs.payload;
 
 import javax.validation.constraints.NotBlank;
 
+/**
+ * Used for taking customer details for updating
+ * 
+ * @author Poonamchand Sahu
+ *
+ */
 public class ChangeCustomerDetailRequest {
 	@NotBlank(message = "First name cannot be blank")
 	private String firstName;

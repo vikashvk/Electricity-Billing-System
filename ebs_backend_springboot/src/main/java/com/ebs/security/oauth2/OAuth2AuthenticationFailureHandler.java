@@ -18,6 +18,8 @@ import static com.ebs.security.oauth2.HttpCookieOAuth2AuthorizationRequestReposi
 import java.io.IOException;
 
 /**
+ * Handles if the OAuth2 Authentication is failed
+ * 
  * @author Poonamchand Sahu
  * 
  */

@@ -6,13 +6,15 @@ import java.util.List;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * @author Poonamchand Sahu
+ * Contains properites from application.yml
  * 
+ * @author Poonamchand Sahu
+ *
  */
 @ConfigurationProperties(prefix = "app")
 public class AppProperties {
 	private String applicationUrl;
-private String frontEndUrl;
+	private String frontEndUrl;
 	private final Auth auth = new Auth();
 	private final OAuth2 oauth2 = new OAuth2();
 
@@ -73,5 +75,5 @@ private String frontEndUrl;
 	public void setFrontEndUrl(String frontEndUrl) {
 		this.frontEndUrl = frontEndUrl;
 	}
-	
+
 }

@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
+ * Filter used for verfying JWT
+ * 
  * @author Poonamchand Sahu
  * 
  */
@@ -53,6 +55,12 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
 		filterChain.doFilter(request, response);
 	}
 
+	/**
+	 * Fetches and returns JWT from the request header
+	 * 
+	 * @param request
+	 * @return String containing JWT
+	 */
 	private String getJwtFromRequest(HttpServletRequest request) {
 		String bearerToken = request.getHeader("Authorization");
 		if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {

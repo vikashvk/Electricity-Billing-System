@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -36,6 +34,12 @@ import com.ebs.repository.UserRepository;
 import com.ebs.security.UserPrincipal;
 import com.ebs.util.PdfUtils;
 
+/**
+ * Provides Customer related features
+ * 
+ * @author Poonamchand Sahu
+ *
+ */
 @Service
 public class CustomerService {
 	@Autowired
@@ -59,12 +63,23 @@ public class CustomerService {
 	@Autowired
 	private AppProperties appProperties;
 
-	// takes user id and return Customer Detail
+	/**
+	 * Returns customer detais for specific userId
+	 * 
+	 * @param userId
+	 * @return CustomerDetail
+	 * @throws if no user is found with provided userId
+	 */
 	public CustomerDetail getCurrentUserDetails(Long userId) {
 		return customerDetailRespository.findById(userId)
 				.orElseThrow(() -> new ResourceNotFoundException("User", "id", userId));
 	}
 
+	/**
+	 * Gets the user details from signUpRequest and registers the user
+	 * 
+	 * @param signUpRequest
+	 */
 	public void registerUser(SignUpRequest signUpRequest) {
 		if (userRepository.existsByEmail(signUpRequest.getEmail())) {
 			throw new BadRequestException("Email address already in use.");
@@ -97,6 +112,13 @@ public class CustomerService {
 
 	}
 
+	/**
+	 * Update customer details for provided userId and returns updated details
+	 * 
+	 * @param userId
+	 * @param changeCustomerDetailRequest
+	 * @return CustomerDetail
+	 */
 	public CustomerDetail updateCustomerDetails(Long userId, ChangeCustomerDetailRequest changeCustomerDetailRequest) {
 		CustomerDetail customerDetail = customerDetailRespository.findById(userId)
 				.orElseThrow(() -> new ResourceNotFoundException("User", "id", userId));
@@ -117,21 +139,35 @@ public class CustomerService {
 		return customerDetailRespository.save(customerDetail);
 	}
 
-	public void changePassword(UserPrincipal currentUser, @Valid ChangePasswordRequest changePasswordRequest) {
+	/**
+	 * Changes current User password
+	 * 
+	 * @param currentUser
+	 * @param changePasswordRequest
+	 */
+	public void changePassword(UserPrincipal currentUser, ChangePasswordRequest changePasswordRequest) {
 		String requestCurrentPassword = changePasswordRequest.getCurrentPassword();
+		String requestNewPassword = changePasswordRequest.getNewPassword();
 		String encodedCurrentPassword = currentUser.getPassword();
 		boolean matches = passwordEncoder.matches(requestCurrentPassword, encodedCurrentPassword);
 		if (!matches) {
-			throw new BadRequestException("Incorrect password");
+			throw new BadRequestException("Incorrect password");// If current password and entered current password do
+																// not match
 		}
 		User user = userRepository.findById(currentUser.getId())
 				.orElseThrow(() -> new ResourceNotFoundException("User", "id", currentUser.getId()));
-		String newEncodedPassword = passwordEncoder.encode(changePasswordRequest.getNewPassword());
+		if (requestCurrentPassword.equals(requestNewPassword)) {
+			throw new BadRequestException("New password cannot be same as old password");// If current password and new
+																							// password are same
+		}
+		String newEncodedPassword = passwordEncoder.encode(requestNewPassword);
 		user.setPassword(newEncodedPassword);
 		userRepository.save(user);
 	}
 
 	/**
+	 * Verifies the email
+	 * 
 	 * @param token
 	 * @throws BadRequestException if provided token is invalid else sets
 	 *                             emailVerified of User to true
@@ -157,50 +193,10 @@ public class CustomerService {
 	}
 
 	/**
-	 * @param billId
-	 * @param custId
-	 * @return Byte array of Bill Pdf
-	 * @throws BadRequestException if IOException occurs
-	 */
-	public byte[] generateBillPdf(Long billId, Long custId) {
-		Bill bill = getBillDetails(billId, custId);
-		CustomerDetail customer = getCurrentUserDetails(custId);
-		byte[] contents;
-		try {
-			contents = PdfUtils.generateBillPdf(bill, customer);
-		} catch (IOException e) {
-			throw new BadRequestException("Unable to process your request.");
-		}
-		return contents;
-	}
-
-	public Bill getBillDetails(Long billId, Long custId) {
-		Bill bill = billDao.findById(billId).orElseThrow(() -> new ResourceNotFoundException("Bill", "id", billId));
-		System.out.println(bill.getCustomerid());
-		System.out.println(custId);
-		if (!bill.getCustomerid().equals(custId)) {
-			throw new BadRequestException("You not are authorized to access this resource");
-		}
-		return bill;
-	}
-
-	public List<Bill> getAllBills(Long custId) {
-		return billDao.findAllByCustomerid(custId);
-	}
-
-	public List<Payment> getAllPayments(Long custId) {
-		return paymentRepository.findAllByCustId(custId);
-	}
-
-	public Feedback giveFeedback(UserPrincipal currentUser, Feedback feed) {
-		feed.setCustId(currentUser.getId());
-		return feedbackDao.save(feed);
-	}
-
-	/**
+	 * Generates password reset token and sends email
+	 * 
 	 * @param email
 	 * @throws ResourceNotFoundException if user not found with provided email
-	 * @apiNote Generates password reset token and sends email
 	 */
 	public void getPasswordResetToken(String email) {
 		User user = userRepository.findByEmail(email)
@@ -211,9 +207,10 @@ public class CustomerService {
 	}
 
 	/**
+	 * Matches the token and sets new password
+	 * 
 	 * @param passwordResetRequest
 	 * @return void
-	 * @apiNote matches the token and sets new password
 	 * @throws BadRequestException if token is invalid or expired.
 	 * 
 	 */
@@ -242,9 +239,82 @@ public class CustomerService {
 	}
 
 	/**
+	 * 
+	 * Returns Bill of billId
+	 * 
+	 * @param billId
+	 * @param custId
+	 * @return Bill of billId
+	 * @throws BadRequestException       if user is not authorized to access bill of
+	 *                                   billId
+	 * @throws ResourceNotFoundException if bill of billId is not found
+	 */
+	public Bill getBillDetails(Long billId, Long custId) {
+		Bill bill = billDao.findById(billId).orElseThrow(() -> new ResourceNotFoundException("Bill", "id", billId));
+		System.out.println(bill.getCustomerid());
+		System.out.println(custId);
+		if (!bill.getCustomerid().equals(custId)) {
+			throw new BadRequestException("You not are authorized to access this resource");
+		}
+		return bill;
+	}
+
+	/**
+	 * Generates bill pdf
+	 * 
+	 * @param billId
+	 * @param custId
+	 * @return Byte[] of Bill Pdf
+	 * @throws BadRequestException if IOException occurs
+	 */
+	public byte[] generateBillPdf(Long billId, Long custId) {
+		Bill bill = getBillDetails(billId, custId);
+		CustomerDetail customer = getCurrentUserDetails(custId);
+		byte[] contents;
+		try {
+			contents = PdfUtils.generateBillPdf(bill, customer);
+		} catch (IOException e) {
+			throw new BadRequestException("Unable to process your request.");
+		}
+		return contents;
+	}
+
+	/**
+	 * Returns all the bills for a provided custId
+	 * 
+	 * @param custId
+	 * @return List of Bill
+	 */
+	public List<Bill> getAllBills(Long custId) {
+		return billDao.findAllByCustomerid(custId);
+	}
+
+	/**
+	 * Returns all the payments for a provided custId
+	 * 
+	 * @param custId
+	 * @return List of Payment
+	 */
+	public List<Payment> getAllPayments(Long custId) {
+		return paymentRepository.findAllByCustId(custId);
+	}
+
+	/**
+	 * Presist the feedback
+	 * 
+	 * @param currentUser
+	 * @param feed
+	 * @return Feedback
+	 */
+	public Feedback giveFeedback(UserPrincipal currentUser, Feedback feed) {
+		feed.setCustId(currentUser.getId());
+		return feedbackDao.save(feed);
+	}
+
+	/**
+	 * Sends password reset link with token to provided email
 	 * @param email
 	 * @param token
-	 * @apiNote Sends password reset link with token to provided email
 	 */
 	private void sendPasswordResetToken(String email, String token) {
 		String appUrl = appProperties.getFrontEndUrl();
@@ -260,9 +330,10 @@ public class CustomerService {
 	}
 
 	/**
+	 * Send verification mail to `email` with `token`.
 	 * @param email
 	 * @param token
-	 * @param name  Send verification mail to `email` with `token`.
+	 * @param name  
 	 */
 	private void sendVerificationMail(String email, String token, String name) {
 		String appUrl = appProperties.getApplicationUrl();

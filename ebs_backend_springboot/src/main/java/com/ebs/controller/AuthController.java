@@ -27,6 +27,8 @@ import com.ebs.service.AuthService;
 import com.ebs.service.CustomerService;
 
 /**
+ * Controller For Authentication related features
+ * 
  * @author Poonamchand Sahu
  * 
  */
@@ -39,14 +41,22 @@ public class AuthController {
 	@Autowired
 	private CustomerService customerService;
 
-//logs the user in
+	/**
+	 * Logs the user in
+	 * 
+	 * @param loginRequest contains Email and Password
+	 */
 	@PostMapping("/login")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 		String token = authService.authenticateUser(loginRequest);
 		return ResponseEntity.ok(new AuthResponse(token));
 	}
 
-//registers the user
+	/**
+	 * Registers the user
+	 * 
+	 * @param signUpRequest contains user details
+	 */
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
 		customerService.registerUser(signUpRequest);
@@ -54,7 +64,12 @@ public class AuthController {
 		return ResponseEntity.created(location).build();
 	}
 
-//verifies email based on token 
+	/**
+	 * Verifies email based on token
+	 * 
+	 * @param token
+	 * @return
+	 */
 	@GetMapping("/verify-email")
 	public ResponseEntity<?> verifyEmail(@RequestParam("token") String token) {
 		String loginUrl = "http://localhost:4200/login";
@@ -65,14 +80,24 @@ public class AuthController {
 		return new ResponseEntity<String>(content, responseHeaders, HttpStatus.OK);
 	}
 
-//sends password reset email
+	/**
+	 * Sends password reset link to email
+	 * 
+	 * @param email
+	 * @return
+	 */
 	@GetMapping("/get-password-reset-token")
 	public ResponseEntity<?> getPasswordResetToken(@Email(message = "Not a valid email") @RequestParam String email) {
 		customerService.getPasswordResetToken(email);
 		return ResponseEntity.ok().build();
 	}
 
-	// Resets the password
+	/**
+	 * Resets the password
+	 * 
+	 * @param passwordResetRequest contains new password and confirmation token
+	 * @return
+	 */
 	@PutMapping("/reset-password")
 	public ResponseEntity<?> resetPassword(@Valid @RequestBody PasswordResetRequest passwordResetRequest) {
 		customerService.resetPassword(passwordResetRequest);

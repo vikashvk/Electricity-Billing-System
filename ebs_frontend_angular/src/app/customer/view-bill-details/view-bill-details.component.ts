@@ -12,6 +12,7 @@ export class ViewBillDetailsComponent implements OnInit {
   bill: any;
   constructor(private router: Router, private location: Location, private route: ActivatedRoute, private customerService: CustomerService) { }
   ngOnInit(): void {
+    //fetches the bill Id from params and then fetches bill details from customer service
     this.route.params
       .pipe(switchMap((params: Params) => { return this.customerService.getBillDetails(params['id']); }))
       .subscribe((data) => {
@@ -24,6 +25,7 @@ export class ViewBillDetailsComponent implements OnInit {
 
   }
   makePayment(billId: number, amount: number) {
+    //makes payment of billId
     this.customerService.changeBillDetails(billId, amount);
     this.router.navigate(['/payment']);
   }

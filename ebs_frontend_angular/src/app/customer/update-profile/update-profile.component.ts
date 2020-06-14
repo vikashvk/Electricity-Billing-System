@@ -12,13 +12,13 @@ import { ToastrService } from 'ngx-toastr';
 export class UpdateProfileComponent implements OnInit {
 
 
-  constructor(private toastr: ToastrService,private customerService: CustomerService, private router: Router) { }
+  constructor(private toastr: ToastrService, private customerService: CustomerService, private router: Router) { }
   customerDetails: CustomerDetail = <CustomerDetail>{};
-  
+
   ngOnInit(): void {
     this.getProfileDetails();
   }
-  updateProfileDetails(newCustomerDetails: CustomerDetail) {
+  updateProfileDetails(newCustomerDetails: CustomerDetail) {//updates the profile, when successful redirects to /user
     console.log(newCustomerDetails);
     this.customerService.updateProfileDetails(newCustomerDetails)
       .subscribe((data) => {
@@ -30,13 +30,14 @@ export class UpdateProfileComponent implements OnInit {
       })
   }
   getProfileDetails() {
+    //Gets current user details 
     this.customerService.getProfileDetails()
       .subscribe((data) => {
         console.log(data);
         this.customerDetails.firstName = data.firstName;
-        
+
         this.customerDetails.lastName = data.lastName;
-        
+
         this.customerDetails.mobile = data.mobile;
         this.customerDetails.line1 = data.address.line1;
         this.customerDetails.line2 = data.address.line2;
@@ -48,8 +49,7 @@ export class UpdateProfileComponent implements OnInit {
         throw error;
       })
   }
-  cancel()
-  {
+  cancel() {
     this.router.navigate(['/user']);
   }
 }

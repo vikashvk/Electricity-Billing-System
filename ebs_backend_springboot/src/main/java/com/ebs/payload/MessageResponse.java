@@ -1,6 +1,8 @@
 package com.ebs.payload;
 
 /**
+ * Used for Sending only a message in response
+ * 
  * @author Poonamchand Sahu
  * 
  */

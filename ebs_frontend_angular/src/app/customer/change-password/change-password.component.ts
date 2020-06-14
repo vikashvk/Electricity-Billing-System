@@ -15,7 +15,7 @@ export class ChangePasswordComponent implements OnInit {
   customer1: any = {}
   ngOnInit(): void {
   }
-  changePassword(credentials: ChangePasswordModel) {
+  changePassword(credentials: ChangePasswordModel) {//Changes the password, when successful redirects to /user
     this.customerService.changePassword(credentials)
       .subscribe((data) => {
         console.log(data);
@@ -26,7 +26,7 @@ export class ChangePasswordComponent implements OnInit {
           throw error;
         });
   }
-  cancel() {
+  cancel() {//redirects to /user
     this.router.navigate(['/user']);
   }
 }

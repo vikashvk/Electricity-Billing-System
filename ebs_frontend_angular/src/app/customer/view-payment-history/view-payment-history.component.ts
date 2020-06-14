@@ -17,6 +17,7 @@ export class ViewPaymentHistoryComponent implements OnInit {
     this.getAllPayments();
   }
   getAllPayments() {
+    //fetches all the payments form customer service
     this.customerService.getAllPayments()
       .subscribe((data) => {
         console.log(data);

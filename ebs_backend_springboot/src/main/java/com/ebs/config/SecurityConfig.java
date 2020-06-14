@@ -24,6 +24,8 @@ import com.ebs.security.oauth2.OAuth2AuthenticationFailureHandler;
 import com.ebs.security.oauth2.OAuth2AuthenticationSuccessHandler;
 
 /**
+ * Contains Configurations for Spring Security
+ * 
  * @author Poonamchand Sahu
  * 
  */

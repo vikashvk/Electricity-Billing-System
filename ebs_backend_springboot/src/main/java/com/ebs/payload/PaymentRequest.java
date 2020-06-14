@@ -1,5 +1,11 @@
 package com.ebs.payload;
 
+/**
+ * Used for payment processing
+ * 
+ * @author Vikash
+ *
+ */
 public class PaymentRequest {
 	private String token;
 	private Long billId;

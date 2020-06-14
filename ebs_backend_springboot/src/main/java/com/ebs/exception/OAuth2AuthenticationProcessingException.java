@@ -3,6 +3,8 @@ package com.ebs.exception;
 import org.springframework.security.core.AuthenticationException;
 
 /**
+ * Triggered when error occurs during OAuth
+ * 
  * @author Poonamchand Sahu
  * 
  */

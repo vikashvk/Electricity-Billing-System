@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
+ * Sends response with Unauthorized status code if JWT validation is failed
+ * 
  * @author Poonamchand Sahu
  * 
  */

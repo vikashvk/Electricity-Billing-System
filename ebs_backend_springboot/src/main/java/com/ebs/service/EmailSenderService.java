@@ -11,6 +11,12 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
+/**
+ * Service for sending mails asynchronously
+ * 
+ * @author Poonamchand Sahu
+ *
+ */
 @Service("emailSenderService")
 public class EmailSenderService {
 
@@ -19,8 +25,7 @@ public class EmailSenderService {
 	public static int noOfQuickServiceThreads = 20;
 
 	/**
-	 * this statement create a thread pool of twenty threads here we are assigning
-	 * send mail task using ScheduledExecutorService.submit();
+	 * Creates a threadpool of `noOfQuickServiceThreads` threads
 	 */
 	private ScheduledExecutorService quickService = Executors.newScheduledThreadPool(noOfQuickServiceThreads);
 

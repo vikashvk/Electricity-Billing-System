@@ -22,6 +22,8 @@ import java.net.URI;
 import java.util.Optional;
 
 /**
+ * Handles if the OAuth2 Authentication is successful
+ * 
  * @author Poonamchand Sahu
  * 
  */

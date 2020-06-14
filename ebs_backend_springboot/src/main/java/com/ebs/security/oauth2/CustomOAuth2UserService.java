@@ -26,6 +26,8 @@ import com.ebs.security.oauth2.user.OAuth2UserInfo;
 import com.ebs.security.oauth2.user.OAuth2UserInfoFactory;
 
 /**
+ * User Service for processing OAuth2
+ * 
  * @author Poonamchand Sahu
  * 
  */

@@ -4,6 +4,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 /**
+ * Used for login
+ * 
  * @author Poonamchand Sahu
  * 
  */

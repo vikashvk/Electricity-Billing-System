@@ -4,6 +4,9 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import java.lang.annotation.*;
 
 /**
+ * Abstraction for AuthenticationPrincipal which returns object of
+ * UserDetails(Spring Security)
+ * 
  * @author Poonamchand Sahu
  * 
  */

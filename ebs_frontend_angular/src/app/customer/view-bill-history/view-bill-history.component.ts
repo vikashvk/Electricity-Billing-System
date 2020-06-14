@@ -15,6 +15,7 @@ export class ViewBillHistoryComponent implements OnInit {
     this.getAllBills();
   }
   getAllBills() {
+    //fetches all the bills from customer service
     this.customerService.getAllBills()
       .subscribe((data) => {
         console.log(data);
@@ -24,6 +25,7 @@ export class ViewBillHistoryComponent implements OnInit {
       })
   }
   downloadBillPdf(billId: number) {
+    //download bill of billId
     this.customerService.downloadBillPdf(billId).subscribe(
       data => {
 
