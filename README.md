@@ -10,11 +10,11 @@ The main aim of this module is provide all the functionality related to customer
 
 Features of Customer Module:
 
-•	Admin can add new customer records
-•	Admin can see the list of customer details
-•	Only admin can edit and update the record of the customer
-•	Admin will be able to delete the records of the customer
-•	All customer forms are validated on client side 
+* Admin can add new customer records
+*	Admin can see the list of customer details
+*	Only admin can edit and update the record of the customer
+*	Admin will be able to delete the records of the customer
+*	All customer forms are validated on client side 
 
 # 2)	Bill Module:
 
@@ -22,10 +22,10 @@ The main aim for developing this module is to manage the bill. This bill module 
 
 Features of Bill Module:
 
-•	Admin can manage the bill
-•	Admin can edit/delete the bill
-•	Admin can see the list of all bill
-•	Customer can see his bill
+*	Admin can manage the bill
+*	Admin can edit/delete the bill
+*	Admin can see the list of all bill
+*	Customer can see his bill
 
 # 3)	Payment Module:
 
@@ -33,27 +33,28 @@ The main aim of this module is provide all the functionality related to payment.
 
 Features of Payment Module:
 
-•	Admin can add new payment
-•	Admin can see the list of payment details
-•	Only admin can edit and update the record of the payment
-•	Admin will be able to delete the records of the payment
-•	All payment forms are validated on client side.
+*	Admin can add new payment
+*	Admin can see the list of payment details
+*	Only admin can edit and update the record of the payment
+*	Admin will be able to delete the records of the payment
+*	All payment forms are validated on client side.
 
 
 There are two types of users available in the project:
 
-•	Customer:  With limited access.
-•	Admin: With full access.
+*	Customer:  With limited access.
+*	Admin: With full access.
 
 1)	Functionality performed by Customer user:
 
-•	Registration for Customer
-•	Login for Customer
-•	Forgot password for Customer
-•	Change Password for Customer
-•	Edit Profile for Customer
-•	View his Payment History
-•	View his Bill History
+*	Registration for Customer
+*	Login for Customer
+*	Forgot password for Customer
+*	Change Password for Customer
+*	Edit Profile for Customer
+*	View his Payment History
+*	View his Bill History
+* Send Feedback
 
 2)	Functionality performed by Admin user:
 
