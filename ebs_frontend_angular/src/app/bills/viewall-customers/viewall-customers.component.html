@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<br><br><br><br>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Customer List</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-dark table-hover">
+        <thead>
+          <tr>
+            <th ><h6>Customer ID</h6></th>
+            <th><h6>First Name</h6></th>
+            <th><h6>Last Name</h6></th>
+            <th><h6>Phone Number</h6></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cust of custdet | async">
+            <td>{{cust.custId}}</td>
+            <td>{{cust.firstName}}</td>
+            <td>{{cust.lastName}}</td>
+            <td>{{cust.mobile}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- <app-footer class="footer"></app-footer> -->
+
+
+  
+  

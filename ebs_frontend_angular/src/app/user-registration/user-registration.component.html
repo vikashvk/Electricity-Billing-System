@@ -1,0 +1,82 @@
+<div class="login">
+  <div class="limiter">
+    <div class="container-login100">
+      <div class="login100-more" style="background-image: url('assets/images/bg-01.jpg');"></div>
+
+      <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
+        <form novalidate #registerForm="ngForm" class="login100-form validate-form"
+          (ngSubmit)="registerCustomer(registerForm.value)">
+          <span class="login100-form-title p-b-5">
+            Register Yourself!
+          </span>
+          
+          
+          <div class="wrap-input100 validate-input" data-validate="First Name is required"
+            [ngClass]="{ 'has-error': firstName.errors?.required || firstName.errors?.pattern }">
+            <span class="label-input100">First Name</span>
+            <input class="input100" placeholder="Enter First Name" type="text" name="firstName"
+              pattern="^[A-Z]+[a-z A-Z]*$" #firstName="ngModel" ngModel required>
+            <span class="focus-input100"></span>
+          </div>
+          <div class="help-block" *ngIf="firstName.errors?.required">First Name is required</div>
+          <div class="help-block" *ngIf="firstName.errors?.pattern">First letter should be capital</div>
+          
+          <div class="wrap-input100 validate-input" data-validate="Last Name is required"
+            [ngClass]="{ 'has-error': lastName.errors?.required }">
+            <span class="label-input100">Last Name</span>
+            <input class="input100" placeholder="Enter Last Name" type="text" name="lastName" pattern="^[A-Z]+[a-z A-Z]*$"  #lastName="ngModel"
+              ngModel required>
+            <span class="focus-input100"></span>
+          </div>
+          <div class="help-block" *ngIf="lastName.errors?.required">Last Name is required</div>
+          <div class="help-block" *ngIf="lastName.errors?.pattern">First letter should be capital</div>
+
+
+          <div class="wrap-input100 validate-input" data-validate="Email is required"
+            [ngClass]="{ 'has-error': email.errors?.required || email.errors?.email }">
+            <span class="label-input100">Email</span>
+            <input class="input100" placeholder="Enter your Email" type="email" name="email" #email="ngModel" ngModel
+              required email>
+            <span class="focus-input100"></span>
+          </div>
+          <div class="help-block" *ngIf="email.errors?.required">Email is required</div>
+          <div class="help-block" *ngIf="email.errors?.email">Not a valid email</div>
+
+          <!-- Password -->
+          <div class="wrap-input100 validate-input" data-validate="Password is required"
+            [ngClass]="{ 'has-error': password.errors?.required || password.errors?.pattern }">
+            <span class="label-input100">Password</span>
+            <input class="input100" placeholder="Choose a password" type="password" name="password"
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" #password="ngModel" ngModel required>
+              <ion-icon name="eye" color="red" item-end></ion-icon>
+            <span class="focus-input100"></span>
+          </div>
+          <div class="help-block" *ngIf="password.errors?.required">Password is required</div>
+          <div class="help-block" *ngIf="password.errors?.pattern">Must contain at least one number and one uppercase
+            and lowercase</div>
+          <!-- Confirm Password -->
+          <div class="wrap-input100 validate-input" data-validate="Confirm Password is required"
+            [ngClass]="{ 'has-error': confirmPassword.errors?.required}">
+            <span class="label-input100">Password</span>
+            <input class="input100" placeholder="Confirm you password" type="password" name="confirmPassword"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"  #confirmPassword="ngModel" ngModel required>
+            <span class="focus-input100"></span>
+          </div>
+          <div class="help-block" *ngIf="confirmPassword.errors?.required">Confirm Password is required</div>
+          <div class="help-block" *ngIf="confirmPassword.errors?.pattern">Must contain at least one number and one uppercase
+            and lowercase</div>
+          <div class="container-login100-form-btn">
+            <div class="wrap-login100-form-btn">
+              <div class="button-container">
+                <button type="submit" class="btn-solid-reg-sign page-scroll" [disabled]="registerForm.form.invalid">
+                  Register
+                </button>&nbsp;<span class="loginlink"><a class="btn btn-info "routerLink="/login">Login</a></span>
+              </div>
+
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

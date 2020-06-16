@@ -1,0 +1,37 @@
+<body><br>
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="panel-heading">
+        <h2>Bill History</h2>
+    </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Bill Id</th>
+        <th>Due Date</th>
+        <th>Total Payble</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let bill of bills">
+        <td>{{bill.id}}</td>
+        <td>{{bill.duedate}}</td>
+        <td>{{bill.billamount + bill.billfine}}</td>
+        <td>{{bill.flagpaid==0?"Not Paid":"Paid"}}</td>
+        <td><button (click)="viewBillDetails(bill.id)">View</button>&nbsp;|&nbsp;<button
+            (click)="downloadBillPdf(bill.id)">Download</button>&nbsp;<button
+            *ngIf="bill.flagpaid==0" (click)="makePayment(bill.id,bill.billfine + bill.billamount)">|&nbsp;Pay</button></td>
+
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="bills.length == 0">
+    No Bills found!
+  </div>
+</div>
+</body>

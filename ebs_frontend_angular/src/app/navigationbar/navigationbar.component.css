@@ -1,0 +1,27 @@
+
+.navbar{
+  background-color: #113448 !important;
+  transition: background-color 200ms linear;
+}
+/* 
+
+.navbar-fixed-top.scrolled {
+    background-color: #fff !important;
+    transition: background-color 200ms linear;
+  }
+  
+  .navbar-fixed-top.scrolled .nav-link {
+    color:#555;
+  } */
+  .btn-logout {
+    width: 100%;
+    padding: 3px 20px !important;
+    text-align: left !important;
+    cursor: pointer;
+  }
+  .btn-back {
+    width: 100%;
+    padding: 3px 20px !important;
+    text-align: left !important;
+    cursor: pointer;
+  }

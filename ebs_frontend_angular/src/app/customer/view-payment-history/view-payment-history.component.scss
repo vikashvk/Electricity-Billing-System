@@ -1,0 +1,43 @@
+// .table {
+//     border-collapse: collapse;
+//     width: 100%;
+//   }
+//   th{
+//       font-size: 35;
+//       color: blueviolet;
+//       background-color: rgb(9, 204, 238);
+//   }
+  
+//   tr:hover{background-color:#f3970d;}
+//   button:disabled {
+//     background-color: red;
+//     opacity: 0.6;
+//     cursor: not-allowed;
+    
+//   }
+.table {
+  border-collapse:unset;
+  width: 100%;
+}
+h2{
+  text-align: center;
+  font-family: "Allerta Stencil", Sans-serif;
+  }
+th{
+    font-size: 35;
+    color:#153e52;
+    background-color:#14d8aa
+    ;
+}
+.container{
+width: 100%;
+scrollbar-darkshadow-color:hue($color: #335c6d) ;
+}
+tr:hover{background-color:#2eb164;}
+button:disabled {
+  background-color: red;
+  opacity: 1.6;
+  cursor: not-allowed;
+  
+}
+body {background-color:#c0e9fd;}

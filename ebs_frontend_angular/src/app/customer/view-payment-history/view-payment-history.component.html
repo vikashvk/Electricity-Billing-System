@@ -1,0 +1,32 @@
+<body><br>
+<br>
+<br>
+<br>
+  <div class="container">
+      <div class="panel-heading">
+          <h2>Payment History</h2>
+      </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Payment Id</th>
+          <th>Date</th>
+          <th>Amount</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <tr *ngFor="let pay of payments">
+          <td>{{pay.id}}</td>
+          <td>{{pay.date}}</td>
+          <td>{{pay.amount +" Rs."}}</td>
+          <td>{{pay.status?"Paid":"Not Paid"}}</td>
+     </tr>
+      </tbody>
+    </table>
+    <div *ngIf="payments.length == 0">
+      No Payment History found!
+    </div>
+  </div>
+</body>

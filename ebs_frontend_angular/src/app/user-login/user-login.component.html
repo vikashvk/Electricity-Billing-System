@@ -1,0 +1,73 @@
+<style>A {text-decoration: none;} </style>
+
+<div class="login">
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="login100-more" style="background-image: url('assets/images/bg-01.jpg');"></div>
+
+            <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
+                <form [formGroup]="loginForm" class="login100-form validate-form" (ngSubmit)="login()">
+                    <span class="login100-form-title p-b-50">
+                        Hello Customer!
+                    </span>
+
+                    <div class="wrap-input100 validate-input" data-validate="Email is required"
+                        [ngClass]="{ 'has-error': formErrors.email }">
+                        <span class="label-input100">Email</span>
+                        <input class="input100" type="text" name="email" placeholder="Enter the email"
+                            formControlName="email">
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div *ngIf="formErrors.email" class="help-block">{{formErrors.email}}
+                    </div>
+                <br>
+                <br>
+                
+                <br>
+                    <div class="wrap-input100 validate-input" data-validate="Password is required"
+                        [ngClass]="{ 'has-error': formErrors.password }">
+                        <span class="label-input100">Password</span>
+                        <input class="input100" type="password" name="password"
+                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" placeholder="*************"
+                            formControlName="password">
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div *ngIf="formErrors.password" class="help-block">{{formErrors.password}}
+                    </div>
+
+                    <br>
+                    <br>
+                    
+                    <br>
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="button-container">
+                                <button type="submit" [disabled]="this.loginForm.invalid"
+                                    class="btn-solid-reg-sign page-scroll">
+                                    Login
+                                </button>
+                                <span class="registerlink"><a class="btn btn-info "routerLink="/register">Register</a></span>
+                                <span class="registerlink"><a class="btn btn-warning "routerLink="/reset-password">Forgot Password?</a></span>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </form>
+                <div>
+                    <a href="{{googleAuthUrl}}">
+                        <img src="assets/images/GButton.png" alt="alternative" width="150" height="70"></a>&nbsp;|&nbsp;
+                        
+                    <a href="{{facebookAuthUrl}}">
+                        <img src="assets/images/FButton.png" alt="alternative" width="150" height="70">
+                  
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

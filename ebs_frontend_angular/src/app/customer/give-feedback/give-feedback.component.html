@@ -1,0 +1,41 @@
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+    <form name="myForm" #feedbackForm="ngForm" (ngSubmit)="submitFeedbackForm(feedbackForm.value)">
+        <br>
+        <h5 style="color:#17A2B8 ">Any Suggestion</h5>
+        <hr style="background: #17A2B8">
+        <div class="form-group">
+            <label for="firstName">First Name :</label>
+            <input type="text" #firstName="ngModel"  [class.is-invalid]="firstName.invalid && firstName.touched"
+                disabled class="form-control" name="firstName" [(ngModel)]="customerDetails.firstName" ngModel required>
+            <div *ngIf="firstName.errors && (firstName.invalid && firstName.touched)">
+                <small class="text-danger" *ngIf="firstName.errors.required">First Name is required</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name :</label>
+            <input type="text" #lastName="ngModel"  [class.is-invalid]="lastName.invalid && lastName.touched"
+                disabled class="form-control" name="lastName" [(ngModel)]="customerDetails.lastName" ngModel required>
+            <div *ngIf="lastName.errors && (lastName.invalid && lastName.touched)">
+                <small class="text-danger" *ngIf="lastName.errors.required">Last Name is required</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="opinion">What is in your mind :</label>
+            <textarea #opinion="ngModel"  [class.is-invalid]="opinion.invalid && opinion.touched"
+                 class="form-control" name="opinion" ngModel required></textarea>
+                <div *ngIf="opinion.errors && (opinion.invalid && opinion.touched)">
+                <small class="text-danger" *ngIf="opinion.errors.required">Write something here</small>
+            </div>
+        </div>
+     
+        
+     
+        <input type="submit" [disabled]="feedbackForm.invalid" id="submitbutton" class="btn" value="Submit" />&nbsp;&nbsp;
+        <input type="submit"  id="submitbutton" class="btn" (click)="cancel()" value="cancel" />
+
+    </form>
+</div><br><br>

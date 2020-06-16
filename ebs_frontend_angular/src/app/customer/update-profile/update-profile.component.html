@@ -1,0 +1,87 @@
+<br><br><br><br>
+<div class="container">
+    <form name="myForm" #updateProfileForm="ngForm" (ngSubmit)="updateProfileDetails(this.customerDetails)">
+        <br>
+        <h5 style="color:#17A2B8 ">Update Profile</h5>
+        <hr style="background: #17A2B8">
+        <div class="form-group">
+            <label for="firstName">First Name :</label>
+            <input type="text" #firstName="ngModel" ngModel [class.is-invalid]="firstName.invalid && firstName.touched"
+            pattern="^[A-Z]+[a-z A-Z]*$"  class="form-control" name="firstName" [(ngModel)]="customerDetails.firstName" required>
+            <div *ngIf="firstName.errors && (firstName.invalid && firstName.touched)">
+                <small class="text-danger" *ngIf="firstName.errors.required">First Name is required</small>
+                <small class="text-danger" *ngIf="firstName.errors.pattern">First letter should be capital</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name :</label>
+            <input type="text" #lastName="ngModel" ngModel [class.is-invalid]="lastName.invalid && lastName.touched"
+            pattern="^[A-Z]+[a-z A-Z]*$" class="form-control" name="lastName" [(ngModel)]="customerDetails.lastName" required>
+            <div *ngIf="lastName.errors && (lastName.invalid && lastName.touched)">
+                <small class="text-danger" *ngIf="lastName.errors.required">Last Name is required</small>
+                <small class="text-danger" *ngIf="lastName.errors.pattern">First letter should be capital</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="mobile">Mobile :</label>
+            <input type="tel" #mobile="ngModel" ngModel pattern="[789][0-9]{9}"
+                [class.is-invalid]="mobile.invalid && mobile.touched" class="form-control" name="mobile"
+                [(ngModel)]="customerDetails.mobile" required>
+            <div *ngIf="mobile.errors && (mobile.invalid && mobile.touched)">
+                <small class="text-danger" *ngIf="mobile.errors.required">Mobile number is required</small>
+                <small class="text-danger" *ngIf="mobile.errors.pattern">Mobile number must be of 10 digit</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="line1">Address Line 1:</label>
+            <input type="text" #line1="ngModel" ngModel [class.is-invalid]="line1.invalid && line1.touched" class="form-control" name="line1"
+                [(ngModel)]="customerDetails.line1" required>
+            <div *ngIf="line1.errors && (line1.invalid && line1.touched)">
+                <small class="text-danger" *ngIf="line1.errors.required">Address Line 1 is required</small>
+              </div>
+        </div>
+        <div class="form-group">
+            <label for="line2">Address Line 2:</label>
+            <input type="text" #line2="ngModel" ngModel [class.is-invalid]="line2.invalid && line2.touched" class="form-control" name="line2"
+                [(ngModel)]="customerDetails.line2">
+           
+        </div>
+        <div class="form-group">
+            <label for="city">City :</label>
+            <input type="text" #city="ngModel" ngModel pattern="^[A-Z]+[a-zA-Z]*$" [class.is-invalid]="city.invalid && city.touched" class="form-control" name="city"
+                [(ngModel)]="customerDetails.city" required>
+            <div *ngIf="city.errors && (city.invalid && city.touched)">
+                <small class="text-danger" *ngIf="city.errors.required">City is required</small>
+                <small class="text-danger" *ngIf="city.errors.pattern">First letter of city should be capital.</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="state">State :</label>
+            <input type="text" #state="ngModel" ngModel [class.is-invalid]="state.invalid && state.touched" class="form-control"
+                name="state" pattern="^[A-Z]+[a-zA-Z]*$"  [(ngModel)]="customerDetails.state" required>
+            <div *ngIf="state.errors && (state.invalid && state.touched)">
+                <small class="text-danger" *ngIf="state.errors.required">State is required</small>
+                <small class="text-danger" *ngIf="state.errors.pattern">First letter of State should be capital.</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="country">Country :</label>
+            <input type="text" #country="ngModel" ngModel [class.is-invalid]="country.invalid && country.touched" class="form-control"
+                disabled name="country" [(ngModel)]="customerDetails.country" required>
+        </div>
+        <div class="form-group">
+
+            <label for="pincode">Pin Code :</label>
+            <input type="text" #pincode="ngModel" ngModel [class.is-invalid]="pincode.invalid && pincode.touched" class="form-control"
+                name="pincode" pattern="^[0-9]{6}|[0-9]{3}\\s[0-9]{3}"  [(ngModel)]="customerDetails.pincode" required>
+            <div *ngIf="pincode.errors && (pincode.invalid && pincode.touched)">
+                <small class="text-danger" *ngIf="pincode.errors.required">Pincode is required</small>
+                <small class="text-danger" *ngIf="pincode.errors.pattern">Not a valid pincode.</small>
+            </div>
+        </div>
+
+        <input type="submit" [disabled]="updateProfileForm.invalid" id="submitbutton" class="btn" value="Update" />
+&nbsp;&nbsp;        <input type="submit"  id="submitbutton" class="btn" (click)="cancel()" value="cancel" />
+
+    </form>
+</div><br><br>

@@ -1,0 +1,48 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+ebs_frontend_angular/dist
+ebs_frontend_angular/tmp
+ebs_frontend_angular/out-tsc
+# Only exists if Bazel was run
+ebs_frontend_angular/bazel-out
+
+# dependencies
+ebs_frontend_angular/node_modules
+
+ebs_frontend_angular/package-lock.json
+# profiling files
+ebs_frontend_angular/chrome-profiler-events*.json
+ebs_frontend_angular/speed-measure-plugin*.json
+
+# IDEs and editors
+ebs_backend_springboot/.idea
+ebs_backend_springboot/.project
+ebs_backend_springboot/.classpath
+ebs_backend_springboot/.c9/
+#ebs_backend_springboot/src/main/resources/application.yml
+*.launch
+ebs_backend_springboot/.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+ebs_frontend_angular/npm-debug.log
+ebs_frontend_angular/yarn-error.log
+ebs_frontend_angular/testem.log
+ebs_frontend_angular/typings
+.metadata
+# System Files
+.DS_Store
+Thumbs.db

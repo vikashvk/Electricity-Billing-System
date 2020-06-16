@@ -1,0 +1,52 @@
+<br>
+<br>
+<br>
+<br>
+<div>
+    <h3>Bill Details</h3>
+    <!-- <mat-spinner></mat-spinner> -->
+</div>
+
+<div class="container" *ngIf="bill">
+    <table class="table">
+        <tr>
+            <td>Bill Id :</td>
+            <td>{{bill.id}}</td>
+        </tr>
+        <tr>
+            <td>Billing Date :</td>
+            <td>{{bill.billdate}}</td>
+        </tr>
+        <tr>
+            <td>Due Date :</td>
+            <td>{{bill.duedate}}</td>
+        </tr>
+        <tr>
+            <td>Unit Consumption: </td>
+            <td>{{bill.unitconsumption}}</td>
+        </tr>
+        <tr>
+            <td>Rate Per unit: </td>
+            <td>{{bill.unitrate +" Rs."}}</td>
+        </tr>
+        <tr>
+            <td>Amount: </td>
+            <td>{{bill.billamount}}</td>
+        </tr>
+        <tr>
+            <td>Late Fine: </td>
+            <td>{{bill.billfine}}</td>
+        </tr>
+        <tr>
+            <td>Total Payble: </td>
+            <td>{{bill.billfine + bill.billamount +" Rs."}}</td>
+        </tr>
+        <tr>
+            <td>Status: </td>
+            <td>{{bill.flagpaid==0?"Not Paid":"Paid"}}</td>
+            <td *ngIf="bill.flagpaid==0"><button  class="btn btn-success"*ngIf="bill.flagpaid==0"
+                    (click)="makePayment(bill.id,bill.billfine + bill.billamount)">Pay</button></td>
+        </tr>
+
+    </table>
+</div>
