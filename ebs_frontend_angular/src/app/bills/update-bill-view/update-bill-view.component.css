@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 .container{
   align-content: center;
 }
 
+=======
+>>>>>>> d4eedb46790452de97c7ec262c3b3591c739c086
 /* You can add global styles to this file, and also import other style files */
 @font-face {
     font-family: 'Source Sans Pro';
@@ -54,7 +57,11 @@
   }
   .wrapper {
     background: #50a3a2;
+<<<<<<< HEAD
     background: linear-gradient(to bottom right, #72a9dd 0%, #1f74ad 100%);
+=======
+    background: linear-gradient(to bottom right, #edb0ad 0%, #e35a53 100%);
+>>>>>>> d4eedb46790452de97c7ec262c3b3591c739c086
     position: absolute;
     left: 0;
     width: 100%;
@@ -108,7 +115,11 @@
   form input:focus {
     background-color: white;
     width: 300px;
+<<<<<<< HEAD
     color: #1487d3;
+=======
+    color: #ad1c1c;
+>>>>>>> d4eedb46790452de97c7ec262c3b3591c739c086
   }
   
   form select {
@@ -136,12 +147,17 @@
   form select:focus {
     background-color: white;
     width: 300px;
+<<<<<<< HEAD
     color: #1c56ad;
+=======
+    color: #ad1c1c;
+>>>>>>> d4eedb46790452de97c7ec262c3b3591c739c086
   }
   form button {
     -webkit-appearance: none;
        -moz-appearance: none;
             appearance: none;
+<<<<<<< HEAD
     outline: 1;
     background-color: #121a8f;
     border: 0.5;
@@ -149,12 +165,25 @@
     color: #feffff;
     border-radius: 3px;
     width: 450px;
+=======
+    outline: 0;
+    background-color: #e8ff80;
+    border: 0;
+    padding: 10px 15px;
+    color: #ad1c1c;
+    border-radius: 3px;
+    width: 250px;
+>>>>>>> d4eedb46790452de97c7ec262c3b3591c739c086
     cursor: pointer;
     font-size: 18px;
     transition-duration: 0.25s;
   }
   form button:hover {
+<<<<<<< HEAD
     background-color: #0f7eaa;
+=======
+    background-color: #75ff53;
+>>>>>>> d4eedb46790452de97c7ec262c3b3591c739c086
   }
   .bg-bubbles {
     position: absolute;

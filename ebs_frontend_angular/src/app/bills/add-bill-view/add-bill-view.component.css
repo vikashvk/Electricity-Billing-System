@@ -143,10 +143,17 @@
        -moz-appearance: none;
             appearance: none;
     outline: 1;
+<<<<<<< HEAD
     background-color: #121a8f;
     border: 0.5;
     padding: 10px 15px;
     color: #feffff;
+=======
+    background-color: #12248f;
+    border: 0.5;
+    padding: 10px 15px;
+    color: #1c56ad;
+>>>>>>> d4eedb46790452de97c7ec262c3b3591c739c086
     border-radius: 3px;
     width: 450px;
     cursor: pointer;
@@ -154,7 +161,11 @@
     transition-duration: 0.25s;
   }
   form button:hover {
+<<<<<<< HEAD
     background-color: #0f7eaa;
+=======
+    background-color: #75ff53;
+>>>>>>> d4eedb46790452de97c7ec262c3b3591c739c086
   }
   .bg-bubbles {
     position: absolute;
