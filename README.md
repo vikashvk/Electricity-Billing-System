@@ -41,44 +41,6 @@ Features of Payment Module:
 
 There are two types of users available in the project:
 
-<<<<<<< HEAD
-•	Customer:  With limited access.
-•	Admin: With full access.
-
-1)	Functionality performed by Customer user:
-
-•	Registration for Customer
-•	Login for Customer
-•	Forgot password for Customer
-•	Change Password for Customer
-•	Edit Profile for Customer
-•	View his Payment History
-•	View his Bill History
-
-2)	Functionality performed by Admin user:
-
-•	Login for Admin
-•	Forgot password for Admin
-•	Edit Profile for Admin
-•	Manage Customer
-o	Adding New Customer
-o	Edit the Exiting Customer
-o	View Profile of the Customer
-o	Listing of all Customer
-•	Manage Bills
-o	Add Bills of the Customer
-o	View Details of the Bills
-o	Listing of all Bills
-o	Filter Bills according to Customer
-•	Manage Payments	
-o	Add Payments of Customer
-o	Listing of the Payments
-o	Filter Payments according to Customer
-•	Reports of the project
-o	Report of all Customer
-o	Report of all Bills
-o	Report of all Payments
-=======
 *	Customer:  With limited access.
 *	Admin: With full access.
 
@@ -116,20 +78,11 @@ o	Report of all Payments
 *	Report of all Customer
 *	Report of all Bills
 *	Report of all Payments
->>>>>>> d4eedb46790452de97c7ec262c3b3591c739c086
 
 
 Static Pages and other sections:
 
-<<<<<<< HEAD
-•	Home Page with good UI
-•	Home Page should contain an animated slider for images banner
-•	About us page should be available which will describe about the project
-•	Contact us page should be available in the project.
-=======
 *	Home Page with good UI
 *	Home Page should contain an animated slider for images banner
 *	About us page should be available which will describe about the project
 *	Contact us page should be available in the project.
->>>>>>> d4eedb46790452de97c7ec262c3b3591c739c086
-
