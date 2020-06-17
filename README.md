@@ -21,18 +21,10 @@ Features of Customer Module:
 The main aim for developing this module is to manage the bill. This bill module is the main module in this project Electricity Billing System. So all bill will be managed by admin. It tracks all the information of the bill. You have to develop all type of CRUD (Create, Read, Update and Delete) operations of the bill. Customer will be able to see his bill details.
 
 Features of Bill Module:
-
-<<<<<<< HEAD
-•	Admin can manage the bill
-•	Admin can edit/delete the bill
-•	Admin can see the list of all bill
-•	Customer can see his bill
-=======
 *	Admin can manage the bill
 *	Admin can edit/delete the bill
 *	Admin can see the list of all bill
 *	Customer can see his bill
->>>>>>> d4eedb46790452de97c7ec262c3b3591c739c086
 
 # 3)	Payment Module:
 
