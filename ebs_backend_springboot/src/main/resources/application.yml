@@ -1,16 +1,10 @@
 spring:
   datasource:
-<<<<<<< HEAD
     url: jdbc:mysql://localhost:3306/billinfo
     username: root
     password: root
     driverClassName: com.mysql.jdbc.Driver
-=======
-    url: jdbc:mysql://sql12.freesqldatabase.com:3306/sql12344985
-    username: sql12344985
-    password: 7iUHCivv3a
-    driverClassName: com.mysql.cj.jdbc.Driver
->>>>>>> d4eedb46790452de97c7ec262c3b3591c739c086
+
   jpa:
     show-sql: true
     hibernate:

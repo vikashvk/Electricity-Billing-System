@@ -65,11 +65,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-<<<<<<< HEAD
 			<version>5.1.6</version>
-=======
-			<scope>runtime</scope>
->>>>>>> d4eedb46790452de97c7ec262c3b3591c739c086
 		</dependency>
 		<dependency>
 			<groupId>org.apache.pdfbox</groupId>

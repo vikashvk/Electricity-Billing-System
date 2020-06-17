@@ -81,11 +81,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.cors().and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().csrf()
 				.disable().formLogin().disable().httpBasic().disable().exceptionHandling()
 				.authenticationEntryPoint(new RestAuthenticationEntryPoint()).and().authorizeRequests()
-<<<<<<< HEAD
 				.antMatchers("/", "/error").permitAll().antMatchers("/auth/**", "/api/bill-module/**", "/payment/**", "/oauth2/**").permitAll()
-=======
-				.antMatchers("/", "/error").permitAll().antMatchers("/auth/**", "/payment/**", "/oauth2/**","/api/bill-module/**").permitAll()
->>>>>>> d4eedb46790452de97c7ec262c3b3591c739c086
+
 				.anyRequest().authenticated().and().oauth2Login().authorizationEndpoint().baseUri("/oauth2/authorize")
 				.authorizationRequestRepository(cookieAuthorizationRequestRepository()).and().redirectionEndpoint()
 				.baseUri("/oauth2/callback/*").and().userInfoEndpoint().userService(customOAuth2UserService).and()
