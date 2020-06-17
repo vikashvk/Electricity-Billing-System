@@ -40,19 +40,11 @@ The main aim of this module is provide all the functionality related to payment.
 
 Features of Payment Module:
 
-<<<<<<< HEAD
-•	Admin can add new payment
-•	Admin can see the list of payment details
-•	Only admin can edit and update the record of the payment
-•	Admin will be able to delete the records of the payment
-•	All payment forms are validated on client side.
-=======
 *	Admin can add new payment
 *	Admin can see the list of payment details
 *	Only admin can edit and update the record of the payment
 *	Admin will be able to delete the records of the payment
 *	All payment forms are validated on client side.
->>>>>>> d4eedb46790452de97c7ec262c3b3591c739c086
 
 
 There are two types of users available in the project:
