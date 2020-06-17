@@ -10,19 +10,11 @@ The main aim of this module is provide all the functionality related to customer
 
 Features of Customer Module:
 
-<<<<<<< HEAD
-•	Admin can add new customer records
-•	Admin can see the list of customer details
-•	Only admin can edit and update the record of the customer
-•	Admin will be able to delete the records of the customer
-•	All customer forms are validated on client side 
-=======
 * Admin can add new customer records
 *	Admin can see the list of customer details
 *	Only admin can edit and update the record of the customer
 *	Admin will be able to delete the records of the customer
 *	All customer forms are validated on client side 
->>>>>>> d4eedb46790452de97c7ec262c3b3591c739c086
 
 # 2)	Bill Module:
 
