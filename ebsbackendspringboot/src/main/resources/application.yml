@@ -62,4 +62,4 @@ app:
   oauth2:
     authorizedRedirectUris: http://localhost:4200/oauth2-redirect
 server:
-  port: 9090
+  port: 9292
