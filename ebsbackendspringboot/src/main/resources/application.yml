@@ -54,7 +54,7 @@ spring:
             tokenUri: https://graph.facebook.com/v4.0/oauth/access_token
             userInfoUri: https://graph.facebook.com/v4.0/me?fields=id,first_name,middle_name,last_name,name,email,verified,is_verified,picture.width(250).height(250)
 app:
-  applicationUrl: http://localhost:9090
+  applicationUrl: http://localhost:9292
   frontEndUrl: http://localhost:4200
   auth:
     tokenSecret: 926D96C90030DD58429D2751AC1BDBBC

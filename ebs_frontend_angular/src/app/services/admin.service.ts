@@ -7,7 +7,7 @@ import { Observable } from 'rxJs';
 })
 export class AdminService {
 
-  private baseUrl = 'http://localhost:9090/api/bill-module';
+  private baseUrl = 'http://localhost:9292/api/bill-module';
 
   constructor(private http: HttpClient) { 
   }
