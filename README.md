@@ -54,11 +54,11 @@ There are two types of users available in the project:
 *	Edit Profile for Customer
 *	View his Payment History
 *	View his Bill History
-* Send Feedback
+*       Send Feedback
 
 2)	Functionality performed by Admin user:
 
-* Login for Admin
+*       Login for Admin
 *	Forgot password for Admin
 *	Edit Profile for Admin
 *	Manage Customer
