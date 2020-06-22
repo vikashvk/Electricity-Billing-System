@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://db4free.net:3306/sqlebsapp
-    username: sqlebsapp
-    password: sqlebsapp
+    url: jdbc:mysql://localhost:3306/billinfo
+    username: root
+    password: root
     driverClassName: com.mysql.jdbc.Driver
 
   jpa:
@@ -11,7 +11,7 @@ spring:
       ddl-auto: update
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL57Dialect
+        dialect: org.hibernate.dialect.MySQL55Dialect
   mail:
     host: smtp.gmail.com
     port: 587

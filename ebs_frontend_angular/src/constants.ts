@@ -1,4 +1,4 @@
-export const API_BASE_URL: string = `http://localhost:9090/`;
+export const API_BASE_URL: string = `http://localhost:9292/`;
 export const ACCESS_TOKEN = 'ACCESS_TOKEN';
 
 export const OAUTH2_REDIRECT_URI = 'http://localhost:4200/oauth2-redirect';
